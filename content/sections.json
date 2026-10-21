@@ -29,7 +29,7 @@
       "id": "support",
       "label": "Support",
       "block": 5,
-      "built": false
+      "built": true
     },
     {
       "id": "photo",

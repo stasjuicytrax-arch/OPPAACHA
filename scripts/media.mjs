@@ -129,6 +129,12 @@ export const CLIPS = {
   V06: { file: "Video/Live/_True_ Bali Savaya.mov", start: 41 },
   V07: { file: "Video/Live/_Los Goodman_ at Gioli&Assia 2 [Savaya Bali].mov", start: 7 },
   V08: { file: "Video/Live/Flava Back.MOV", start: 1 },
+  // Support. V01 runs 3 min: TECH-SPEC 4 allows up to 25 MB for the long clips.
+  V01: { file: "Support/Tomorrowland_Main_Oppaacha_Umbrella.mp4", start: 159.6, budget: [21500, 13000] },
+  V09: { file: "Support/Oppaacha - Umbrealla Zürich 1.MOV", start: 7 },
+  V10: { file: "Support/Adriatique (Oppaacha - My Soul).MP4", start: 3 },
+  V11: { file: "Support/CamelPhat (Don_t Stop) 1.MP4", start: 25 },
+  V12: { file: "Support/Solomun 3.MP4", start: 4 },
 };
 
 async function poster(input, at, vf, name) {
@@ -152,10 +158,16 @@ function preview(input, at, vf, name) {
   console.log(`video ${name} ${kb(target)}`);
 }
 
-/** short: the short side in px (1080 or 720), whatever the orientation */
-function encode(input, short, name) {
+/**
+ * short: target short side in px (1080 or 720), whatever the orientation;
+ * never above the source. budget: [kB at 1080, kB at 720] for long clips.
+ */
+function encode(input, short, name, budget = [10800, 6400]) {
   const target = out("video", `${name}.mp4`);
   if (fresh(target)) return;
+  const dims = execFileSync("ffprobe", ["-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height", "-of", "csv=p=0", input])
+    .toString().trim().split(",").map(Number);
+  short = Math.min(short, Math.min(...dims));
   const scale = `scale='if(gt(iw,ih),-2,${short})':'if(gt(iw,ih),${short},-2)':flags=lanczos`;
   // size budget per file (TECH-SPEC 4: <= 12 MB for 30-60 s): ~11 MB at 1080,
   // ~6.5 MB at 720, whatever the length
@@ -163,7 +175,7 @@ function encode(input, short, name) {
     execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", input]).toString()
   );
   const kbps = (budgetKb, cap) => `${Math.min(cap, Math.floor((budgetKb * 8) / seconds))}k`;
-  const maxrate = short > 720 ? kbps(10800, 2800) : kbps(6400, 1700);
+  const maxrate = short > 720 ? kbps(budget[0], 2800) : kbps(budget[1], 1700);
   ffmpeg([
     "-i", input, "-vf", `${scale},fps=30`,
     "-c:v", "libx264", "-preset", "slow", "-crf", short > 720 ? "24" : "25", "-profile:v", "high",
@@ -184,8 +196,8 @@ async function clip(id, { full = true, crop = true } = {}) {
   if (!full) return;
   preview(input, c.start, "scale=-2:720:flags=lanczos,fps=25", `${id}-preview`);
   await poster(input, c.start + 1, "scale=900:-2:flags=lanczos", `${id}-poster`);
-  encode(input, 1080, `${id}-1080`);
-  encode(input, 720, `${id}-720`);
+  encode(input, 1080, `${id}-1080`, c.budget);
+  encode(input, 720, `${id}-720`, c.budget);
 }
 
 // --------------------------------------------------------------------------
@@ -202,6 +214,9 @@ const tasks = {
   },
   live: async () => {
     for (const id of ["V04", "V05", "V06", "V07", "V08"]) await clip(id);
+  },
+  support: async () => {
+    for (const id of ["V01", "V09", "V10", "V11", "V12"]) await clip(id);
   },
 };
 

@@ -130,6 +130,7 @@ export function GlassStage({
     <div
       ref={stageRef}
       className={["stage", className].filter(Boolean).join(" ")}
+      style={{ aspectRatio: String(clip.aspect ?? 9 / 16) }}
       data-asset-id={clip.id}
       onPointerMove={onMove}
       onPointerEnter={(e) => e.pointerType === "mouse" && setChip(true)}

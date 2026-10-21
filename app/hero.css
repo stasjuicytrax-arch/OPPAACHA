@@ -87,7 +87,9 @@
   padding: 8px 14px;
   border: 1px dashed rgb(255 59 47 / 0.55);
   border-radius: 999px;
-  white-space: nowrap;
+  /* a placeholder may run long: it wraps inside its frame */
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 .hero-actions {
   margin-top: clamp(24px, 3vw, 36px);
@@ -187,9 +189,6 @@
   }
   .hero-ribbon {
     mask-image: linear-gradient(180deg, transparent 0%, rgb(0 0 0 / 0.5) 25%, #000 60%, transparent 100%);
-  }
-  .todo-slot {
-    white-space: normal;
   }
   .hero-actions {
     width: 100%;

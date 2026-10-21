@@ -25,6 +25,11 @@ export type Video = {
   hasAudio: boolean;
   /** landscape slice of a vertical clip, same shape as preview/poster */
   crop?: { preview: string; poster: string };
+  /** width / height of the picture; 9/16 when absent */
+  aspect?: number;
+  /** Support: who plays the track, and where */
+  playedBy?: string;
+  place?: string;
 };
 
 export type Photo = {

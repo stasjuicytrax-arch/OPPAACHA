@@ -1,18 +1,14 @@
 "use client";
 
 import * as React from "react";
-import { createPortal } from "react-dom";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { X } from "lucide-react";
-import { GlassStage, fmt, type PlayableClip } from "@/components/glass-stage";
-import { LiquidGlass, LiquidGlassButton } from "@/components/glass";
+import { ClipLightbox } from "@/components/clip-lightbox";
+import { fmt, type PlayableClip } from "@/components/glass-stage";
+import { LiquidGlass } from "@/components/glass";
 import { LoopVideo } from "@/components/loop-video";
 
 type LenisLike = {
   on(e: "scroll", f: () => void): void;
   off(e: "scroll", f: () => void): void;
-  stop(): void;
-  start(): void;
 };
 const lenis = () => (window as Window & { __lenis?: LenisLike }).__lenis;
 
@@ -27,9 +23,7 @@ export function LiveTrack({ clips, children }: { clips: PlayableClip[]; children
   const trackRef = React.useRef<HTMLDivElement>(null);
   const [open, setOpen] = React.useState<PlayableClip | null>(null);
   const [hover, setHover] = React.useState<string | null>(null);
-  const reduce = useReducedMotion();
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
+  const closeLightbox = React.useCallback(() => setOpen(null), []);
 
   React.useEffect(() => {
     const pin = pinRef.current;
@@ -82,17 +76,6 @@ export function LiveTrack({ clips, children }: { clips: PlayableClip[]; children
     };
   }, []);
 
-  React.useEffect(() => {
-    if (!open) return;
-    lenis()?.stop();
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(null);
-    window.addEventListener("keydown", onKey);
-    return () => {
-      lenis()?.start();
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [open]);
-
   return (
     <>
       <div ref={pinRef} className="live-pin">
@@ -119,7 +102,7 @@ export function LiveTrack({ clips, children }: { clips: PlayableClip[]; children
                   material="regular"
                   refraction={8}
                   fallbackBlur={14}
-                  className="live-chip label"
+                  className="glass-chip live-chip label"
                 >
                   {c.venue}
                 </LiquidGlass>
@@ -133,61 +116,7 @@ export function LiveTrack({ clips, children }: { clips: PlayableClip[]; children
         </div>
       </div>
 
-      {/* portal: the section isolates its stacking context, the lightbox must cover the menu */}
-      {mounted
-        ? createPortal(
-            <AnimatePresence>
-              {open ? (
-                <motion.div
-                  key="lightbox"
-                  className="live-lightbox"
-                  role="dialog"
-                  aria-modal="true"
-                  aria-label={`${open.title}, ${open.venue}`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: reduce ? 0 : 0.35, ease: [0.2, 0.9, 0.3, 1] }}
-                  onClick={(e) => e.target === e.currentTarget && setOpen(null)}
-                >
-                  <motion.div
-                    className="live-lightbox-body"
-                    initial={reduce ? false : { scale: 0.94, y: 24 }}
-                    animate={{ scale: 1, y: 0 }}
-                    exit={reduce ? undefined : { scale: 0.96, y: 12 }}
-                    transition={{ duration: 0.5, ease: [0.2, 0.9, 0.3, 1] }}
-                  >
-                    <GlassStage clip={open} mode="open" className="live-stage" />
-                    <div className="live-lightbox-bar">
-                      <LiquidGlass
-                        appearance="dark"
-                        material="regular"
-                        refraction={8}
-                        fallbackBlur={14}
-                        className="live-chip live-chip--static label"
-                      >
-                        {open.venue}
-                      </LiquidGlass>
-                      <LiquidGlassButton
-                        size={null}
-                        interactive
-                        appearance="dark"
-                        material="regular"
-                        className="glass-round text-ink"
-                        aria-label="Close"
-                        autoFocus
-                        onClick={() => setOpen(null)}
-                      >
-                        <X aria-hidden />
-                      </LiquidGlassButton>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              ) : null}
-            </AnimatePresence>,
-            document.body,
-          )
-        : null}
+      <ClipLightbox clip={open} onClose={closeLightbox} />
     </>
   );
 }

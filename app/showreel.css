@@ -16,7 +16,11 @@
   z-index: -2;
   background: var(--ambient) center / cover no-repeat;
   filter: blur(90px) saturate(1.5) brightness(0.42);
-  transform: translateZ(0);
+  /* fade out well before the section edges: no visible seam with the blocks around */
+  mask-image: linear-gradient(180deg, transparent 8%, #000 34%, #000 70%, transparent 94%),
+    linear-gradient(90deg, transparent 4%, #000 26%, #000 74%, transparent 96%);
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
 }
 .reel::before {
   /* red light from the top right and a dark floor, so text stays legible */
@@ -24,6 +28,7 @@
   position: absolute;
   inset: 0;
   z-index: -1;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 22%, #000 80%, transparent 100%);
   background:
     var(--glow-a),
     linear-gradient(180deg, var(--bg) 0%, rgb(10 10 10 / 0.35) 22%, rgb(10 10 10 / 0.35) 78%, var(--bg) 100%);

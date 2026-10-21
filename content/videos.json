@@ -1,18 +1,21 @@
 {
-  "$comment": "12 videos, all must render (scripts/verify-coverage.mjs). Titles and venues come from the source file names; confirm with the artist. src is a base path: <src>-1080.mp4 and <src>-720.mp4 exist. poster is a base path for .avif/.webp. crop holds the landscape slice of a vertical clip (V03: hero and manifesto pill). Fields stay null until the media pipeline encodes that block. duration and hasAudio are probed from the originals (ffprobe, 21.10.2026). V01 is Solomun playing OPPAACHA - Umbrella at Tomorrowland (confirmed by the client 21.10.2026), so it moved to support; the hero clip is V03, the shot of OPPAACHA at the decks. V09 is also Solomun playing Umbrella (confirmed by the client 21.10.2026), moved to support. V08 venue read from the screens in the footage (FLAVA MOSCOW).",
+  "$comment": "12 videos, all must render (scripts/verify-coverage.mjs). Titles and venues come from the source file names; confirm with the artist. src is a base path: <src>-1080.mp4 and <src>-720.mp4 exist. poster is a base path for .avif/.webp. crop holds the landscape slice of a vertical clip (V03: hero and manifesto pill). Fields stay null until the media pipeline encodes that block. duration and hasAudio are probed from the originals (ffprobe, 21.10.2026). V01 is Solomun playing OPPAACHA - Umbrella at Tomorrowland (confirmed by the client 21.10.2026), so it moved to support; the hero clip is V03, the shot of OPPAACHA at the decks. V09 is also Solomun playing Umbrella (confirmed by the client 21.10.2026), moved to support. V08 venue read from the screens in the footage (FLAVA MOSCOW). Support clips carry playedBy and place; aspect is the picture width/height used by the lightbox stage.",
   "videos": [
     {
       "id": "V01",
       "title": "Umbrella",
-      "venue": "Played by Solomun, Tomorrowland Main Stage",
+      "venue": "Played by Solomun",
       "section": "support",
       "source": "Support/Tomorrowland_Main_Oppaacha_Umbrella.mp4",
       "orientation": "landscape",
-      "src": null,
-      "preview": null,
-      "poster": null,
+      "src": "/media/video/V01",
+      "preview": "/media/video/V01-preview.mp4",
+      "poster": "/media/video/V01-poster",
       "duration": 188.7,
-      "hasAudio": true
+      "hasAudio": true,
+      "playedBy": "Solomun",
+      "place": "Tomorrowland, Main Stage",
+      "aspect": 1.7777777777777777
     },
     {
       "id": "V02",
@@ -112,15 +115,18 @@
     {
       "id": "V09",
       "title": "Umbrella",
-      "venue": "Played by Solomun, Umbrella Zürich",
+      "venue": "Played by Solomun",
       "section": "support",
       "source": "Support/Oppaacha - Umbrealla Zürich 1.MOV",
       "orientation": "portrait",
-      "src": null,
-      "preview": null,
-      "poster": null,
+      "src": "/media/video/V09",
+      "preview": "/media/video/V09-preview.mp4",
+      "poster": "/media/video/V09-poster",
       "duration": 69.3,
-      "hasAudio": true
+      "hasAudio": true,
+      "playedBy": "Solomun",
+      "place": "Umbrella, Zürich",
+      "aspect": 0.75
     },
     {
       "id": "V10",
@@ -129,11 +135,13 @@
       "section": "support",
       "source": "Support/Adriatique (Oppaacha - My Soul).MP4",
       "orientation": "portrait",
-      "src": null,
-      "preview": null,
-      "poster": null,
+      "src": "/media/video/V10",
+      "preview": "/media/video/V10-preview.mp4",
+      "poster": "/media/video/V10-poster",
       "duration": 23.3,
-      "hasAudio": true
+      "hasAudio": true,
+      "playedBy": "Adriatique",
+      "aspect": 0.5625
     },
     {
       "id": "V11",
@@ -142,11 +150,13 @@
       "section": "support",
       "source": "Support/CamelPhat (Don_t Stop) 1.MP4",
       "orientation": "portrait",
-      "src": null,
-      "preview": null,
-      "poster": null,
+      "src": "/media/video/V11",
+      "preview": "/media/video/V11-preview.mp4",
+      "poster": "/media/video/V11-poster",
       "duration": 36.7,
-      "hasAudio": true
+      "hasAudio": true,
+      "playedBy": "CamelPhat",
+      "aspect": 0.8
     },
     {
       "id": "V12",
@@ -155,11 +165,13 @@
       "section": "support",
       "source": "Support/Solomun 3.MP4",
       "orientation": "landscape",
-      "src": null,
-      "preview": null,
-      "poster": null,
+      "src": "/media/video/V12",
+      "preview": "/media/video/V12-preview.mp4",
+      "poster": "/media/video/V12-poster",
       "duration": 16,
-      "hasAudio": true
+      "hasAudio": true,
+      "playedBy": "Solomun",
+      "aspect": 1.7777777777777777
     }
   ]
 }

@@ -22,7 +22,7 @@ Built blocks: intro.
 - video V06 (live) is not on the page
 - video V07 (live) is not on the page
 - video V08 (live) is not on the page
-- video V09 (live) is not on the page
+- video V09 (support) is not on the page
 - video V10 (support) is not on the page
 - video V11 (support) is not on the page
 - video V12 (support) is not on the page

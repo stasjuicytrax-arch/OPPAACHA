@@ -1,5 +1,5 @@
 {
-  "$comment": "12 videos, all must render (scripts/verify-coverage.mjs). Titles and venues come from the source file names; confirm with the artist. src/preview/poster stay null until the media pipeline encodes that block. duration and hasAudio are probed from the originals (ffprobe, 21.10.2026). V01 is Solomun playing OPPAACHA - Umbrella at Tomorrowland (confirmed by the client 21.10.2026), so it moved to support; the hero clip is V03, the shot of OPPAACHA at the decks.",
+  "$comment": "12 videos, all must render (scripts/verify-coverage.mjs). Titles and venues come from the source file names; confirm with the artist. src/preview/poster stay null until the media pipeline encodes that block. duration and hasAudio are probed from the originals (ffprobe, 21.10.2026). V01 is Solomun playing OPPAACHA - Umbrella at Tomorrowland (confirmed by the client 21.10.2026), so it moved to support; the hero clip is V03, the shot of OPPAACHA at the decks. V09 is also Solomun playing Umbrella (confirmed by the client 21.10.2026), moved to support.",
   "videos": [
     {
       "id": "V01",
@@ -107,9 +107,9 @@
     },
     {
       "id": "V09",
-      "title": "Umbrella Zürich",
-      "venue": "Umbrella, Zürich",
-      "section": "live",
+      "title": "Umbrella",
+      "venue": "Played by Solomun, Umbrella Zürich",
+      "section": "support",
       "source": "Support/Oppaacha - Umbrealla Zürich 1.MOV",
       "orientation": "portrait",
       "src": null,

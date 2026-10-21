@@ -28,15 +28,15 @@
 
 | ID | Файл | Размер | Раздел |
 |---|---|---|---|
-| V01 | `Support/Tomorrowland_Main_Oppaacha_Umbrella.mp4` | 718 МБ | Hero + Showreel |
+| V01 | `Support/Tomorrowland_Main_Oppaacha_Umbrella.mp4` | 718 МБ | Support (Solomun играет Umbrella, Tomorrowland Main) |
 | V02 | `Video/Profi/dr17.mp4` | 102 МБ | Showreel |
-| V03 | `Video/Profi/_Los Goodman_ at Desa Kitsuné.mp4` | 39 МБ | Showreel |
+| V03 | `Video/Profi/_Los Goodman_ at Desa Kitsuné.mp4` | 39 МБ | Hero (превью) + Showreel |
 | V04 | `Video/Live/Trip Main Stage.MOV` | 77 МБ | Live |
 | V05 | `Video/Live/Savaya Bali.mov` | 39 МБ | Live |
 | V06 | `Video/Live/_True_ Bali Savaya.mov` | 141 МБ | Live |
 | V07 | `Video/Live/_Los Goodman_ at Gioli&Assia 2 [Savaya Bali].mov` | 88 МБ | Live |
 | V08 | `Video/Live/Flava Back.MOV` | 54 МБ | Live |
-| V09 | `Support/Oppaacha - Umbrealla Zürich 1.MOV` | 146 МБ | Live |
+| V09 | `Support/Oppaacha - Umbrealla Zürich 1.MOV` | 146 МБ | Support (Solomun играет Umbrella, Zürich) |
 | V10 | `Support/Adriatique (Oppaacha - My Soul).MP4` | 6 МБ | Support |
 | V11 | `Support/CamelPhat (Don_t Stop) 1.MP4` | 5 МБ | Support |
 | V12 | `Support/Solomun 3.MP4` | 10 МБ | Support |
@@ -85,19 +85,19 @@
 - **Жидкое стекло везде, где есть что преломлять:** меню, кнопки, панель плеера, фильтры дат, кнопки карусели, панели Rider. Подробные правила: `DESIGN-SYSTEM.md` раздел 7.
 
 ### 5.1 Hero (`#intro`)
-Вау-эффект с первого экрана. Основа: компонент **tilted-grid-hero** (21st.dev, ruixen.ui): изогнутая бесконечная лента фото, в качестве `images` идут лучшие Live и Studio фото. Поверх: логотип OPPAACHA в красном (grunge colored), под ним строка-подпись (из PromoKit), две стеклянные кнопки `Watch showreel` и `Booking`. Фон: красное свечение + зерно. Нижний край hero скруглён (44px) и «обрезает» гигантскую подложку OPPAACHA (приём Kinetic). Видео V01 в hero не автозапускается тяжёлым потоком: сначала постер, затем 6-секундное превью в петле.
+Вау-эффект с первого экрана. Основа: компонент **tilted-grid-hero** (21st.dev, ruixen.ui): изогнутая бесконечная лента фото, в качестве `images` идут лучшие Live и Studio фото. Поверх: логотип OPPAACHA в красном (grunge colored), под ним строка-подпись (из PromoKit), две стеклянные кнопки `Watch showreel` и `Booking`. Фон: красное свечение + зерно. Нижний край hero скруглён (44px) и «обрезает» гигантскую подложку OPPAACHA (приём Kinetic). Видео в hero (V03, кадр OPPAACHA за пультом; V01 оказался сетом Solomun) не автозапускается тяжёлым потоком: сначала постер, затем 6-секундное превью в петле.
 
 ### 5.2 Манифест и цифры
 Двухтоновый заголовок (первая половина белая, вторая приглушена), красная «таблетка» внутри строки, ступенчатое выравнивание. Ниже: 3–4 цифры в NKDuy Mono со счётчиком. **Тексты и цифры строго из PromoKit (B3).**
 
 ### 5.3 Showreel (`#video`)
-Полноэкранный блок видео. Главное видео V01, рядом V02 и V03 как карточки разной высоты ступенями. Плеер: стеклянная панель, красная полоса прогресса, звук по клику, полноэкранный режим.
+Полноэкранный блок видео. Главное видео V03 (OPPAACHA за пультом), рядом V02 карточкой. Какое из двух главное, уточнить у заказчика. Плеер: стеклянная панель, красная полоса прогресса, звук по клику, полноэкранный режим.
 
 ### 5.4 Live (`#live`)
-Горизонтальный pinned-скролл: V04–V09 (6 карточек). У каждой: постер, превью по hover, чип площадки (Trip Main Stage, Savaya Bali, Zürich Umbrella и т.д.), клик открывает полноэкранный стеклянный плеер.
+Горизонтальный pinned-скролл: V04–V08 (5 карточек). У каждой: постер, превью по hover, чип площадки (Trip Main Stage, Savaya Bali и т.д.), клик открывает полноэкранный стеклянный плеер.
 
 ### 5.5 Support (`#support`)
-Фон `--surface`. Три карточки V10–V12 с подписью «Played by» и именем DJ (Adriatique, CamelPhat, Solomun), название трека из имени файла. Тихий блок: много воздуха, мелкие тексты.
+Фон `--surface`. Пять карточек: V01 и V09 (Solomun играет Umbrella на Tomorrowland Main и в Zürich), V10–V12 (Adriatique, CamelPhat, Solomun), подпись «Played by» и имя DJ, название трека из имени файла. Подтверждено заказчиком 21.10.2026. Тихий блок: много воздуха, мелкие тексты.
 
 ### 5.6 Фото (`#photo`)
 Компонент **circular-carousel** (21st.dev, nexus-ui): круговая лента, Studio фото (8). Live фото (5) идут в сетке-кладке ступенями. `Without bg.png` стоит «вырезанной» фигурой поверх гигантской подложки. Фото чёрно-белые, цвет на hover. Все 13 фото должны присутствовать.

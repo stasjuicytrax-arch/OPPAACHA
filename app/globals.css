@@ -1,0 +1,406 @@
+@import "tailwindcss";
+
+/* --------------------------------------------------------------------------
+   OPPAACHA tokens. Source of truth: DESIGN-SYSTEM.md (palette 1, Signal Red /
+   Night). One night theme for the whole page; #F4F2EE appears only on the
+   inverse cards (tour, contact).
+   -------------------------------------------------------------------------- */
+
+:root {
+  --bg: #0a0a0a;
+  --surface: #151515;
+  --surface-2: #1e1d1c;
+  --line: rgb(244 242 238 / 0.12);
+  --ink: #f4f2ee;
+  --muted: #9a948d;
+  --accent: #d8042c;
+  --accent-hot: #ff3b2f;
+  --inv-bg: #f4f2ee;
+  --inv-ink: #0a0a0a;
+
+  --glow-a: radial-gradient(60% 50% at 85% 20%, rgb(216 4 44 / 0.55), transparent 70%);
+  --glow-b: radial-gradient(50% 40% at 10% 100%, rgb(255 59 47 / 0.28), transparent 70%);
+
+  /* Liquid Glass fallback material (DESIGN-SYSTEM.md 7.3) */
+  --glass-fill: rgb(255 255 255 / 0.1);
+  --glass-rim: rgb(255 255 255 / 0.16);
+  --glass-highlight: inset 0 1px 0 rgb(255 255 255 / 0.35);
+  --glass-lowlight: inset 0 -1px 0 rgb(0 0 0 / 0.3);
+
+  --ease-in: cubic-bezier(0.2, 0.9, 0.3, 1);
+  --ease-state: cubic-bezier(0.7, 0, 0.2, 1);
+
+  --gutter: clamp(20px, 4vw, 64px);
+  --section-y: clamp(96px, 14vw, 208px);
+
+  /* layers */
+  --z-content: 1;
+  --z-nav: 40;
+  --z-sheet: 50;
+  --z-grain: 60;
+  --z-preloader: 70;
+
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-line: var(--line);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-accent-hot: var(--accent-hot);
+  --color-inv-bg: var(--inv-bg);
+  --color-inv-ink: var(--inv-ink);
+  --color-foreground: var(--ink);
+
+  --font-sans: var(--font-hanken), system-ui, sans-serif;
+  --font-display: var(--font-hanken), system-ui, sans-serif;
+  --font-mono: var(--font-nkduy), ui-monospace, monospace;
+  --font-brand: var(--font-parabola), var(--font-hanken), sans-serif;
+
+  --text-display-xl: clamp(56px, 11vw, 176px);
+  --text-display-l: clamp(44px, 7vw, 112px);
+  --text-h2: clamp(32px, 4.4vw, 64px);
+  --text-h3: clamp(22px, 2.2vw, 32px);
+  --text-label: 11.5px;
+
+  --radius-sm: 12px;
+  --radius-card: 28px;
+  --radius-panel: 44px;
+
+  --ease-in: var(--ease-in);
+  --ease-state: var(--ease-state);
+}
+
+@layer base {
+  html {
+    background: var(--bg);
+    -webkit-text-size-adjust: 100%;
+    scrollbar-color: rgb(244 242 238 / 0.22) var(--bg);
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent-hot);
+    outline-offset: 3px;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(244 242 238 / 0.18);
+    border-radius: 999px;
+    border: 3px solid var(--bg);
+  }
+}
+
+@layer components {
+  /* Mono label: NKDuy Mono, 11.5px uppercase, tracked. */
+  .label {
+    font-family: var(--font-mono);
+    font-size: var(--text-label);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    line-height: 0.9;
+  }
+
+  .shell {
+    width: 100%;
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Glass controls (components/glass.tsx). The 21st.dev component draws the
+   refraction; these rules set size, the rim tokens from DESIGN-SYSTEM.md 7.3
+   (no drop shadows, depth comes from glass), and the frost fallback fill.
+   -------------------------------------------------------------------------- */
+
+.glass-control {
+  height: 52px;
+  padding-inline: 26px;
+  font-size: 15px;
+  line-height: 1;
+  gap: 10px;
+  box-shadow: var(--glass-highlight), var(--glass-lowlight), inset 0 0 0 1px var(--glass-rim) !important;
+  transition: color 200ms var(--ease-in);
+}
+.glass-control[data-liquid-glass="frost"] {
+  background-color: var(--glass-fill);
+}
+.glass-primary[data-liquid-glass="frost"] {
+  background-color: rgb(216 4 44 / 0.62);
+}
+.glass-primary[data-liquid-glass="refract"] {
+  background-color: rgb(216 4 44 / 0.22);
+}
+.glass-control svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.75;
+}
+
+.glass-round {
+  width: 52px;
+  height: 52px;
+  border-radius: 999px;
+  box-shadow: var(--glass-highlight), var(--glass-lowlight), inset 0 0 0 1px var(--glass-rim) !important;
+}
+.glass-round[data-liquid-glass="frost"] {
+  background-color: var(--glass-fill);
+}
+.glass-round svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.75;
+}
+
+/* --------------------------------------------------------------------------
+   Navigation (components/site-nav.tsx): capsule 56px, 48px once scrolled.
+   -------------------------------------------------------------------------- */
+
+.nav-capsule {
+  height: 56px;
+  border-radius: 999px;
+  box-shadow: var(--glass-highlight), var(--glass-lowlight), inset 0 0 0 1px var(--glass-rim) !important;
+  transition: height 420ms var(--ease-state);
+}
+.nav-capsule[data-liquid-glass="frost"] {
+  background-color: rgb(20 20 20 / 0.42);
+}
+.nav-capsule[data-compact] {
+  height: 48px;
+}
+.nav-mark {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+}
+.nav-mark img {
+  height: 26px;
+  width: auto;
+}
+.nav-mark--solo {
+  width: 52px;
+  height: 52px;
+}
+.nav-mark--solo img {
+  height: 34px;
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  height: 56px;
+  padding-inline: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: rgb(244 242 238 / 0.72);
+  transition: color 200ms var(--ease-in), height 420ms var(--ease-state);
+}
+.nav-capsule[data-compact] .nav-link {
+  height: 48px;
+}
+.nav-link:hover,
+.nav-link[aria-current] {
+  color: var(--ink);
+}
+.nav-drop {
+  border-radius: 999px;
+  box-shadow: var(--glass-highlight), inset 0 0 0 1px rgb(255 255 255 / 0.1) !important;
+}
+.nav-drop[data-liquid-glass="frost"] {
+  background-color: rgb(255 255 255 / 0.12);
+}
+.nav-booking.glass-control {
+  height: 42px;
+  padding-inline: 20px;
+  font-size: 14px;
+  transition: height 420ms var(--ease-state);
+}
+.nav-capsule[data-compact] .nav-booking.glass-control {
+  height: 36px;
+}
+.nav-sheet {
+  border-radius: var(--radius-panel);
+  box-shadow: var(--glass-highlight), inset 0 0 0 1px var(--glass-rim) !important;
+}
+.nav-sheet[data-liquid-glass="frost"] {
+  background-color: rgb(14 14 14 / 0.7);
+}
+.sheet-link {
+  display: block;
+  padding-block: 6px;
+  font-size: clamp(44px, 13vw, 64px);
+  color: rgb(244 242 238 / 0.6);
+}
+.sheet-link[aria-current] {
+  color: var(--ink);
+}
+
+/* --------------------------------------------------------------------------
+   Tilted grid (components/ui/tilted-grid-hero.tsx)
+   -------------------------------------------------------------------------- */
+
+.tgh {
+  position: relative;
+}
+.tgh-stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  perspective: 1400px;
+  perspective-origin: 70% 40%;
+  pointer-events: none;
+}
+.tgh-plane {
+  position: absolute;
+  top: -30%;
+  left: 34%;
+  width: 100%;
+  height: 170%;
+  display: grid;
+  grid-template-columns: repeat(var(--tgh-cols), minmax(0, 1fr));
+  gap: clamp(10px, 1.2vw, 18px);
+  transform: rotateX(38deg) rotateY(-14deg) rotateZ(-24deg);
+  transform-origin: 50% 40%;
+  transform-style: preserve-3d;
+}
+.tgh-col {
+  overflow: visible;
+  transform: translateY(var(--tgh-offset));
+}
+.tgh-track {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.2vw, 18px);
+  animation: tgh-stream var(--tgh-dur) linear infinite;
+  animation-direction: var(--tgh-dir);
+  will-change: transform;
+}
+.tgh-tile {
+  margin: 0;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: var(--surface-2);
+}
+.tgh-tile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@keyframes tgh-stream {
+  from { transform: translate3d(0, 0, 0); }
+  /* one copy plus one gap */
+  to { transform: translate3d(0, calc(-50% - clamp(10px, 1.2vw, 18px) / 2), 0); }
+}
+
+@media (max-width: 767px) {
+  .tgh-plane {
+    top: -10%;
+    left: -20%;
+    width: 150%;
+    height: 120%;
+    transform: rotateX(40deg) rotateZ(-22deg);
+  }
+}
+
+/* Film grain, fixed and inert so it never repaints with the scroll. */
+.grain {
+  position: fixed;
+  inset: -50%;
+  z-index: var(--z-grain);
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 1.2s steps(6) infinite;
+}
+
+@keyframes grain {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -4%); }
+  60% { transform: translate(-4%, -1%); }
+  80% { transform: translate(3%, 3%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  [data-liquid-glass] > span[aria-hidden] {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  [data-liquid-glass] {
+    background-color: var(--surface-2);
+  }
+}

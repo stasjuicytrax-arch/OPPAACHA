@@ -1,0 +1,109 @@
+{
+  "$comment": "13 photos, all must render (scripts/verify-coverage.mjs). Files: public/media/photo/<id>-<width>.<avif|webp>, built by scripts/media.mjs. Widths 1280/2400 arrive with the photo block.",
+  "photos": [
+    {
+      "id": "P01",
+      "kind": "live",
+      "source": "Live/10 LUNO CLEAN-37.jpg",
+      "width": 640,
+      "ratio": 0.667,
+      "alt": "OPPAACHA behind the decks in red club light, headphones around the neck"
+    },
+    {
+      "id": "P02",
+      "kind": "live",
+      "source": "Live/IMG_1878.JPG",
+      "width": 640,
+      "ratio": 0.667,
+      "alt": "OPPAACHA with both arms raised in front of a dancing crowd"
+    },
+    {
+      "id": "P03",
+      "kind": "live",
+      "source": "Live/KAWK0048.jpg",
+      "width": 640,
+      "ratio": 0.667,
+      "alt": "OPPAACHA sitting on a curved sea wall above the ocean, black and white"
+    },
+    {
+      "id": "P04",
+      "kind": "live",
+      "source": "Live/KAWK0066.jpg",
+      "width": 640,
+      "ratio": 0.667,
+      "alt": "OPPAACHA standing against a rough stone wall under a concrete canopy, black and white"
+    },
+    {
+      "id": "P05",
+      "kind": "live",
+      "source": "Live/KRS07494-Enhanced-NR.jpg",
+      "width": 640,
+      "ratio": 0.667,
+      "alt": "OPPAACHA playing a daytime set framed by tropical plants and woven decor"
+    },
+    {
+      "id": "P06",
+      "kind": "studio",
+      "source": "Studio/DSC01487 (1).jpg",
+      "width": 640,
+      "ratio": 0.667,
+      "alt": "Studio profile portrait of OPPAACHA against a red backdrop"
+    },
+    {
+      "id": "P07",
+      "kind": "studio",
+      "source": "Studio/DSC01713.jpg",
+      "width": 640,
+      "ratio": 0.667,
+      "alt": "Studio portrait of OPPAACHA in glasses and a patterned blue shirt"
+    },
+    {
+      "id": "P08",
+      "kind": "studio",
+      "source": "Studio/DSC01773.jpg",
+      "width": 640,
+      "ratio": 0.667,
+      "alt": "OPPAACHA reaching toward the camera in cold blue studio light"
+    },
+    {
+      "id": "P09",
+      "kind": "studio",
+      "source": "Studio/IMG_6486.jpeg",
+      "width": 640,
+      "ratio": 0.667,
+      "alt": "OPPAACHA lying across a wooden table in a dark studio"
+    },
+    {
+      "id": "P10",
+      "kind": "studio",
+      "source": "Studio/IMG_6613.jpeg",
+      "width": 640,
+      "ratio": 0.667,
+      "alt": "OPPAACHA laughing in a tubular steel chair, barefoot, in daylight"
+    },
+    {
+      "id": "P11",
+      "kind": "studio",
+      "source": "Studio/IMG_6660.jpeg",
+      "width": 640,
+      "ratio": 0.868,
+      "alt": "OPPAACHA leaning back in a chair, smiling, white t-shirt"
+    },
+    {
+      "id": "P12",
+      "kind": "studio",
+      "source": "Studio/IMG_6758.jpeg",
+      "width": 640,
+      "ratio": 0.667,
+      "alt": "OPPAACHA in a white linen shirt against black, black and white"
+    },
+    {
+      "id": "P13",
+      "kind": "cutout",
+      "source": "Studio/Without bg.png",
+      "width": 640,
+      "ratio": 0.709,
+      "alt": "Cut-out figure of OPPAACHA in a sage t-shirt, arms crossed"
+    }
+  ]
+}

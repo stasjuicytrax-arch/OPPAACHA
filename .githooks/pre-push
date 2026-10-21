@@ -1,0 +1,4 @@
+#!/bin/sh
+# Coverage gate before every push (TECH-SPEC section 6).
+npm run build --silent || exit 1
+git diff --quiet -- COVERAGE.md || { echo "COVERAGE.md changed: commit it before pushing."; exit 1; }

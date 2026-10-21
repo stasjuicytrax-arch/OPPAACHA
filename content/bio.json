@@ -1,0 +1,12 @@
+{
+  "$comment": "Blockers B2/B3: bio, tagline, numbers and booking contacts come from the old PromoKit only. Nothing here may be invented.",
+  "name": "OPPAACHA",
+  "tagline": "TODO_FROM_PROMOKIT",
+  "manifesto": "TODO_FROM_PROMOKIT",
+  "stats": [],
+  "booking": {
+    "email": "TODO_FROM_PROMOKIT",
+    "manager": "TODO_FROM_PROMOKIT"
+  },
+  "socials": []
+}

@@ -1,0 +1,5 @@
+{
+  "$comment": "Blocker B1: tour dates come from the old PromoKit only. Nothing here may be invented. Each date needs date (YYYY-MM-DD), city, country, venue, status (tickets | sold-out | past) and optionally ticketUrl. Every entry must render (scripts/verify-coverage.mjs).",
+  "status": "TODO_FROM_PROMOKIT",
+  "dates": []
+}

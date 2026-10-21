@@ -4,10 +4,11 @@ import localFont from "next/font/local";
 import { SmoothScroll } from "@/components/smooth-scroll";
 import "./globals.css";
 import "./hero.css";
+import "./manifesto.css";
 
 // Runs before paint: the preloader plays once per session, and the hero
 // intro waits for it only on that first visit.
-const introScript = `try{var d=document.documentElement;if(sessionStorage.getItem("opp-intro")){d.dataset.introSeen=""}else{sessionStorage.setItem("opp-intro","1");if(!matchMedia("(prefers-reduced-motion: reduce)").matches)d.style.setProperty("--intro-delay","1.25s")}}catch(e){}`;
+const introScript = `try{var d=document.documentElement;d.dataset.js="";if(sessionStorage.getItem("opp-intro")){d.dataset.introSeen=""}else{sessionStorage.setItem("opp-intro","1");if(!matchMedia("(prefers-reduced-motion: reduce)").matches)d.style.setProperty("--intro-delay","1.25s")}}catch(e){}`;
 
 const hanken = Hanken_Grotesk({
   variable: "--font-hanken",

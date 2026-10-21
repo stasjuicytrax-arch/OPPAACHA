@@ -1,13 +1,59 @@
 {
   "$comment": "Build order from TECH-SPEC section 8. verify-coverage treats assets of a section with built:false as pending (reported, not failed). A release build (RELEASE=1) fails on any pending section.",
   "sections": [
-    { "id": "intro", "label": "Intro", "block": 1, "built": true },
-    { "id": "video", "label": "Video", "block": 3, "built": false },
-    { "id": "live", "label": "Live", "block": 4, "built": false },
-    { "id": "support", "label": "Support", "block": 5, "built": false },
-    { "id": "photo", "label": "Photo", "block": 6, "built": false },
-    { "id": "tour", "label": "Tour", "block": 7, "built": false },
-    { "id": "rider", "label": "Rider", "block": 8, "built": false },
-    { "id": "booking", "label": "Booking", "block": 9, "built": false }
+    {
+      "id": "intro",
+      "label": "Intro",
+      "block": 1,
+      "built": true
+    },
+    {
+      "id": "about",
+      "label": "About",
+      "block": 2,
+      "built": true
+    },
+    {
+      "id": "video",
+      "label": "Video",
+      "block": 3,
+      "built": false
+    },
+    {
+      "id": "live",
+      "label": "Live",
+      "block": 4,
+      "built": false
+    },
+    {
+      "id": "support",
+      "label": "Support",
+      "block": 5,
+      "built": false
+    },
+    {
+      "id": "photo",
+      "label": "Photo",
+      "block": 6,
+      "built": false
+    },
+    {
+      "id": "tour",
+      "label": "Tour",
+      "block": 7,
+      "built": false
+    },
+    {
+      "id": "rider",
+      "label": "Rider",
+      "block": 8,
+      "built": false
+    },
+    {
+      "id": "booking",
+      "label": "Booking",
+      "block": 9,
+      "built": false
+    }
   ]
 }

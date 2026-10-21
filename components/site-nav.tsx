@@ -35,7 +35,7 @@ type LenisLike = { stop(): void; start(): void };
 const lenis = () => (window as Window & { __lenis?: LenisLike }).__lenis;
 
 export function SiteNav({ items }: { items: Item[] }) {
-  const ids = React.useMemo(() => [...items.map((i) => i.id), "photo", "booking"], [items]);
+  const ids = React.useMemo(() => [...items.map((i) => i.id), "about", "photo", "booking"], [items]);
   const active = useActiveSection(ids);
   const [compact, setCompact] = React.useState(false);
   const [open, setOpen] = React.useState(false);
@@ -78,7 +78,8 @@ export function SiteNav({ items }: { items: Item[] }) {
           <nav aria-label="Sections">
             <ul className="flex items-center">
               {items.map((item) => {
-                const isActive = active === item.id;
+                // the manifesto belongs to the intro
+                const isActive = active === item.id || (item.id === "intro" && active === "about");
                 return (
                   <li key={item.id} className="relative">
                     {isActive ? (

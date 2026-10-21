@@ -106,6 +106,21 @@ async function logos() {
     const meta = await sharp(target).metadata();
     console.log(`logo ${name} ${meta.width}x${meta.height} ${kb(target)}`);
   }
+
+  // Underlay variant without the accent slab over the A: as a giant cropped
+  // word the accent reads as a stray grey block (finish review, 21.10.2026).
+  // The accent fills the top 26% of the wordmark; letters start at 34%.
+  const flat = out("brand", "oppaacha-wordmark-flat.webp");
+  if (!fresh(flat)) {
+    const ink = sharp(out("brand", "oppaacha-wordmark-ink.png"));
+    const { width: w, height: h } = await ink.metadata();
+    const top = Math.round(h * 0.3);
+    await sharp(out("brand", "oppaacha-wordmark-ink.png"))
+      .extract({ left: 0, top, width: w, height: h - top })
+      .webp({ quality: 90, alphaQuality: 90 })
+      .toFile(flat);
+    console.log(`logo oppaacha-wordmark-flat ${w}x${h - top} ${kb(flat)}`);
+  }
 }
 
 // --------------------------------------------------------------------------

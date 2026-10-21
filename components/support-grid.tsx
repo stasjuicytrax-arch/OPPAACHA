@@ -40,7 +40,8 @@ export function SupportGrid({ clips }: { clips: PlayableClip[] }) {
                 <span className="sup-meta">
                   <span className="label text-muted">Played by</span>
                   <span className="sup-name">{c.playedBy}</span>
-                  {track ? <span className="sup-track">“{track}”</span> : <span className="todo-slot sup-todo">{TODO}: track</span>}
+                  {/* unknown track: the line is left out, never a visible placeholder (client) */}
+                  {track ? <span className="sup-track">“{track}”</span> : null}
                   {c.place ? <span className="sup-place">{c.place}</span> : null}
                 </span>
               </button>

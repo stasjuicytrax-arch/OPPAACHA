@@ -123,7 +123,7 @@ export function Booking() {
         </footer>
       </div>
 
-      <img src={asset("/media/brand/oppaacha-wordmark-ink.webp")} alt="" aria-hidden width={2400} height={519} className="bk-underlay" />
+      <img src={asset("/media/brand/oppaacha-wordmark-flat.webp")} alt="" aria-hidden width={2400} height={363} className="bk-underlay" />
     </section>
   );
 }

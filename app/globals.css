@@ -173,7 +173,8 @@
   background-color: rgb(216 4 44 / 0.62);
 }
 .glass-primary[data-liquid-glass="refract"] {
-  background-color: rgb(216 4 44 / 0.22);
+  /* red-toned glass at ~55% (DESIGN-SYSTEM.md 7.4), readable over any photo */
+  background-color: rgb(216 4 44 / 0.55);
 }
 .glass-control svg {
   width: 18px;

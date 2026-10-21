@@ -17,7 +17,7 @@
   "manifesto": {
     "lines": [
       { "text": "A more underground", "tone": "ink", "align": "start", "pill": true, "accent": "underground" },
-      { "text": "club sound, keeping", "tone": "ink", "align": "end" },
+      { "text": "club sound, while keeping", "tone": "ink", "align": "end" },
       { "text": "the influence of", "tone": "muted", "align": "start" },
       { "text": "the ’90s and 2000s", "tone": "muted", "align": "center" }
     ]

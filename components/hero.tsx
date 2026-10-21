@@ -3,7 +3,7 @@ import { ArrowUpRight, Play } from "lucide-react";
 import { TiltedGridHero } from "@/components/ui/tilted-grid-hero";
 import { GlassLink } from "@/components/glass";
 import { HeroClip } from "@/components/hero-clip";
-import { asset, bio, isTodo, photoSrc, photos, video, TODO } from "@/lib/content";
+import { asset, bio, isTodo, photoSrc, photos, video } from "@/lib/content";
 
 // Every photo except the cut-out, which waits for its own moment in #photo.
 const ribbon = photos
@@ -32,11 +32,8 @@ export function Hero() {
             />
           </h1>
 
-          {isTodo(bio.tagline) ? (
-            <p className="hero-tagline intro-line todo-slot" style={{ "--i": 1 } as CSSProperties}>
-              {TODO}: tagline
-            </p>
-          ) : (
+          {/* no tagline yet: the line is left out (client: no visible placeholders) */}
+          {isTodo(bio.tagline) ? null : (
             <p className="hero-tagline intro-line" style={{ "--i": 1 } as CSSProperties}>
               {bio.tagline}
             </p>
@@ -59,7 +56,7 @@ export function Hero() {
         </div>
       </div>
 
-      <img src={asset("/media/brand/oppaacha-wordmark-ink.webp")} alt="" aria-hidden width={2400} height={519} className="hero-underlay" />
+      <img src={asset("/media/brand/oppaacha-wordmark-flat.webp")} alt="" aria-hidden width={2400} height={363} className="hero-underlay" />
     </section>
   );
 }

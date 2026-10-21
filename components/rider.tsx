@@ -29,7 +29,7 @@ export function Rider() {
               <span className="m-line-inner">Rider</span>
             </span>
           </InView>
-          <p className="rd-lead">Technical, hospitality and payment terms for every booking.</p>
+          <p className="rd-lead">Technical, hospitality and payment terms.</p>
           <GlassLink href={asset(riderJson.pdf)} tone="primary" download className="rd-download">
             <Download aria-hidden />
             Download rider (PDF)

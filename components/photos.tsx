@@ -58,7 +58,7 @@ export function Photos() {
         </figure>
       </div>
 
-      <img src={asset("/media/brand/oppaacha-wordmark-ink.webp")} alt="" aria-hidden width={2400} height={519} className="ph-underlay" />
+      <img src={asset("/media/brand/oppaacha-wordmark-flat.webp")} alt="" aria-hidden width={2400} height={363} className="ph-underlay" />
     </section>
   );
 }

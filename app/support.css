@@ -110,11 +110,6 @@
   font-size: 13px;
   color: var(--muted);
 }
-.sup-todo {
-  align-self: flex-start;
-  margin-top: 4px;
-  padding: 5px 10px;
-}
 
 @media (max-width: 1023px) {
   .sup-row {

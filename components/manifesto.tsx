@@ -70,7 +70,6 @@ export function Manifesto() {
               <span className="m-ph m-ph--muted" style={{ "--w": "3.8em" } as CSSProperties} />
             </span>
           </span>
-          <p className="todo-slot m-todo">{TODO}: manifesto</p>
         </InView>
       )}
 

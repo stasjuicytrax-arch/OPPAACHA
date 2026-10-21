@@ -190,6 +190,18 @@
   .hero-ribbon {
     mask-image: linear-gradient(180deg, transparent 0%, rgb(0 0 0 / 0.5) 25%, #000 60%, transparent 100%);
   }
+  .hero-copy {
+    position: relative;
+  }
+  /* a dark pool behind the copy so labels hold over bright photo tiles */
+  .hero-copy::before {
+    content: "";
+    position: absolute;
+    inset: -24px -20px -32px;
+    z-index: -1;
+    background: radial-gradient(80% 70% at 30% 55%, rgb(10 10 10 / 0.78), transparent 100%);
+    pointer-events: none;
+  }
   .hero-actions {
     width: 100%;
   }

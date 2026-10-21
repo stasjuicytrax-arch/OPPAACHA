@@ -141,7 +141,8 @@
   gap: 32px 40px;
 }
 .rd-group-title {
-  color: var(--accent-hot);
+  /* ink, not red: red mono at 11.5px measured 2.75:1 on the glass */
+  color: rgb(244 242 238 / 0.92);
 }
 .rd-group ul {
   margin: 12px 0 0;

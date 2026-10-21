@@ -4,6 +4,7 @@ import * as React from "react";
 import { useReducedMotion } from "motion/react";
 import { GlassStage, fmt, type PlayableClip } from "@/components/glass-stage";
 import { LoopVideo } from "@/components/loop-video";
+import { TODO } from "@/lib/content";
 
 /**
  * Showreel (TECH-SPEC 5.3): one glass stage, the other clips beside it as
@@ -29,14 +30,14 @@ export function ShowreelPlayer({ clips }: { clips: PlayableClip[] }) {
 
       <div className="reel-side">
         <p className="reel-now">
-          <span className="label text-muted">Now playing</span>
-          <span className="reel-now-title">{clip.title}</span>
+          {/* unknown title: left out, never a visible placeholder (client) */}
+          {clip.title === TODO ? null : <span className="reel-now-title">{clip.title}</span>}
         </p>
         {others.map((c) => (
           <button key={c.id} type="button" className="reel-card" data-asset-id={c.id} onClick={() => select(c.id)}>
             <LoopVideo preview={c.preview} poster={c.poster} className="reel-card-media" />
             <span className="reel-card-caption">
-              <span className="label text-ink">{c.title}</span>
+              {c.title === TODO ? <span /> : <span className="label text-ink">{c.title}</span>}
               <span className="label text-muted">{fmt(c.duration)}</span>
             </span>
           </button>

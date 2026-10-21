@@ -137,6 +137,7 @@
   object-fit: contain;
   object-position: bottom;
   filter: grayscale(1) contrast(1.08);
+  mask-image: linear-gradient(180deg, #000 72%, transparent 100%);
   transition: filter 600ms var(--ease-in);
 }
 .ph-figure:hover .ph-cutout {
@@ -152,8 +153,10 @@
   width: 104%;
   max-width: none;
   height: auto;
-  transform: translate(-50%, 18%);
+  transform: translate(-50%, 10%);
   opacity: 0.1;
+  /* fades out before the section edge: no seam with Rider (client: no hard transitions) */
+  mask-image: linear-gradient(180deg, #000 40%, transparent 100%);
   pointer-events: none;
   user-select: none;
 }

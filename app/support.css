@@ -14,7 +14,7 @@
   max-width: 62ch;
 }
 .sup-title {
-  margin-top: 20px;
+  margin-top: 0;
   font-size: var(--text-h2);
   line-height: 1;
 }
@@ -86,7 +86,7 @@
   bottom: 12px;
   z-index: 1;
   color: var(--ink);
-  text-shadow: 0 1px 8px rgb(0 0 0 / 0.6);
+  text-shadow: 0 1px 8px var(--bg);
 }
 
 .sup-meta {

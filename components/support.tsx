@@ -24,9 +24,6 @@ export function Support() {
     <section id="support" aria-labelledby="support-title" className="sup">
       <div className="shell">
         <div className="sup-head">
-          <p className="label m-label">
-            <span className="m-dot" aria-hidden />/support
-          </p>
           <InView as="h2" className="sup-title display">
             <span id="support-title" className="m-line" style={{ "--i": 0 } as CSSProperties}>
               <span className="m-line-inner">Played by</span>

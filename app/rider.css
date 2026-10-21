@@ -39,7 +39,7 @@
   align-items: flex-start;
 }
 .rd-title {
-  margin-top: 20px;
+  margin-top: 0;
   font-size: var(--text-display-l);
   line-height: 0.95;
 }

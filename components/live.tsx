@@ -16,9 +16,6 @@ export function Live() {
     <section id="live" aria-labelledby="live-title" className="live">
       <LiveTrack clips={clips}>
         <div className="live-intro">
-          <p className="label m-label">
-            <span className="m-dot" aria-hidden />/live
-          </p>
           <InView as="h2" className="live-title display">
             <span id="live-title" className="m-line" style={{ "--i": 0 } as CSSProperties}>
               <span className="m-line-inner">Live</span>

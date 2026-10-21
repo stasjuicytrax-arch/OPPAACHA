@@ -57,8 +57,54 @@ typography:
     lineHeight: 1
     letterSpacing: "-0.03em"
     fontFeature: "tnum"
+  lead:
+    fontFamily: "Hanken Grotesk, system-ui, sans-serif"
+    fontSize: "clamp(17px, 1.35vw, 20px)"
+    fontWeight: 400
+    lineHeight: 1.45
+  card-title:
+    fontFamily: "Hanken Grotesk, system-ui, sans-serif"
+    fontSize: "19px"
+    fontWeight: 700
+    lineHeight: 1.15
+    letterSpacing: "-0.02em"
+  item:
+    fontFamily: "Hanken Grotesk, system-ui, sans-serif"
+    fontSize: "17px"
+    fontWeight: 600
+    letterSpacing: "-0.015em"
+  body-small:
+    fontFamily: "Hanken Grotesk, system-ui, sans-serif"
+    fontSize: "15px"
+    fontWeight: 400
+    lineHeight: 1.55
+  ui:
+    fontFamily: "Hanken Grotesk, system-ui, sans-serif"
+    fontSize: "14px"
+    fontWeight: 500
+  caption:
+    fontFamily: "Hanken Grotesk, system-ui, sans-serif"
+    fontSize: "13px"
+    fontWeight: 400
+  contact:
+    fontFamily: "Hanken Grotesk, system-ui, sans-serif"
+    fontSize: "clamp(22px, 2.6vw, 30px)"
+    fontWeight: 700
+    letterSpacing: "-0.03em"
+  panel-title:
+    fontFamily: "Parabola, Hanken Grotesk, sans-serif"
+    fontSize: "clamp(32px, 3.4vw, 48px)"
+    fontWeight: 400
+    lineHeight: 1
+  numeral-compact:
+    fontFamily: "NKDuy Mono, ui-monospace, monospace"
+    fontSize: "clamp(38px, 11vw, 52px)"
+    fontWeight: 400
+    lineHeight: 1
+    fontFeature: "tnum"
 rounded:
   sm: "12px"
+  inner: "22px"
   card: "28px"
   panel: "44px"
   pill: "999px"
@@ -149,7 +195,7 @@ A near-black stage, a warm white ink, and two reds that behave like stage light.
 - **Primary Glass** (`primary-glass`): Signal Red at 55% under refracting glass. Frost fallback (Safari, Firefox) raises it to 62%; in the hero on phones it rises to 86% because the button sits over bright photo tiles.
 
 ### Secondary
-- **Hot Red** (`hot-red`): red for small things and light. Section-label text, the glowing dot, the video progress fill, focus rings (2px, offset 3px), the secondary glow `--glow-b` at 28%.
+- **Hot Red** (`hot-red`): red for small things and light. the video progress fill, focus rings (2px, offset 3px), the secondary glow `--glow-b` at 28%.
 
 ### Neutral
 - **Night** (`night`): page ground, html and body, theme colour. The hero panel sits one step lighter (#101010, local to the hero).
@@ -177,11 +223,15 @@ A near-black stage, a warm white ink, and two reds that behave like stage light.
 ### Hierarchy
 - **Display** (800, clamp(44px, 7vw, 112px), line-height 0.92 to 0.95, -0.045em): every section headline (about, video, live, photo, rider, booking). Balanced wrapping.
 - **Headline** (800, clamp(32px, 4.4vw, 64px), 1): the quieter Support headline.
-- **Title** (700, clamp(22px, 2.2vw, 32px), 1.05, -0.03em): "now playing" in the showreel; card names step down to 17 to 19px at 600 to 700.
+- **Title** (700, clamp(22px, 2.2vw, 32px), 1.05, -0.03em): the current clip title in the showreel.
+- **Card title** (700, 19px, -0.02em) and **Item** (600, 17px): DJ names on support cards, clip titles on live cards.
+- **Contact** (700, clamp(22px, 2.6vw, 30px), -0.03em): the booking address on the inverse card.
 - **Accent** (Parabola 400, tracking 0, Signal Red, sometimes 1.04 to 1.12em): one word inside a display headline; rider panel titles in Parabola uppercase at clamp(32px, 3.4vw, 48px).
-- **Body** (400, 16px, 1.55): running text, max about 62ch; hero tagline clamp(17px, 1.35vw, 20px) at 1.45, max 34ch; lists and notes at 15px.
+- **Body** (400, 16px, 1.55): running text, max about 62ch.
+- **Lead** (400, clamp(17px, 1.35vw, 20px), 1.45, max 34ch): the hero tagline.
+- **Body small** (15px), **UI** (14px, 500 to 600) and **Caption** (13px): rider lists and notes; nav links, small buttons and tabs; places and secondary lines on cards.
 - **Label** (NKDuy Mono 400, 11.5px, 0.14em, uppercase, tabular figures): captions, chip text, times, venue names, footer.
-- **Numeral** (NKDuy Mono, clamp(44px, 5.4vw, 80px), 1, -0.03em, tabular): the manifesto figures, counted up on entry; suffix in Signal Red.
+- **Numeral** (NKDuy Mono, clamp(44px, 5.4vw, 80px), 1, -0.03em, tabular): the manifesto figures, counted up on entry; suffix in Signal Red. On phones **Numeral compact**, clamp(38px, 11vw, 52px).
 
 ### Named Rules
 **The One Parabola Word Rule.** Each headline gets at most one Parabola word, at 32px or larger. Parabola is never body or label text.
@@ -296,4 +346,4 @@ What shipped differs from the client's pinned system in these places:
 - **Menu drop spring (DS 8.2):** the overshoot curve is a deliberate exception.
 - **Display XL (DS 3):** the `clamp(56px, 11vw, 176px)` step is defined but no text uses it; the hero mark and the giant wordmark are images.
 
-**Open deviation, not settled:** section labels (`/about`, `/video`, `/live`, `/support`, `/photo`, `/rider`, `/booking` in Hot Red mono with a glowing dot) ship because DS 9 pins them, but the finish review flags them against the craft floor as kickers. They await the client's explicit keep or remove. Until then they are not a system rule: new surfaces must not add more of them.
+- **Section labels (DS 9):** removed by client decision (21.10.2026). Headings stand on their own; no label, kicker or eyebrow above a heading anywhere on the page.

@@ -23,9 +23,6 @@ export function Showreel() {
       <div className="reel-ambient" aria-hidden style={{ "--ambient": `url(${clips[0].poster}.webp)` } as CSSProperties} />
 
       <div className="shell reel-head">
-        <p className="label m-label">
-          <span className="m-dot" aria-hidden />/video
-        </p>
         <InView as="h2" className="reel-title display">
           <span id="video-title" className="m-line" data-align="start" style={{ "--i": 0 } as CSSProperties}>
             <span className="m-line-inner">

@@ -21,9 +21,6 @@ export function Rider() {
 
       <div className="shell rd-grid">
         <div className="rd-intro">
-          <p className="label m-label">
-            <span className="m-dot" aria-hidden />/rider
-          </p>
           <InView as="h2" className="rd-title display">
             <span id="rider-title" className="m-line" style={{ "--i": 0 } as CSSProperties}>
               <span className="m-line-inner">Rider</span>

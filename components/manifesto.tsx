@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import { Counter, InView } from "@/components/in-view";
 import { LoopVideo } from "@/components/loop-video";
-import { bio, video, TODO } from "@/lib/content";
+import { bio, video } from "@/lib/content";
 
 type Line = {
   text: string;
@@ -18,8 +18,8 @@ const stats = (bio.stats ?? []) as Stat[];
 /**
  * Block 2 (TECH-SPEC 5.2): two-tone manifesto with a red pill in the line,
  * stepped alignment, then 3-4 numbers in NKDuy Mono with a counter.
- * Copy and numbers come from the PromoKit only; until then the block keeps
- * its composition with marked slots instead of invented text.
+ * Copy and numbers come from the PromoKit only; without them the parts are
+ * left out (client: no visible placeholders).
  */
 export function Manifesto() {
   const clip = video("V03");
@@ -31,10 +31,6 @@ export function Manifesto() {
 
   return (
     <section id="about" aria-labelledby="about-title" className="manifesto shell">
-      <p className="label m-label">
-        <span className="m-dot" aria-hidden />/about
-      </p>
-
       {lines.length ? (
         <InView as="h2" className="m-title display">
           <span id="about-title" className="sr-only">
@@ -49,29 +45,7 @@ export function Manifesto() {
             </span>
           ))}
         </InView>
-      ) : (
-        <InView as="div" className="m-title m-title--todo">
-          <h2 id="about-title" className="sr-only">
-            Manifesto, waiting for the PromoKit
-          </h2>
-          <span className="m-line" data-align="start" style={{ "--i": 0 } as CSSProperties}>
-            <span className="m-line-inner">
-              <span className="m-ph" style={{ "--w": "4.6em" } as CSSProperties} />
-              {pill}
-            </span>
-          </span>
-          <span className="m-line" data-align="end" style={{ "--i": 1 } as CSSProperties}>
-            <span className="m-line-inner">
-              <span className="m-ph" style={{ "--w": "6.4em" } as CSSProperties} />
-            </span>
-          </span>
-          <span className="m-line" data-align="center" style={{ "--i": 2 } as CSSProperties}>
-            <span className="m-line-inner">
-              <span className="m-ph m-ph--muted" style={{ "--w": "3.8em" } as CSSProperties} />
-            </span>
-          </span>
-        </InView>
-      )}
+      ) : null}
 
       <InView as="dl" className="m-stats" amount={0.4}>
         {stats.length
@@ -84,16 +58,7 @@ export function Manifesto() {
                 </dd>
               </div>
             ))
-          : [0, 1, 2, 3].map((i) => (
-              <div key={i} className="m-stat m-stat--todo" style={{ "--i": i } as CSSProperties} aria-hidden={i > 0 || undefined}>
-                <dt className="label text-muted">
-                  {i === 0 ? `${TODO}: numbers` : <span className="m-ph" style={{ "--w": "8em" } as CSSProperties} />}
-                </dt>
-                <dd className="m-num m-num--todo" aria-hidden>
-                  <span className="m-ph m-ph--num" />
-                </dd>
-              </div>
-            ))}
+          : null}
       </InView>
     </section>
   );

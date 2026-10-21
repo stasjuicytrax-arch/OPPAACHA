@@ -38,9 +38,6 @@ export function Booking() {
   return (
     <section id="booking" aria-labelledby="booking-title" className="bk">
       <div className="shell bk-inner">
-        <p className="label m-label">
-          <span className="m-dot" aria-hidden />/booking
-        </p>
         <InView as="h2" className="bk-title display">
           <span id="booking-title" className="m-line" style={{ "--i": 0 } as CSSProperties}>
             <span className="m-line-inner text-muted">See u on the</span>

@@ -8,6 +8,24 @@
         "value": "cubic-bezier(0.34, 1.45, 0.5, 1)",
         "createdAt": "2026-10-21T18:20:19.522Z",
         "reason": "DESIGN-SYSTEM.md 8.2 (client design system) pins a spring drop for the glass menu"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "#000",
+        "createdAt": "2026-10-21T20:22:56.196Z",
+        "reason": "mask-image alpha stops in fade masks (no-seam rule), not a paint colour"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgb(0 0 0 / 0.35)",
+        "createdAt": "2026-10-21T20:22:56.466Z",
+        "reason": "mask-image alpha stop in the hero ribbon fade, not a paint colour"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgb(0 0 0 / 0.5)",
+        "createdAt": "2026-10-21T20:23:21.209Z",
+        "reason": "mask-image alpha stop in the mobile hero ribbon fade, not a paint colour"
       }
     ]
   }

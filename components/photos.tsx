@@ -20,9 +20,6 @@ export function Photos() {
   return (
     <section id="photo" aria-labelledby="photo-title" className="ph">
       <div className="shell ph-head">
-        <p className="label m-label">
-          <span className="m-dot" aria-hidden />/photo
-        </p>
         <InView as="h2" className="ph-title display">
           <span id="photo-title" className="m-line" style={{ "--i": 0 } as CSSProperties}>
             <span className="m-line-inner">In the studio</span>

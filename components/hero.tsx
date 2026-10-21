@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import { ArrowUpRight, Play } from "lucide-react";
 import { TiltedGridHero } from "@/components/ui/tilted-grid-hero";
-import { GlassLink, Magnetic } from "@/components/glass";
+import { GlassLink } from "@/components/glass";
 import { HeroClip } from "@/components/hero-clip";
 import { bio, isTodo, photoSrc, photos, video, TODO } from "@/lib/content";
 
@@ -43,18 +43,14 @@ export function Hero() {
           )}
 
           <div className="hero-actions intro-line" style={{ "--i": 2 } as CSSProperties}>
-            <Magnetic>
-              <GlassLink href="#video" tone="clear">
-                <Play aria-hidden />
-                Watch showreel
-              </GlassLink>
-            </Magnetic>
-            <Magnetic>
-              <GlassLink href="#booking" tone="primary">
-                Booking
-                <ArrowUpRight aria-hidden />
-              </GlassLink>
-            </Magnetic>
+            <GlassLink href="#video" tone="clear">
+              <Play aria-hidden />
+              Watch showreel
+            </GlassLink>
+            <GlassLink href="#booking" tone="primary">
+              Booking
+              <ArrowUpRight aria-hidden />
+            </GlassLink>
           </div>
         </div>
 

@@ -11,7 +11,11 @@ export function HeroClip({ video }: { video: Video }) {
   return (
     <a href="#video" className="hero-clip group block" data-asset-id={video.id} aria-label={`${video.title}: watch the showreel`}>
       <LiquidGlass appearance="dark" material="clear" refraction={22} fallbackBlur={16} className="hero-clip-frame">
-        <LoopVideo preview={video.preview} poster={video.poster} className="hero-clip-media" />
+        <LoopVideo
+          preview={video.crop?.preview ?? video.preview}
+          poster={video.crop?.poster ?? video.poster}
+          className="hero-clip-media"
+        />
       </LiquidGlass>
       <span className="hero-clip-caption">
         <span className="label text-ink">{video.title}</span>

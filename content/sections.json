@@ -17,7 +17,7 @@
       "id": "video",
       "label": "Video",
       "block": 3,
-      "built": false
+      "built": true
     },
     {
       "id": "live",

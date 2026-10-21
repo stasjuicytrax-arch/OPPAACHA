@@ -18,6 +18,8 @@ export type Video = {
   poster: string | null;
   duration: number;
   hasAudio: boolean;
+  /** landscape slice of a vertical clip, same shape as preview/poster */
+  crop?: { preview: string; poster: string };
 };
 
 export type Photo = {

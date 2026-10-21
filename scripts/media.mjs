@@ -8,7 +8,7 @@
 //
 // Requires ffmpeg on PATH for video. Photos and logos go through sharp.
 
-import { existsSync, mkdirSync, statSync } from "node:fs";
+import { existsSync, mkdirSync, rmSync, statSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import path from "node:path";
 import sharp from "sharp";
@@ -35,7 +35,7 @@ const fresh = (file) => !force && existsSync(file) && statSync(file).size > 0;
 const kb = (file) => `${Math.round(statSync(file).size / 1024)} KB`;
 
 // --------------------------------------------------------------------------
-// Photos: AVIF + WebP at fixed widths, plus a tiny blur placeholder.
+// Photos: AVIF + WebP at fixed widths.
 // --------------------------------------------------------------------------
 
 export const PHOTOS = [
@@ -109,42 +109,71 @@ async function logos() {
 }
 
 // --------------------------------------------------------------------------
-// Video: poster + 6 s silent preview loop. Full encodes come with block 3.
+// Video. Per clip: full encodes <id>-1080.mp4 / <id>-720.mp4 (H.264, CRF
+// 24-25, +faststart), a 6 s silent preview loop and a poster (AVIF + WebP).
+// A crop variant (suffix -crop) serves a landscape slice of a vertical clip.
 // --------------------------------------------------------------------------
 
 function ffmpeg(args) {
   execFileSync("ffmpeg", ["-loglevel", "error", "-y", ...args], { stdio: "inherit" });
 }
 
-// crop: optional ffmpeg crop before scaling. V03 is a vertical triptych; its
-// middle band (OPPAACHA at the decks) is a 1080x640 landscape shot.
-export const PREVIEWS = {
+// start: first second of the preview; the poster is taken one second later.
+// crop: V03 is a vertical triptych; its middle band (OPPAACHA at the decks)
+// is a 1080x640 landscape shot used by the hero and the manifesto pill.
+export const CLIPS = {
+  V02: { file: "Video/Profi/dr17.mp4", start: 2 },
   V03: { file: "Video/Profi/_Los Goodman_ at  Desa Kitsuné.mp4", start: 16.5, crop: "1080:640:0:640" },
 };
 
-async function videoPreview(id) {
-  const { file, start, crop } = PREVIEWS[id];
-  const pre = crop ? `crop=${crop},` : "";
-  const input = src(file);
-  const preview = out("video", `${id}-preview.mp4`);
-  if (!fresh(preview)) {
-    ffmpeg([
-      "-ss", String(start), "-t", "6", "-i", input, "-an",
-      "-vf", `${pre}scale=-2:720:flags=lanczos,fps=25`,
-      "-c:v", "libx264", "-preset", "slow", "-crf", "27", "-maxrate", "2400k", "-bufsize", "4800k",
-      "-pix_fmt", "yuv420p", "-movflags", "+faststart", preview,
-    ]);
-    console.log(`video ${id} preview ${kb(preview)}`);
+async function poster(input, at, vf, name) {
+  if (fresh(out("video", `${name}.webp`))) return;
+  const png = out("video", `${name}.png`);
+  ffmpeg(["-ss", String(at), "-i", input, "-frames:v", "1", "-vf", vf, png]);
+  await sharp(png).avif({ quality: 50 }).toFile(out("video", `${name}.avif`));
+  await sharp(png).webp({ quality: 72 }).toFile(out("video", `${name}.webp`));
+  rmSync(png);
+  console.log(`video ${name} ${kb(out("video", `${name}.avif`))}`);
+}
+
+function preview(input, at, vf, name) {
+  const target = out("video", `${name}.mp4`);
+  if (fresh(target)) return;
+  ffmpeg([
+    "-ss", String(at), "-t", "6", "-i", input, "-an", "-vf", vf,
+    "-c:v", "libx264", "-preset", "slow", "-crf", "27", "-maxrate", "2400k", "-bufsize", "4800k",
+    "-pix_fmt", "yuv420p", "-movflags", "+faststart", target,
+  ]);
+  console.log(`video ${name} ${kb(target)}`);
+}
+
+/** short: the short side in px (1080 or 720), whatever the orientation */
+function encode(input, short, name) {
+  const target = out("video", `${name}.mp4`);
+  if (fresh(target)) return;
+  const scale = `scale='if(gt(iw,ih),-2,${short})':'if(gt(iw,ih),${short},-2)':flags=lanczos`;
+  ffmpeg([
+    "-i", input, "-vf", `${scale},fps=30`,
+    "-c:v", "libx264", "-preset", "slow", "-crf", short > 720 ? "24" : "25", "-profile:v", "high",
+    // caps keep a 30 s clip near 11 MB (1080) and 7 MB (720), TECH-SPEC 4
+    "-maxrate", short > 720 ? "2800k" : "1700k", "-bufsize", short > 720 ? "5600k" : "3400k",
+    "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", target,
+  ]);
+  console.log(`video ${name} ${kb(target)}`);
+}
+
+async function clip(id, { full = true, crop = true } = {}) {
+  const c = CLIPS[id];
+  const input = src(c.file);
+  if (crop && c.crop) {
+    preview(input, c.start, `crop=${c.crop},scale=-2:720:flags=lanczos,fps=25`, `${id}-crop-preview`);
+    await poster(input, c.start, `crop=${c.crop},scale=1280:-2:flags=lanczos`, `${id}-crop-poster`);
   }
-  const png = out("video", `${id}-poster.png`);
-  if (!fresh(out("video", `${id}-poster.webp`))) {
-    ffmpeg(["-ss", String(start), "-i", input, "-frames:v", "1", "-vf", `${pre}scale=1280:-2:flags=lanczos`, png]);
-    await sharp(png).avif({ quality: 50 }).toFile(out("video", `${id}-poster.avif`));
-    await sharp(png).webp({ quality: 72 }).toFile(out("video", `${id}-poster.webp`));
-    const { rmSync } = await import("node:fs");
-    rmSync(png);
-    console.log(`video ${id} poster ${kb(out("video", `${id}-poster.avif`))}`);
-  }
+  if (!full) return;
+  preview(input, c.start, "scale=-2:720:flags=lanczos,fps=25", `${id}-preview`);
+  await poster(input, c.start + 1, "scale=900:-2:flags=lanczos", `${id}-poster`);
+  encode(input, 1080, `${id}-1080`);
+  encode(input, 720, `${id}-720`);
 }
 
 // --------------------------------------------------------------------------
@@ -153,7 +182,11 @@ const tasks = {
   hero: async () => {
     await logos();
     await photos([640]);
-    await videoPreview("V03");
+    await clip("V03", { full: false });
+  },
+  showreel: async () => {
+    await clip("V03");
+    await clip("V02");
   },
 };
 

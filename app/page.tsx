@@ -1,5 +1,6 @@
 import { Hero } from "@/components/hero";
 import { Manifesto } from "@/components/manifesto";
+import { Showreel } from "@/components/showreel";
 import { SiteNav } from "@/components/site-nav";
 import { NAV, sections } from "@/lib/content";
 
@@ -15,6 +16,7 @@ export default function Page() {
       <main>
         <Hero />
         <Manifesto />
+        <Showreel />
         {/* Blocks still in progress keep their anchors so the menu works
             while the page is assembled (TECH-SPEC section 8). */}
         {sections

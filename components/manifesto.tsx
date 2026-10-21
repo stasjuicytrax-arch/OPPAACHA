@@ -25,7 +25,7 @@ export function Manifesto() {
   const clip = video("V03");
   const pill = (
     <span className="m-pill" aria-hidden>
-      <LoopVideo preview={clip.preview} poster={clip.poster} className="m-pill-media" />
+      <LoopVideo preview={clip.crop?.preview ?? clip.preview} poster={clip.crop?.poster ?? clip.poster} className="m-pill-media" />
     </span>
   );
 

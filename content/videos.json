@@ -1,5 +1,5 @@
 {
-  "$comment": "12 videos, all must render (scripts/verify-coverage.mjs). Titles and venues come from the source file names; confirm with the artist. src/preview/poster stay null until the media pipeline encodes that block. duration and hasAudio are probed from the originals (ffprobe, 21.10.2026). V01 is Solomun playing OPPAACHA - Umbrella at Tomorrowland (confirmed by the client 21.10.2026), so it moved to support; the hero clip is V03, the shot of OPPAACHA at the decks. V09 is also Solomun playing Umbrella (confirmed by the client 21.10.2026), moved to support.",
+  "$comment": "12 videos, all must render (scripts/verify-coverage.mjs). Titles and venues come from the source file names; confirm with the artist. src is a base path: <src>-1080.mp4 and <src>-720.mp4 exist. poster is a base path for .avif/.webp. crop holds the landscape slice of a vertical clip (V03: hero and manifesto pill). Fields stay null until the media pipeline encodes that block. duration and hasAudio are probed from the originals (ffprobe, 21.10.2026). V01 is Solomun playing OPPAACHA - Umbrella at Tomorrowland (confirmed by the client 21.10.2026), so it moved to support; the hero clip is V03, the shot of OPPAACHA at the decks. V09 is also Solomun playing Umbrella (confirmed by the client 21.10.2026), moved to support.",
   "videos": [
     {
       "id": "V01",
@@ -21,9 +21,9 @@
       "section": "video",
       "source": "Video/Profi/dr17.mp4",
       "orientation": "portrait",
-      "src": null,
-      "preview": null,
-      "poster": null,
+      "src": "/media/video/V02",
+      "preview": "/media/video/V02-preview.mp4",
+      "poster": "/media/video/V02-poster",
       "duration": 30.8,
       "hasAudio": false
     },
@@ -31,14 +31,18 @@
       "id": "V03",
       "title": "Los Goodman at Desa Kitsuné",
       "venue": "Desa Kitsuné",
-      "section": "intro",
+      "section": "video",
       "source": "Video/Profi/_Los Goodman_ at  Desa Kitsuné.mp4",
       "orientation": "portrait",
-      "src": null,
+      "src": "/media/video/V03",
       "preview": "/media/video/V03-preview.mp4",
       "poster": "/media/video/V03-poster",
       "duration": 30.6,
-      "hasAudio": true
+      "hasAudio": true,
+      "crop": {
+        "preview": "/media/video/V03-crop-preview.mp4",
+        "poster": "/media/video/V03-crop-poster"
+      }
     },
     {
       "id": "V04",

@@ -1,0 +1,11 @@
+{
+  "$comment": "Blocker B2: booking contacts and socials come from the OPPAACHA PromoKit only. Searched 21.10.2026: no PromoKit in the project folder or on the Desktop; Rider.pdf holds no contacts. Nothing here may be invented. booking.email shows as text with a copy button, mailto as a fallback (TECH-SPEC 5.9). socials: [{ network, handle, url }].",
+  "status": "TODO_FROM_PROMOKIT",
+  "booking": {
+    "manager": "TODO_FROM_PROMOKIT",
+    "agency": "TODO_FROM_PROMOKIT",
+    "email": "TODO_FROM_PROMOKIT",
+    "phone": "TODO_FROM_PROMOKIT"
+  },
+  "socials": []
+}

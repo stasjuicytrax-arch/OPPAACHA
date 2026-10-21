@@ -23,7 +23,7 @@
       "id": "live",
       "label": "Live",
       "block": 4,
-      "built": false
+      "built": true
     },
     {
       "id": "support",

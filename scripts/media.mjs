@@ -124,6 +124,11 @@ function ffmpeg(args) {
 export const CLIPS = {
   V02: { file: "Video/Profi/dr17.mp4", start: 2 },
   V03: { file: "Video/Profi/_Los Goodman_ at  Desa Kitsuné.mp4", start: 16.5, crop: "1080:640:0:640" },
+  V04: { file: "Video/Live/Trip Main Stage.MOV", start: 13 },
+  V05: { file: "Video/Live/Savaya Bali.mov", start: 4 },
+  V06: { file: "Video/Live/_True_ Bali Savaya.mov", start: 41 },
+  V07: { file: "Video/Live/_Los Goodman_ at Gioli&Assia 2 [Savaya Bali].mov", start: 7 },
+  V08: { file: "Video/Live/Flava Back.MOV", start: 1 },
 };
 
 async function poster(input, at, vf, name) {
@@ -152,11 +157,18 @@ function encode(input, short, name) {
   const target = out("video", `${name}.mp4`);
   if (fresh(target)) return;
   const scale = `scale='if(gt(iw,ih),-2,${short})':'if(gt(iw,ih),${short},-2)':flags=lanczos`;
+  // size budget per file (TECH-SPEC 4: <= 12 MB for 30-60 s): ~11 MB at 1080,
+  // ~6.5 MB at 720, whatever the length
+  const seconds = Number(
+    execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", input]).toString()
+  );
+  const kbps = (budgetKb, cap) => `${Math.min(cap, Math.floor((budgetKb * 8) / seconds))}k`;
+  const maxrate = short > 720 ? kbps(10800, 2800) : kbps(6400, 1700);
   ffmpeg([
     "-i", input, "-vf", `${scale},fps=30`,
     "-c:v", "libx264", "-preset", "slow", "-crf", short > 720 ? "24" : "25", "-profile:v", "high",
     // caps keep a 30 s clip near 11 MB (1080) and 7 MB (720), TECH-SPEC 4
-    "-maxrate", short > 720 ? "2800k" : "1700k", "-bufsize", short > 720 ? "5600k" : "3400k",
+    "-maxrate", maxrate, "-bufsize", `${parseInt(maxrate, 10) * 2}k`,
     "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "128k", "-movflags", "+faststart", target,
   ]);
   console.log(`video ${name} ${kb(target)}`);
@@ -187,6 +199,9 @@ const tasks = {
   showreel: async () => {
     await clip("V03");
     await clip("V02");
+  },
+  live: async () => {
+    for (const id of ["V04", "V05", "V06", "V07", "V08"]) await clip(id);
   },
 };
 

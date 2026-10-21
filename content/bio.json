@@ -1,15 +1,11 @@
 {
-  "$comment": "Blockers B2/B3: bio, tagline, manifesto, numbers and booking contacts come from the old PromoKit only. Nothing here may be invented. manifesto.lines: [{ text, tone: 'ink' | 'muted', align: 'start' | 'center' | 'end', pill?: true (red pill with the V03 loop after the text), accent?: 'one word set in Parabola' }]. stats: [{ value: number, suffix?: '+' | 'M' | ..., label }], 3 or 4 items.",
+  "$comment": "Blocker B3: bio, tagline, manifesto and numbers come from the OPPAACHA PromoKit only. Searched 21.10.2026: no PromoKit in the project folder or on the Desktop. Nothing here may be invented. Contacts and socials live in content/contacts.json. manifesto.lines: [{ text, tone: \"ink\" | \"muted\", align: \"start\" | \"center\" | \"end\", pill?: true, accent?: \"one word set in Parabola\" }]. stats: [{ value: number, suffix?, label }], 3 or 4 items.",
   "name": "OPPAACHA",
   "tagline": "TODO_FROM_PROMOKIT",
+  "bio": "TODO_FROM_PROMOKIT",
   "manifesto": {
     "status": "TODO_FROM_PROMOKIT",
     "lines": []
   },
-  "stats": [],
-  "booking": {
-    "email": "TODO_FROM_PROMOKIT",
-    "manager": "TODO_FROM_PROMOKIT"
-  },
-  "socials": []
+  "stats": []
 }

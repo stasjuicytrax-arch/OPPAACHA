@@ -49,19 +49,21 @@
   align-items: start;
 }
 
-/* Stage */
-.reel-stage {
+/* Glass stage (components/glass-stage.tsx), shared with the Live lightbox */
+.stage {
   position: relative;
-  grid-column: 4 / span 5;
-  justify-self: center;
-  height: min(84dvh, 900px);
   aspect-ratio: 9 / 16;
   border-radius: var(--radius-panel);
   overflow: hidden;
   background: var(--surface);
   box-shadow: inset 0 0 0 1px var(--line);
 }
-.reel-video {
+.reel-stage {
+  grid-column: 4 / span 5;
+  justify-self: center;
+  height: min(84dvh, 900px);
+}
+.stage-video {
   display: block;
   width: 100%;
   height: 100%;
@@ -69,25 +71,25 @@
   cursor: pointer;
 }
 
-.reel-chip {
+.stage-chip {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 2;
   pointer-events: none;
 }
-.reel-chip-glass {
+.stage-chip-glass {
   translate: 14px 14px;
   padding: 9px 14px;
   border-radius: 999px;
   color: var(--ink);
   box-shadow: var(--glass-highlight), inset 0 0 0 1px var(--glass-rim) !important;
 }
-.reel-chip-glass[data-liquid-glass="frost"] {
+.stage-chip-glass[data-liquid-glass="frost"] {
   background-color: rgb(20 20 20 / 0.5);
 }
 
-.reel-panel {
+.stage-panel {
   position: absolute;
   left: 12px;
   right: 12px;
@@ -101,36 +103,36 @@
   border-radius: 999px;
   box-shadow: var(--glass-highlight), var(--glass-lowlight), inset 0 0 0 1px var(--glass-rim) !important;
 }
-.reel-panel[data-liquid-glass="frost"] {
+.stage-panel[data-liquid-glass="frost"] {
   background-color: rgb(16 16 16 / 0.46);
 }
-.reel-btn {
+.stage-btn {
   flex: none;
   width: 44px;
   height: 44px;
   border-radius: 999px;
   color: var(--ink);
 }
-.reel-btn svg {
+.stage-btn svg {
   width: 18px;
   height: 18px;
   stroke-width: 1.75;
 }
-.reel-btn:disabled {
+.stage-btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
 }
 
 /* Red progress line on a faint rail; the hit area is the full 28px row. */
-.reel-track {
+.stage-track {
   position: relative;
   flex: 1;
   height: 28px;
   cursor: pointer;
   touch-action: none;
 }
-.reel-track::before,
-.reel-track-fill {
+.stage-track::before,
+.stage-track-fill {
   content: "";
   position: absolute;
   left: 0;
@@ -140,19 +142,19 @@
   margin-top: -1.5px;
   border-radius: 999px;
 }
-.reel-track::before {
+.stage-track::before {
   background: rgb(244 242 238 / 0.2);
 }
-.reel-track-fill {
+.stage-track-fill {
   background: var(--accent-hot);
   transform-origin: left center;
   transform: scaleX(0);
 }
-.reel-track:focus-visible {
+.stage-track:focus-visible {
   outline-offset: 0;
   border-radius: 999px;
 }
-.reel-time {
+.stage-time {
   flex: none;
   padding-inline: 6px;
   color: var(--ink);
@@ -256,7 +258,7 @@
   .reel-card {
     width: 46%;
   }
-  .reel-panel {
+  .stage-panel {
     left: 8px;
     right: 8px;
     bottom: 8px;
@@ -264,7 +266,7 @@
     padding-inline: 5px;
     gap: 2px;
   }
-  .reel-btn {
+  .stage-btn {
     width: 40px;
     height: 40px;
   }

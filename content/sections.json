@@ -41,7 +41,7 @@
       "id": "rider",
       "label": "Rider",
       "block": 8,
-      "built": false
+      "built": true
     },
     {
       "id": "booking",

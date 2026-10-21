@@ -3,6 +3,7 @@ import { Manifesto } from "@/components/manifesto";
 import { Showreel } from "@/components/showreel";
 import { Live } from "@/components/live";
 import { Support } from "@/components/support";
+import { Photos } from "@/components/photos";
 import { SiteNav } from "@/components/site-nav";
 import { NAV, sections } from "@/lib/content";
 
@@ -21,6 +22,7 @@ export default function Page() {
         <Showreel />
         <Live />
         <Support />
+        <Photos />
         {/* Blocks still in progress keep their anchors so the menu works
             while the page is assembled (TECH-SPEC section 8). */}
         {sections

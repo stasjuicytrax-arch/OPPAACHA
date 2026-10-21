@@ -35,7 +35,7 @@
       "id": "photo",
       "label": "Photo",
       "block": 6,
-      "built": false
+      "built": true
     },
     {
       "id": "rider",

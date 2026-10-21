@@ -215,6 +215,9 @@ const tasks = {
   live: async () => {
     for (const id of ["V04", "V05", "V06", "V07", "V08"]) await clip(id);
   },
+  photo: async () => {
+    await photos([640, 1280]);
+  },
   support: async () => {
     for (const id of ["V01", "V09", "V10", "V11", "V12"]) await clip(id);
   },

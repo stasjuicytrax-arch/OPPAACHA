@@ -10,6 +10,7 @@ import "./manifesto.css";
 import "./showreel.css";
 import "./live.css";
 import "./support.css";
+import "./photos.css";
 
 // Runs before paint: the preloader plays once per session, and the hero
 // intro waits for it only on that first visit.

@@ -169,7 +169,8 @@
 /* Side: now playing, then the other clip one step lower (DESIGN-SYSTEM.md 4) */
 .reel-side {
   grid-column: 9 / span 3;
-  margin-top: 96px;
+  /* level with the stage: video rows sit at one height (client, 21.10.2026) */
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   gap: 40px;

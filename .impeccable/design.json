@@ -1,0 +1,481 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-21T20:16:51.675Z",
+  "title": "Design System: OPPAACHA",
+  "extensions": {
+    "colorMeta": {
+      "night": {
+        "role": "neutral",
+        "displayName": "Night",
+        "canonical": "#0a0a0a",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(25% 0 0)",
+          "oklch(35% 0 0)",
+          "oklch(45% 0 0)",
+          "oklch(55% 0 0)",
+          "oklch(65% 0 0)",
+          "oklch(80% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "canonical": "#151515",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(25% 0 0)",
+          "oklch(35% 0 0)",
+          "oklch(45% 0 0)",
+          "oklch(55% 0 0)",
+          "oklch(65% 0 0)",
+          "oklch(80% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "surface-2": {
+        "role": "neutral",
+        "displayName": "Surface 2",
+        "canonical": "#1e1d1c",
+        "tonalRamp": [
+          "oklch(15% 0.003 60)",
+          "oklch(25% 0.003 60)",
+          "oklch(35% 0.003 60)",
+          "oklch(45% 0.003 60)",
+          "oklch(55% 0.003 60)",
+          "oklch(65% 0.003 60)",
+          "oklch(80% 0.003 60)",
+          "oklch(95% 0.003 60)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "canonical": "rgb(244 242 238 / 0.12)",
+        "tonalRamp": [
+          "oklch(15% 0.006 85)",
+          "oklch(25% 0.006 85)",
+          "oklch(35% 0.006 85)",
+          "oklch(45% 0.006 85)",
+          "oklch(55% 0.006 85)",
+          "oklch(65% 0.006 85)",
+          "oklch(80% 0.006 85)",
+          "oklch(95% 0.006 85)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink (warm white)",
+        "canonical": "#f4f2ee",
+        "tonalRamp": [
+          "oklch(15% 0.006 85)",
+          "oklch(25% 0.006 85)",
+          "oklch(35% 0.006 85)",
+          "oklch(45% 0.006 85)",
+          "oklch(55% 0.006 85)",
+          "oklch(65% 0.006 85)",
+          "oklch(80% 0.006 85)",
+          "oklch(95% 0.006 85)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted Ash",
+        "canonical": "#9a948d",
+        "tonalRamp": [
+          "oklch(15% 0.012 70)",
+          "oklch(25% 0.012 70)",
+          "oklch(35% 0.012 70)",
+          "oklch(45% 0.012 70)",
+          "oklch(55% 0.012 70)",
+          "oklch(65% 0.012 70)",
+          "oklch(80% 0.012 70)",
+          "oklch(95% 0.012 70)"
+        ]
+      },
+      "signal-red": {
+        "role": "primary",
+        "displayName": "Signal Red",
+        "canonical": "#d8042c",
+        "tonalRamp": [
+          "oklch(15% 0.21 22)",
+          "oklch(25% 0.21 22)",
+          "oklch(35% 0.21 22)",
+          "oklch(45% 0.21 22)",
+          "oklch(55% 0.21 22)",
+          "oklch(65% 0.21 22)",
+          "oklch(80% 0.21 22)",
+          "oklch(95% 0.21 22)"
+        ]
+      },
+      "hot-red": {
+        "role": "secondary",
+        "displayName": "Hot Red",
+        "canonical": "#ff3b2f",
+        "tonalRamp": [
+          "oklch(15% 0.22 30)",
+          "oklch(25% 0.22 30)",
+          "oklch(35% 0.22 30)",
+          "oklch(45% 0.22 30)",
+          "oklch(55% 0.22 30)",
+          "oklch(65% 0.22 30)",
+          "oklch(80% 0.22 30)",
+          "oklch(95% 0.22 30)"
+        ]
+      },
+      "inverse-paper": {
+        "role": "neutral",
+        "displayName": "Inverse Paper",
+        "canonical": "#f4f2ee",
+        "tonalRamp": [
+          "oklch(15% 0.006 85)",
+          "oklch(25% 0.006 85)",
+          "oklch(35% 0.006 85)",
+          "oklch(45% 0.006 85)",
+          "oklch(55% 0.006 85)",
+          "oklch(65% 0.006 85)",
+          "oklch(80% 0.006 85)",
+          "oklch(95% 0.006 85)"
+        ]
+      },
+      "inverse-ink": {
+        "role": "neutral",
+        "displayName": "Inverse Ink",
+        "canonical": "#0a0a0a",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(25% 0 0)",
+          "oklch(35% 0 0)",
+          "oklch(45% 0 0)",
+          "oklch(55% 0 0)",
+          "oklch(65% 0 0)",
+          "oklch(80% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "inverse-muted": {
+        "role": "neutral",
+        "displayName": "Inverse Muted",
+        "canonical": "#6b655f",
+        "tonalRamp": [
+          "oklch(15% 0.012 70)",
+          "oklch(25% 0.012 70)",
+          "oklch(35% 0.012 70)",
+          "oklch(45% 0.012 70)",
+          "oklch(55% 0.012 70)",
+          "oklch(65% 0.012 70)",
+          "oklch(80% 0.012 70)",
+          "oklch(95% 0.012 70)"
+        ]
+      },
+      "glass-fill": {
+        "role": "neutral",
+        "displayName": "Glass Fill (frost fallback)",
+        "canonical": "rgb(255 255 255 / 0.1)",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(25% 0 0)",
+          "oklch(35% 0 0)",
+          "oklch(45% 0 0)",
+          "oklch(55% 0 0)",
+          "oklch(65% 0 0)",
+          "oklch(80% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "glass-rim": {
+        "role": "neutral",
+        "displayName": "Glass Rim",
+        "canonical": "rgb(255 255 255 / 0.16)",
+        "tonalRamp": [
+          "oklch(15% 0 0)",
+          "oklch(25% 0 0)",
+          "oklch(35% 0 0)",
+          "oklch(45% 0 0)",
+          "oklch(55% 0 0)",
+          "oklch(65% 0 0)",
+          "oklch(80% 0 0)",
+          "oklch(95% 0 0)"
+        ]
+      },
+      "primary-glass": {
+        "role": "primary",
+        "displayName": "Primary Glass (Signal Red 55%)",
+        "canonical": "rgb(216 4 44 / 0.55)",
+        "tonalRamp": [
+          "oklch(15% 0.21 22)",
+          "oklch(25% 0.21 22)",
+          "oklch(35% 0.21 22)",
+          "oklch(45% 0.21 22)",
+          "oklch(55% 0.21 22)",
+          "oklch(65% 0.21 22)",
+          "oklch(80% 0.21 22)",
+          "oklch(95% 0.21 22)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Every section headline; two-tone, stepped, one Parabola word."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Quieter section headline (Support)."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Now-playing title in the showreel; card names step down to 17-19px."
+      },
+      "accent": {
+        "displayName": "Parabola Accent",
+        "purpose": "One word per headline at 32px and up; rider panel titles in uppercase."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Running text, max about 62ch."
+      },
+      "label": {
+        "displayName": "Mono Label",
+        "purpose": "Captions, chips, times, venues, footer; uppercase."
+      },
+      "numeral": {
+        "displayName": "Mono Numeral",
+        "purpose": "Manifesto figures, counted up on entry."
+      }
+    },
+    "shadows": [
+      {
+        "name": "glass-highlight",
+        "value": "inset 0 1px 0 rgb(255 255 255 / 0.35)",
+        "purpose": "Top edge of every glass element."
+      },
+      {
+        "name": "glass-lowlight",
+        "value": "inset 0 -1px 0 rgb(0 0 0 / 0.3)",
+        "purpose": "Bottom edge of glass buttons, panels, nav."
+      },
+      {
+        "name": "glass-rim",
+        "value": "inset 0 0 0 1px rgb(255 255 255 / 0.16)",
+        "purpose": "Outline of glass."
+      },
+      {
+        "name": "media-rim",
+        "value": "inset 0 0 0 1px rgb(244 242 238 / 0.12)",
+        "purpose": "Edge of video and photo frames."
+      },
+      {
+        "name": "signal-glow",
+        "value": "0 0 6px 1px rgb(255 59 47 / 0.75), 0 0 18px 4px rgb(216 4 44 / 0.45)",
+        "purpose": "Emitted light only, never elevation."
+      },
+      {
+        "name": "glow-a",
+        "value": "radial-gradient(60% 50% at 85% 20%, rgb(216 4 44 / 0.55), transparent 70%)",
+        "purpose": "Primary red stage light, top right; masked before section edges."
+      },
+      {
+        "name": "glow-b",
+        "value": "radial-gradient(50% 40% at 10% 100%, rgb(255 59 47 / 0.28), transparent 70%)",
+        "purpose": "Secondary hot light, low left."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-in",
+        "value": "cubic-bezier(0.2, 0.9, 0.3, 1)",
+        "purpose": "Entrances, reveals, hovers (micro 180-250ms, blocks 600-900ms, hero 1.6-2.4s)."
+      },
+      {
+        "name": "ease-state",
+        "value": "cubic-bezier(0.7, 0, 0.2, 1)",
+        "purpose": "State changes, preloader lift."
+      },
+      {
+        "name": "nav-drop",
+        "value": "cubic-bezier(0.34, 1.45, 0.5, 1)",
+        "purpose": "Nav entrance only; client-pinned exception (DESIGN-SYSTEM.md 8.2), recorded in .impeccable/config.json."
+      },
+      {
+        "name": "glass-drop-spring",
+        "value": "spring(stiffness 380, damping 32, mass 0.8)",
+        "purpose": "Glass drop moving between nav items and rider tabs."
+      },
+      {
+        "name": "line-reveal",
+        "value": "translateY(105%) to 0, 900ms ease-in, 60ms stagger per line",
+        "purpose": "Headline lines rising through masks."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "phone",
+        "value": "max-width: 767px"
+      },
+      {
+        "name": "tablet",
+        "value": "max-width: 1023px"
+      },
+      {
+        "name": "container",
+        "value": "1440px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Glass Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Red-toned Liquid Glass capsule; one per view (Booking, Write to booking, Download rider).",
+      "html": "<div class=\"ds-stage\"><a class=\"ds-btn-primary\" href=\"#\">Booking <svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a></div>",
+      "css": ".ds-stage { background: radial-gradient(60% 50% at 85% 20%, rgb(216 4 44 / 0.55), transparent 70%), #0a0a0a; padding: 32px; } .ds-btn-primary { display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 26px; border-radius: 999px; border: 0; font-family: \"Hanken Grotesk\", system-ui, sans-serif; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; line-height: 1; color: #f4f2ee; text-decoration: none; white-space: nowrap; backdrop-filter: blur(18px) saturate(1.6); -webkit-backdrop-filter: blur(18px) saturate(1.6); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35), inset 0 -1px 0 rgb(0 0 0 / 0.3), inset 0 0 0 1px rgb(255 255 255 / 0.16); transition: color 200ms cubic-bezier(0.2, 0.9, 0.3, 1), background-color 200ms cubic-bezier(0.2, 0.9, 0.3, 1); cursor: pointer; background-color: rgb(216 4 44 / 0.55); } .ds-btn-primary:hover { background-color: rgb(216 4 44 / 0.66); } .ds-btn-primary:focus-visible { outline: 2px solid #ff3b2f; outline-offset: 3px; } .ds-btn-primary:active { transform: scale(0.98); }"
+    },
+    {
+      "name": "Clear Glass Button",
+      "kind": "button",
+      "refersTo": "button-clear",
+      "description": "Untinted glass capsule for secondary actions (Watch showreel, Instagram, Rider PDF).",
+      "html": "<div class=\"ds-stage\"><a class=\"ds-btn-clear\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><polygon points=\"6 3 20 12 6 21 6 3\"/></svg> Watch showreel</a></div>",
+      "css": ".ds-stage { background: radial-gradient(60% 50% at 85% 20%, rgb(216 4 44 / 0.55), transparent 70%), #0a0a0a; padding: 32px; } .ds-btn-clear { display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 26px; border-radius: 999px; border: 0; font-family: \"Hanken Grotesk\", system-ui, sans-serif; font-size: 15px; font-weight: 600; letter-spacing: -0.01em; line-height: 1; color: #f4f2ee; text-decoration: none; white-space: nowrap; backdrop-filter: blur(18px) saturate(1.6); -webkit-backdrop-filter: blur(18px) saturate(1.6); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35), inset 0 -1px 0 rgb(0 0 0 / 0.3), inset 0 0 0 1px rgb(255 255 255 / 0.16); transition: color 200ms cubic-bezier(0.2, 0.9, 0.3, 1), background-color 200ms cubic-bezier(0.2, 0.9, 0.3, 1); cursor: pointer; background-color: rgb(255 255 255 / 0.1); } .ds-btn-clear:hover { background-color: rgb(255 255 255 / 0.16); } .ds-btn-clear:focus-visible { outline: 2px solid #ff3b2f; outline-offset: 3px; }"
+    },
+    {
+      "name": "Round Glass Button",
+      "kind": "button",
+      "refersTo": "button-round",
+      "description": "52px glass circle for carousel arrows and the mobile menu trigger.",
+      "html": "<div class=\"ds-stage\"><button class=\"ds-btn-round\" aria-label=\"Previous\"><svg viewBox=\"0 0 24 24\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"m15 18-6-6 6-6\"/></svg></button></div>",
+      "css": ".ds-stage { background: radial-gradient(60% 50% at 85% 20%, rgb(216 4 44 / 0.55), transparent 70%), #0a0a0a; padding: 32px; } .ds-btn-round { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 999px; border: 0; color: #f4f2ee; background-color: rgb(255 255 255 / 0.1); backdrop-filter: blur(18px) saturate(1.6); -webkit-backdrop-filter: blur(18px) saturate(1.6); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35), inset 0 -1px 0 rgb(0 0 0 / 0.3), inset 0 0 0 1px rgb(255 255 255 / 0.16); cursor: pointer; transition: background-color 200ms cubic-bezier(0.2, 0.9, 0.3, 1); } .ds-btn-round:hover { background-color: rgb(255 255 255 / 0.16); } .ds-btn-round:focus-visible { outline: 2px solid #ff3b2f; outline-offset: 3px; }"
+    },
+    {
+      "name": "Nav Capsule",
+      "kind": "nav",
+      "refersTo": "nav-capsule",
+      "description": "Floating glass capsule, 56px, with a glass drop on the current link and the red Booking at its end.",
+      "html": "<div class=\"ds-stage\"><nav class=\"ds-nav\"><a class=\"ds-nav-link ds-nav-current\" href=\"#\">Intro</a><a class=\"ds-nav-link\" href=\"#\">Video</a><a class=\"ds-nav-link\" href=\"#\">Live</a><a class=\"ds-nav-link\" href=\"#\">Rider</a><a class=\"ds-nav-book\" href=\"#\">Booking</a></nav></div>",
+      "css": ".ds-stage { background: radial-gradient(60% 50% at 85% 20%, rgb(216 4 44 / 0.55), transparent 70%), #0a0a0a; padding: 32px; } .ds-nav { display: inline-flex; align-items: center; height: 56px; padding: 0 7px 0 8px; border-radius: 999px; background-color: rgb(20 20 20 / 0.42); backdrop-filter: blur(18px) saturate(1.6); -webkit-backdrop-filter: blur(18px) saturate(1.6); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35), inset 0 -1px 0 rgb(0 0 0 / 0.3), inset 0 0 0 1px rgb(255 255 255 / 0.16); font-family: \"Hanken Grotesk\", system-ui, sans-serif; } .ds-nav-link { display: flex; align-items: center; height: 42px; padding: 0 16px; border-radius: 999px; font-size: 14px; font-weight: 500; letter-spacing: -0.005em; color: rgb(244 242 238 / 0.72); text-decoration: none; transition: color 200ms cubic-bezier(0.2, 0.9, 0.3, 1); } .ds-nav-link:hover { color: #f4f2ee; } .ds-nav-current { color: #f4f2ee; background-color: rgb(255 255 255 / 0.12); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35), inset 0 0 0 1px rgb(255 255 255 / 0.1); } .ds-nav-link:focus-visible, .ds-nav-book:focus-visible { outline: 2px solid #ff3b2f; outline-offset: 3px; } .ds-nav-book { display: inline-flex; align-items: center; height: 42px; margin-left: 6px; padding: 0 20px; border-radius: 999px; font-size: 14px; font-weight: 600; color: #f4f2ee; text-decoration: none; background-color: rgb(216 4 44 / 0.55); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35), inset 0 -1px 0 rgb(0 0 0 / 0.3), inset 0 0 0 1px rgb(255 255 255 / 0.16); }"
+    },
+    {
+      "name": "Glass Chip",
+      "kind": "chip",
+      "refersTo": "chip-glass",
+      "description": "Mono label capsule over footage: venue, played by, the play/sound cursor chip.",
+      "html": "<div class=\"ds-stage\"><span class=\"ds-chip\">Tomorrowland Main Stage</span></div>",
+      "css": ".ds-stage { background: radial-gradient(60% 50% at 85% 20%, rgb(216 4 44 / 0.55), transparent 70%), #0a0a0a; padding: 32px; } .ds-chip { display: inline-block; padding: 9px 14px; border-radius: 999px; color: #f4f2ee; background-color: rgb(16 16 16 / 0.42); backdrop-filter: blur(14px) saturate(1.6); -webkit-backdrop-filter: blur(14px) saturate(1.6); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35), inset 0 0 0 1px rgb(255 255 255 / 0.16); font-family: \"NKDuy Mono\", ui-monospace, monospace; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; white-space: nowrap; }"
+    },
+    {
+      "name": "Video Card",
+      "kind": "card",
+      "refersTo": "card-video",
+      "description": "9:16 media frame at 28px on Surface with a hairline rim; caption below; lifts and restores colour on hover.",
+      "html": "<div class=\"ds-stage\"><a class=\"ds-vcard\" href=\"#\"><span class=\"ds-vframe\"><span class=\"ds-vchip\">Savaya Bali</span></span><span class=\"ds-vcap\"><span class=\"ds-vtitle\">Sunset set</span><span class=\"ds-vtime\">04:12</span></span></a></div>",
+      "css": ".ds-stage { background: radial-gradient(60% 50% at 85% 20%, rgb(216 4 44 / 0.55), transparent 70%), #0a0a0a; padding: 32px; } .ds-vcard { display: block; width: 200px; color: #f4f2ee; text-decoration: none; font-family: \"Hanken Grotesk\", system-ui, sans-serif; } .ds-vframe { position: relative; display: block; aspect-ratio: 9 / 16; border-radius: 28px; overflow: hidden; background: linear-gradient(160deg, #3a1a1e, #151515 60%); filter: grayscale(1) brightness(0.9); box-shadow: inset 0 0 0 1px rgb(244 242 238 / 0.12); transition: transform 500ms cubic-bezier(0.2, 0.9, 0.3, 1), filter 500ms cubic-bezier(0.2, 0.9, 0.3, 1); } .ds-vcard:hover .ds-vframe, .ds-vcard:focus-visible .ds-vframe { transform: translateY(-6px); filter: none; } .ds-vcard:focus-visible { outline: 2px solid #ff3b2f; outline-offset: 3px; border-radius: 28px; } .ds-vchip { position: absolute; left: 12px; top: 12px; padding: 9px 14px; border-radius: 999px; background: rgb(16 16 16 / 0.42); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35), inset 0 0 0 1px rgb(255 255 255 / 0.16); font-family: \"NKDuy Mono\", ui-monospace, monospace; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; } .ds-vcap { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding: 16px 6px 0; } .ds-vtitle { font-size: 17px; font-weight: 600; letter-spacing: -0.015em; } .ds-vtime { font-family: \"NKDuy Mono\", ui-monospace, monospace; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #9a948d; }"
+    },
+    {
+      "name": "Player Control Bar",
+      "kind": "custom",
+      "refersTo": "panel-glass",
+      "description": "Glass capsule over the video stage: round buttons, Hot Red progress on a faint rail, mono time.",
+      "html": "<div class=\"ds-stage\"><div class=\"ds-player\"><button class=\"ds-pbtn\" aria-label=\"Play\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><polygon points=\"6 3 20 12 6 21 6 3\"/></svg></button><span class=\"ds-rail\"><span class=\"ds-fill\"></span></span><span class=\"ds-ptime\">0:42 / 2:10</span></div></div>",
+      "css": ".ds-stage { background: radial-gradient(60% 50% at 85% 20%, rgb(216 4 44 / 0.55), transparent 70%), #0a0a0a; padding: 32px; } .ds-player { display: flex; align-items: center; gap: 6px; width: 360px; height: 60px; padding: 0 8px; border-radius: 999px; background-color: rgb(16 16 16 / 0.46); backdrop-filter: blur(18px) saturate(1.6); -webkit-backdrop-filter: blur(18px) saturate(1.6); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.35), inset 0 -1px 0 rgb(0 0 0 / 0.3), inset 0 0 0 1px rgb(255 255 255 / 0.16); } .ds-pbtn { flex: none; display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 999px; background: transparent; color: #f4f2ee; cursor: pointer; } .ds-pbtn:hover { background: rgb(255 255 255 / 0.1); } .ds-pbtn:focus-visible { outline: 2px solid #ff3b2f; outline-offset: 3px; } .ds-rail { position: relative; flex: 1; height: 3px; border-radius: 999px; background: rgb(244 242 238 / 0.2); } .ds-fill { position: absolute; top: 0; bottom: 0; left: 0; width: 32%; border-radius: 999px; background: #ff3b2f; } .ds-ptime { flex: none; padding: 0 6px; font-family: \"NKDuy Mono\", ui-monospace, monospace; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #f4f2ee; white-space: nowrap; }"
+    },
+    {
+      "name": "Inverse Contact Card",
+      "kind": "card",
+      "refersTo": "card-contact",
+      "description": "The only light surface: booking email, copy pill, direct contact rows.",
+      "html": "<div class=\"ds-stage\"><article class=\"ds-contact\"><div class=\"ds-chead\"><span class=\"ds-clabel\">Booking</span><span class=\"ds-cman\">Management</span></div><div class=\"ds-cmail\"><a href=\"#\">mgmt@oppaacha.com</a><button class=\"ds-copy\">Copy</button></div><a class=\"ds-crow\" href=\"#\"><span class=\"ds-clabel\">Telegram</span><span>@oppaacha</span></a></article></div>",
+      "css": ".ds-stage { background: radial-gradient(60% 50% at 85% 20%, rgb(216 4 44 / 0.55), transparent 70%), #0a0a0a; padding: 32px; } .ds-contact { width: 420px; padding: 32px; border-radius: 28px; background: #f4f2ee; color: #0a0a0a; font-family: \"Hanken Grotesk\", system-ui, sans-serif; } .ds-chead { display: flex; justify-content: space-between; align-items: baseline; } .ds-clabel { font-family: \"NKDuy Mono\", ui-monospace, monospace; font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: #6b655f; } .ds-cman { font-size: 15px; font-weight: 600; } .ds-cmail { margin-top: 18px; display: flex; justify-content: space-between; align-items: center; gap: 12px; } .ds-cmail a { font-size: 26px; font-weight: 700; letter-spacing: -0.03em; color: #0a0a0a; text-decoration: none; } .ds-cmail a:hover { text-decoration: underline; text-decoration-color: #d8042c; text-decoration-thickness: 2px; } .ds-copy { height: 40px; padding: 0 16px; border: 0; border-radius: 999px; background: #0a0a0a; color: #f4f2ee; font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; transition: transform 200ms cubic-bezier(0.2, 0.9, 0.3, 1); } .ds-copy:active { transform: scale(0.97); } .ds-cmail a:focus-visible, .ds-copy:focus-visible, .ds-crow:focus-visible { outline: 2px solid #d8042c; outline-offset: 3px; } .ds-crow { display: flex; flex-direction: column; gap: 2px; margin-top: 22px; padding: 14px 16px; border-radius: 12px; background: rgb(10 10 10 / 0.06); color: #0a0a0a; text-decoration: none; font-size: 15px; font-weight: 600; transition: background-color 200ms cubic-bezier(0.2, 0.9, 0.3, 1); } .ds-crow:hover { background: rgb(10 10 10 / 0.1); }"
+    },
+    {
+      "name": "Two-Tone Display Headline",
+      "kind": "custom",
+      "refersTo": "display",
+      "description": "Hanken 800 at -0.045em, ink then muted, stepped lines, one Parabola word in Signal Red.",
+      "html": "<div class=\"ds-stage\"><h2 class=\"ds-display\"><span class=\"ds-l1\">Watch the <span class=\"ds-acc\">showreel</span></span><span class=\"ds-l2\">from the booth</span></h2></div>",
+      "css": ".ds-stage { background: radial-gradient(60% 50% at 85% 20%, rgb(216 4 44 / 0.55), transparent 70%), #0a0a0a; padding: 32px; } .ds-display { margin: 0; font-family: \"Hanken Grotesk\", system-ui, sans-serif; font-weight: 800; font-size: 72px; line-height: 0.95; letter-spacing: -0.045em; color: #f4f2ee; } .ds-l1, .ds-l2 { display: block; } .ds-l1 { padding-left: 25%; } .ds-l2 { text-align: right; color: #9a948d; } .ds-acc { font-family: Parabola, \"Hanken Grotesk\", sans-serif; font-weight: 400; letter-spacing: 0; color: #d8042c; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Lit Stage",
+    "overview": "The page is a night club filmed on an expensive camera. The ground is black (night), red arrives as light rather than paint: radial glows, the grunge mark, one red glass button per view, and a hot red progress line. Liquid Glass capsules and panels sit over footage, photos or glow and bend them; on bare black they would be invisible, so they never appear there. Footage is the proof and type frames it: Hanken Grotesk 800 headlines tracked tight, one word per heading set in the brand face Parabola, small NKDuy Mono labels and numerals.\n\nLoud and quiet blocks alternate. Loud blocks carry full media, red light or the giant OPPAACHA wordmark cropped by a section edge; quiet blocks are small type and air on the night ground or a faded surface. Light never ends in a seam: every glow, ambient blur, backdrop photo and underlay is masked to fade out before its section edge, so the page reads as one continuous dark room.\n\nMotion is cinematic, not playful. Entrances use one expo-out curve, headline lines rise through masks with a 60ms stagger, photos are black and white and take colour on hover or when brought forward, and the glass \"drop\" springs between menu items. Controls do not chase the cursor.\n\nThis system was written from the shipped build. It implements the client's pinned DESIGN-SYSTEM.md v1 (Russian) and records, at the end, where the build departs from it.",
+    "keyCharacteristics": [
+      "One dark theme; warm-white paper appears only on the inverse booking card.",
+      "Red is light: glow, mark, the primary glass, the progress line. Never a large flat fill outside the hero and booking close.",
+      "Liquid Glass (21st.dev `apple-tahoe-liquid-glass-button`, mandated) for every control, chip, player panel and the rider panel, always over image or glow.",
+      "Two-tone, stepped headlines with one Parabola word.",
+      "Black-and-white photography that turns to colour on interaction.",
+      "Seamless sections: masked light, no hard edges between blocks."
+    ],
+    "rules": [
+      {
+        "name": "The Red Is Light Rule",
+        "body": "Red arrives as glow, mark, line or tinted glass. Outside the hero and the booking close it covers no more than about 8% of a screen, and small red text is always Hot Red, never Signal Red.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Night Rule",
+        "body": "There is no light mode. Warm-white paper is the inverse contact card and nothing else.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Parabola Word Rule",
+        "body": "Each headline gets at most one Parabola word, at 32px or larger. Parabola is never body or label text.",
+        "section": "typography"
+      },
+      {
+        "name": "The Two-Tone Line Rule",
+        "body": "Multi-line headlines split ink and muted: the statement in ink, the continuation in muted (or the reverse for the booking close, muted lead then the red Parabola word).",
+        "section": "typography"
+      },
+      {
+        "name": "The Stepped Line Rule",
+        "body": "Headline lines sit on a stepped grid: start lines indent 25%, others align centre or right. Below 768px the steps flatten to a left edge with a 12% indent.",
+        "section": "typography"
+      },
+      {
+        "name": "The Even Row Rule",
+        "body": "Media cards in a row share one height: the live track, the support row (4:5) and the photo ring are level. Stepping (0 / 48 / 0 / 96) survives only on the manifesto numbers.",
+        "section": "layout"
+      },
+      {
+        "name": "The No Seam Rule",
+        "body": "Every glow, ambient blur, backdrop photo and underlay fades to transparent before its section edge (mask gradients, or a background that resolves to night at both ends). No block shows a hard horizontal edge against the next.",
+        "section": "layout"
+      },
+      {
+        "name": "The Glass Over Light Rule",
+        "body": "Glass appears only over an image, video or glow. On bare night use a surface fill instead.",
+        "section": "elevation"
+      },
+      {
+        "name": "The No Drop Shadow Rule",
+        "body": "No element casts a shadow to look raised. Outer shadows exist only as emitted light.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** keep the page on Night and let red arrive as light; use Hot Red for any red text under 24px.",
+      "**Do** put glass only over footage, photos or glow, with the highlight, lowlight and rim insets.",
+      "**Do** keep one primary red glass button per view; everything else is clear glass.",
+      "**Do** set headlines in Hanken Grotesk 800 at -0.045em, two-tone, stepped, with at most one Parabola word.",
+      "**Do** mask every glow, ambient blur, backdrop and underlay so it fades before the section edge.",
+      "**Do** keep media cards in a row at one height.",
+      "**Do** show photographs in black and white and give colour on interaction.",
+      "**Do** animate only transform, opacity and filter, entrances on `cubic-bezier(0.2, 0.9, 0.3, 1)` and state changes on `cubic-bezier(0.7, 0, 0.2, 1)`, and honour reduced motion and reduced transparency.",
+      "**Do** leave out any field whose content is unknown; the data keeps `TODO_FROM_PROMOKIT`, the page shows nothing."
+    ],
+    "donts": [
+      "**Don't** add a light theme, beige or cream grounds, or purple-blue gradients.",
+      "**Don't** use drop shadows for elevation.",
+      "**Don't** let a section end in a hard seam or a glow cut off by an edge.",
+      "**Don't** step video cards vertically in a row.",
+      "**Don't** make buttons magnetise toward the cursor.",
+      "**Don't** add bounce or overshoot easing beyond the nav drop.",
+      "**Don't** render visible placeholders, dashed slots or \"coming soon\" copy.",
+      "**Don't** add a tour or dates block."
+    ]
+  }
+}

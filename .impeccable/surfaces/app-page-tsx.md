@@ -15,7 +15,7 @@ Direction: pinned by the client in DESIGN-SYSTEM.md, so no concept roll. Memorab
 
 THESIS: a night club shot on an expensive camera. Black stage, red light, glass that refracts it. Refuses the DJ-template hero (full-bleed video, centered name, lineup ticker).
 OWN-WORLD: #0A0A0A night, #D8042C signal red used as light (glow, logo, one primary button), warm white #F4F2EE ink, muted #9A948D. Liquid Glass capsules (999px) only over image or glow; 28px cards, 44px panels. Hanken Grotesk 800 display at -0.045em, NKDuy Mono labels, one Parabola word per heading.
-STORY: in five seconds the visitor sees the mark, real stages and a moving Tomorrowland clip; believes this is a headline act; taps Watch showreel or Booking.
-FIRST VIEWPORT: glass capsule nav top center (56px) with red Booking at its right. Left: grunge red OPPAACHA mark ~40vw, tagline under it, two glass buttons. Right half: a tilted, endlessly streaming grid of B&W photos fading into the dark; a glass-framed V01 clip floats over its lower edge. Bottom: the hero's 44px rounded edge crops a giant ink OPPAACHA wordmark at 8%.
+STORY: in five seconds the visitor sees the mark, real stages and a moving clip of OPPAACHA at the decks (V03, landscape crop); believes this is a headline act; taps Watch showreel or Booking.
+FIRST VIEWPORT: glass capsule nav top center (56px) with red Booking at its right. Left: grunge red OPPAACHA mark ~40vw, tagline under it, two glass buttons. Right half: a tilted, endlessly streaming grid of B&W photos fading into the dark; a glass-framed V03 clip floats over its lower edge. Bottom: the hero's 44px rounded edge crops a giant ink OPPAACHA wordmark at 11%.
 FORM: brief-pinned world (DESIGN-SYSTEM.md v1), Persuade, no seed roll.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

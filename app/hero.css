@@ -205,6 +205,10 @@
   .hero-actions {
     width: 100%;
   }
+  /* on phones the primary sits over bright photo tiles: a near-solid red fill keeps it the primary */
+  .hero-actions .glass-primary[data-liquid-glass] {
+    background-color: rgb(216 4 44 / 0.86);
+  }
   .hero-actions > * {
     flex: 1 1 auto;
   }

@@ -4,6 +4,7 @@ import * as React from "react";
 import { AnimatePresence, motion, useMotionValueEvent, useReducedMotion, useScroll } from "motion/react";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { GlassLink, LiquidGlass, LiquidGlassButton } from "@/components/glass";
+import { asset } from "@/lib/content";
 
 type Item = { id: string; label: string };
 
@@ -73,7 +74,7 @@ export function SiteNav({ items }: { items: Item[] }) {
           data-compact={compact || undefined}
         >
           <a href="#intro" className="nav-mark" aria-label="OPPAACHA, back to top">
-            <img src="/media/brand/oppaacha-mark-red.webp" alt="" width={160} height={240} />
+            <img src={asset("/media/brand/oppaacha-mark-red.webp")} alt="" width={160} height={240} />
           </a>
           <nav aria-label="Sections">
             <ul className="flex items-center">
@@ -117,7 +118,7 @@ export function SiteNav({ items }: { items: Item[] }) {
         {/* Mobile: mark left, round glass button right */}
         <div className="pointer-events-auto flex w-full items-center justify-between md:hidden">
           <a href="#intro" className="nav-mark nav-mark--solo" aria-label="OPPAACHA, back to top">
-            <img src="/media/brand/oppaacha-mark-red.webp" alt="" width={160} height={240} />
+            <img src={asset("/media/brand/oppaacha-mark-red.webp")} alt="" width={160} height={240} />
           </a>
           <LiquidGlassButton
             size={null}

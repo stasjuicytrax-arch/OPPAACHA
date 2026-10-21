@@ -1,7 +1,9 @@
+import type { CSSProperties } from "react";
 import type { Metadata, Viewport } from "next";
 import { Hanken_Grotesk } from "next/font/google";
 import localFont from "next/font/local";
 import { SmoothScroll } from "@/components/smooth-scroll";
+import { asset } from "@/lib/content";
 import "./globals.css";
 import "./hero.css";
 import "./manifesto.css";
@@ -56,8 +58,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body>
         <div className="preloader" aria-hidden>
-          <div className="preloader-mark">
-            <img src="/media/brand/oppaacha-grunge-red.webp" alt="" />
+          <div
+            className="preloader-mark"
+            style={{ "--mark": `url(${asset("/media/brand/oppaacha-grunge-red.webp")})` } as CSSProperties}
+          >
+            <img src={asset("/media/brand/oppaacha-grunge-red.webp")} alt="" />
             <span />
           </div>
         </div>

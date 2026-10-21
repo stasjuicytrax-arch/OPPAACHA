@@ -320,8 +320,8 @@ html[data-intro-seen] .preloader {
 }
 .preloader-mark span {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.85 0 0 0 0 0.02 0 0 0 0 0.17 0 0 0 1.6 -0.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  -webkit-mask: url("/media/brand/oppaacha-grunge-red.webp") center / contain no-repeat;
-  mask: url("/media/brand/oppaacha-grunge-red.webp") center / contain no-repeat;
+  -webkit-mask: var(--mark) center / contain no-repeat;
+  mask: var(--mark) center / contain no-repeat;
   animation: preloader-grain 0.9s steps(8) both;
 }
 @keyframes preloader-grain {

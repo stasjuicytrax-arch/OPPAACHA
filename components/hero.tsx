@@ -3,7 +3,7 @@ import { ArrowUpRight, Play } from "lucide-react";
 import { TiltedGridHero } from "@/components/ui/tilted-grid-hero";
 import { GlassLink } from "@/components/glass";
 import { HeroClip } from "@/components/hero-clip";
-import { bio, isTodo, photoSrc, photos, video, TODO } from "@/lib/content";
+import { asset, bio, isTodo, photoSrc, photos, video, TODO } from "@/lib/content";
 
 // Every photo except the cut-out, which waits for its own moment in #photo.
 const ribbon = photos
@@ -23,7 +23,7 @@ export function Hero() {
         <div className="hero-copy">
           <h1 className="intro-logo">
             <img
-              src="/media/brand/oppaacha-grunge-red.webp"
+              src={asset("/media/brand/oppaacha-grunge-red.webp")}
               alt="OPPAACHA"
               width={1400}
               height={1021}
@@ -59,7 +59,7 @@ export function Hero() {
         </div>
       </div>
 
-      <img src="/media/brand/oppaacha-wordmark-ink.webp" alt="" aria-hidden width={2400} height={519} className="hero-underlay" />
+      <img src={asset("/media/brand/oppaacha-wordmark-ink.webp")} alt="" aria-hidden width={2400} height={519} className="hero-underlay" />
     </section>
   );
 }

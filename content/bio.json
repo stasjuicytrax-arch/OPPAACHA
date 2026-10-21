@@ -1,11 +1,41 @@
 {
-  "$comment": "Blocker B3: bio, tagline, manifesto and numbers come from the OPPAACHA PromoKit only. Searched 21.10.2026: no PromoKit in the project folder or on the Desktop. Nothing here may be invented. Contacts and socials live in content/contacts.json. manifesto.lines: [{ text, tone: \"ink\" | \"muted\", align: \"start\" | \"center\" | \"end\", pill?: true, accent?: \"one word set in Parabola\" }]. stats: [{ value: number, suffix?, label }], 3 or 4 items.",
+  "$comment": "Source: OPPAACHA Press Kit 2026.pdf (Google Drive link from the client, 21.10.2026; copy in 'Все что нужно тут/'). Text transcribed from the page images word for word; nothing added. manifesto.lines is a verbatim excerpt of the overview sentence, split into stepped lines. stats: the three headline figures from page 1.",
   "name": "OPPAACHA",
-  "tagline": "TODO_FROM_PROMOKIT",
-  "bio": "TODO_FROM_PROMOKIT",
+  "realName": "Vladislav Liuborets",
+  "tagline": "Music producer & DJ. Owner of Become Human Records",
+  "genres": ["Indie Dance", "Tech House", "Melodic Techno"],
+  "labels": [
+    { "name": "Diynamic", "country": "DE" },
+    { "name": "Insomniac", "country": "US" },
+    { "name": "Smash The House", "country": "BE" }
+  ],
+  "bio": [
+    "Behind Oppaacha is Vladislav Liuborets, whose relationship with electronic music dates back to 2007. At just 12 years old, he discovered trance and EDM and began making his first tracks.",
+    "By 2021, he had completely rethought his approach to production and created Oppaacha, a project focused on a more underground club sound, while keeping the influence of the ’90s and 2000s that had shaped his musical taste from the beginning.",
+    "Perhaps it was this balance between past and present that caught Solomun’s attention. Over the following three years, Oppaacha had five releases on Diynamic and spent two consecutive years among the label’s Top 10 artists."
+  ],
   "manifesto": {
-    "status": "TODO_FROM_PROMOKIT",
-    "lines": []
+    "lines": [
+      { "text": "A more underground", "tone": "ink", "align": "start", "pill": true, "accent": "underground" },
+      { "text": "club sound, keeping", "tone": "ink", "align": "end" },
+      { "text": "the influence of", "tone": "muted", "align": "start" },
+      { "text": "the ’90s and 2000s", "tone": "muted", "align": "center" }
+    ]
   },
-  "stats": []
+  "stats": [
+    { "value": 4, "suffix": "M+", "label": "Streams" },
+    { "value": 100, "suffix": "K+", "label": "Shazams" },
+    { "value": 300, "suffix": "+", "label": "DJ supports" }
+  ],
+  "musicHighlights": [
+    "“Don’t Stop”: #2 on Solomun’s Momentum Chart",
+    "#3 Trending Indie Dance Artist, BeatStats",
+    "Support from Tiësto, Solomun, CamelPhat, Steve Angello, Pete Tong",
+    "Music played at Tomorrowland, EDC, Ultra"
+  ],
+  "touringHighlights": [
+    "First Australian Tour: Melbourne & Sydney, 2025",
+    "Day Zero: Savaya Bali, 2026",
+    "Singapore, Bangkok, Ulaanbaatar, Istanbul, Ibiza"
+  ]
 }

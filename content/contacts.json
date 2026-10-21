@@ -1,11 +1,19 @@
 {
-  "$comment": "Blocker B2: booking contacts and socials come from the OPPAACHA PromoKit only. Searched 21.10.2026: no PromoKit in the project folder or on the Desktop; Rider.pdf holds no contacts. Nothing here may be invented. booking.email shows as text with a copy button, mailto as a fallback (TECH-SPEC 5.9). socials: [{ network, handle, url }].",
-  "status": "TODO_FROM_PROMOKIT",
+  "$comment": "Source: OPPAACHA Press Kit 2026.pdf, page 3 (Media & Contacts). Contacts transcribed from the page image; social URLs are the link annotations embedded in the PDF (tracking query strings removed).",
   "booking": {
-    "manager": "TODO_FROM_PROMOKIT",
-    "agency": "TODO_FROM_PROMOKIT",
-    "email": "TODO_FROM_PROMOKIT",
-    "phone": "TODO_FROM_PROMOKIT"
+    "manager": "Anastasiia",
+    "email": "mgmt@oppaacha.com",
+    "whatsapp": "+62 812-2987-6758",
+    "telegram": "@oppaacha"
   },
-  "socials": []
+  "socials": [
+    { "network": "Spotify", "url": "https://open.spotify.com/artist/4xgSjDLUAc95DUbzeKg8MY" },
+    { "network": "Instagram", "handle": "@oppaacha", "url": "https://www.instagram.com/oppaacha" },
+    { "network": "Beatport", "url": "https://www.beatport.com/artist/oppaacha/966990" },
+    { "network": "SoundCloud", "url": "https://soundcloud.com/oppaacha" }
+  ],
+  "media": {
+    "pressFolder": "https://drive.google.com/drive/folders/1DmfgLn1NZR-LMpemyXVqTe1R1CuT7W5G",
+    "liveVideo": { "title": "Live from Trip Festival Main Stage", "url": "https://www.youtube.com/watch?v=1Bi6K94BdIM" }
+  }
 }

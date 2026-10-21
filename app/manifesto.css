@@ -139,6 +139,10 @@
   column-gap: 24px;
   row-gap: 48px;
 }
+/* three figures from the PromoKit: three columns */
+.m-stats:has(> :nth-child(3):last-child) {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
 .m-stat {
   padding-top: 20px;
   border-top: 1px solid var(--line);

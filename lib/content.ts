@@ -63,4 +63,4 @@ export const photoSrc = (id: string, width = 640) => ({
 export const isTodo = (value: string | null | undefined) => !value || value === TODO;
 
 /** Nav order from TECH-SPEC 5.0; Booking sits apart as the primary action. */
-export const NAV = ["intro", "video", "live", "support", "tour", "rider"] as const;
+export const NAV = ["intro", "video", "live", "support", "rider"] as const;

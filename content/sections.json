@@ -38,12 +38,6 @@
       "built": false
     },
     {
-      "id": "tour",
-      "label": "Tour",
-      "block": 7,
-      "built": false
-    },
-    {
       "id": "rider",
       "label": "Rider",
       "block": 8,

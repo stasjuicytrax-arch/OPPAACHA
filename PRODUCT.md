@@ -28,8 +28,8 @@ Sent by the management as a link in email and messengers; opened on laptops and 
 
 ## Capabilities and Constraints
 
-- One page, anchors `#intro #video #live #support #photo #tour #rider #booking`.
-- All 12 videos, all 13 photos and every tour date must render; `scripts/verify-coverage.mjs` enforces it and writes COVERAGE.md.
+- One page, anchors `#intro #video #live #support #photo #rider #booking`.
+- All 12 videos and all 13 photos must render; `scripts/verify-coverage.mjs` enforces it and writes COVERAGE.md.
 - Original media never enters git (`source-media/`, client folder ignored); derivatives in `public/media`.
 - Lighthouse mobile performance ≥ 85, accessibility ≥ 95; widths 360 / 768 / 1280 / 1920 with no horizontal scroll; `prefers-reduced-motion` honoured.
 - Language: English, like the rider.
@@ -45,7 +45,8 @@ Sent by the management as a link in email and messengers; opened on laptops and 
 - Video: 12 files (inventory in TECH-SPEC.md 2.2, manifest `content/videos.json`).
 - Photo: 5 live, 8 studio including one cut-out (`content/photos.json`).
 - Rider.pdf: technical, hospitality, payment (transcribed in TECH-SPEC.md 5.8).
-- Absent and never to be invented: tour dates (B1), booking contacts and socials (B2), bio, tagline and numbers (B3). They render as `TODO_FROM_PROMOKIT` until the PromoKit arrives.
+- No tour dates in the press kit (client decision, 21.10.2026).
+- Absent and never to be invented: booking contacts and socials (B2), bio, tagline and numbers (B3). They render as `TODO_FROM_PROMOKIT` until the PromoKit arrives.
 
 ## Product Principles
 

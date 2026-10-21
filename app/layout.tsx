@@ -39,7 +39,7 @@ const nkduy = localFont({
 
 export const metadata: Metadata = {
   title: "OPPAACHA · Press kit",
-  description: "OPPAACHA electronic press kit: showreel, live sets, support, photos, tour, rider and booking.",
+  description: "OPPAACHA electronic press kit: showreel, live sets, support, photos, rider and booking.",
 };
 
 export const viewport: Viewport = {

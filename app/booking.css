@@ -1,0 +1,213 @@
+/* --------------------------------------------------------------------------
+   Block 9: Booking (components/booking.tsx). The loud close and the one
+   centred composition on the page: red light rising from the floor, the
+   giant OPPAACHA cut by the page's last edge, the inverse contact card.
+   -------------------------------------------------------------------------- */
+
+.bk {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-top: var(--section-y);
+  background:
+    radial-gradient(70% 55% at 50% 100%, rgb(216 4 44 / 0.62), transparent 72%),
+    radial-gradient(40% 30% at 85% 70%, rgb(255 59 47 / 0.22), transparent 70%),
+    var(--bg);
+}
+.bk-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.bk-title {
+  margin-top: 20px;
+  font-size: var(--text-display-l);
+  line-height: 0.95;
+}
+.bk-title .m-accent {
+  font-size: 1.12em;
+}
+
+/* Inverse contact card */
+.bk-card {
+  margin-top: clamp(48px, 6vw, 80px);
+  width: min(100%, 560px);
+  padding: clamp(24px, 3vw, 36px);
+  border-radius: var(--radius-card);
+  background: var(--inv-bg);
+  color: var(--inv-ink);
+  text-align: left;
+}
+.bk-card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+}
+.bk-card-head .label {
+  color: #6b655f;
+}
+.bk-manager {
+  font-size: 15px;
+  font-weight: 600;
+}
+.bk-email {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.bk-email-text {
+  font-size: clamp(22px, 2.6vw, 30px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--inv-ink);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+.bk-email-text:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+}
+.bk-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding-inline: 16px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--inv-ink);
+  color: var(--inv-bg);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 200ms var(--ease-in);
+}
+.bk-copy:active {
+  transform: scale(0.97);
+}
+.bk-copy svg {
+  width: 16px;
+  height: 16px;
+}
+.bk-direct {
+  margin: 22px 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.bk-direct a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  background: rgb(10 10 10 / 0.06);
+  color: var(--inv-ink);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background-color 200ms var(--ease-in);
+}
+.bk-direct a:hover {
+  background: rgb(10 10 10 / 0.1);
+}
+.bk-direct a > span {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.bk-direct-kind {
+  color: #6b655f;
+}
+.bk-arrow {
+  margin-left: auto;
+  width: 18px;
+  height: 18px;
+  color: var(--accent);
+}
+.bk-brand {
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+.bk-card :focus-visible {
+  outline-color: var(--accent);
+}
+
+.bk-actions {
+  margin-top: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.bk-socials {
+  margin: 40px 0 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 24px;
+}
+.bk-social {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 4px;
+  color: rgb(244 242 238 / 0.78);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 200ms var(--ease-in);
+}
+.bk-social:hover {
+  color: var(--ink);
+}
+
+.bk-footer {
+  margin-top: clamp(64px, 8vw, 112px);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 20px;
+  padding-bottom: clamp(140px, 17vw, 260px);
+}
+
+/* Giant wordmark, cut by the page's last edge (Enblox) */
+.bk-underlay {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  z-index: -1;
+  width: 104%;
+  max-width: none;
+  height: auto;
+  transform: translate(-50%, 22%);
+  opacity: 0.14;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (max-width: 767px) {
+  .bk-direct {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .bk-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+  .bk-actions .glass-control {
+    width: 100%;
+  }
+}

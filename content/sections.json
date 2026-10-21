@@ -47,7 +47,7 @@
       "id": "booking",
       "label": "Booking",
       "block": 9,
-      "built": false
+      "built": true
     }
   ]
 }

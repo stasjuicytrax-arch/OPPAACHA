@@ -12,6 +12,7 @@ import "./live.css";
 import "./support.css";
 import "./photos.css";
 import "./rider.css";
+import "./booking.css";
 
 // Runs before paint: the preloader plays once per session, and the hero
 // intro waits for it only on that first visit.

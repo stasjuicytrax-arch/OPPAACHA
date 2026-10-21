@@ -204,16 +204,6 @@
   }
 }
 
-/* Anchors for blocks not built yet. */
-.pending-block {
-  padding-block: clamp(72px, 10vw, 140px);
-  border-bottom: 1px solid var(--line);
-}
-.pending-title {
-  margin-top: 20px;
-  font-size: var(--text-h2);
-}
-
 /* --------------------------------------------------------------------------
    Intro choreography (DESIGN-SYSTEM.md 8.2). CSS only, so nothing waits for
    hydration. --intro-delay is 1.25s on the first visit (after the

@@ -33,6 +33,7 @@ export function Booking() {
   const subject = encodeURIComponent("Booking request: OPPAACHA");
   const wa = `https://wa.me/${booking.whatsapp.replace(/\D/g, "")}`;
   const tg = `https://t.me/${booking.telegram.replace(/^@/, "")}`;
+  const instagram = socials.find((s) => s.network === "Instagram");
 
   return (
     <section id="booking" aria-labelledby="booking-title" className="bk">
@@ -84,6 +85,12 @@ export function Booking() {
             <Mail aria-hidden />
             Write to booking
           </GlassLink>
+          {instagram ? (
+            <GlassLink href={instagram.url} tone="clear" target="_blank" rel="noopener noreferrer" aria-label={`Instagram ${instagram.handle} (opens in a new tab)`}>
+              <Brand icon={siInstagram} />
+              {instagram.handle}
+            </GlassLink>
+          ) : null}
           <GlassLink href={asset(riderJson.pdf)} tone="clear" download>
             <FileText aria-hidden />
             Rider (PDF)

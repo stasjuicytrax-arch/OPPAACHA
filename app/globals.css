@@ -204,7 +204,7 @@
   height: 56px;
   border-radius: 999px;
   box-shadow: var(--glass-highlight), var(--glass-lowlight), inset 0 0 0 1px var(--glass-rim) !important;
-  transition: height 420ms var(--ease-state);
+  /* no height transition: the glass is fluid and springs to the new size */
 }
 .nav-capsule[data-liquid-glass="frost"] {
   background-color: rgb(20 20 20 / 0.42);
@@ -239,7 +239,7 @@
   font-weight: 500;
   letter-spacing: -0.005em;
   color: rgb(244 242 238 / 0.72);
-  transition: color 200ms var(--ease-in), height 420ms var(--ease-state);
+  transition: color 200ms var(--ease-in);
 }
 .nav-capsule[data-compact] .nav-link {
   height: 48px;
@@ -259,7 +259,6 @@
   height: 42px;
   padding-inline: 20px;
   font-size: 14px;
-  transition: height 420ms var(--ease-state);
 }
 .nav-capsule[data-compact] .nav-booking.glass-control {
   height: 36px;

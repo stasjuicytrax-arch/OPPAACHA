@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "bounce-easing",
+        "value": "cubic-bezier(0.34, 1.45, 0.5, 1)",
+        "createdAt": "2026-10-21T18:20:19.522Z",
+        "reason": "DESIGN-SYSTEM.md 8.2 (client design system) pins a spring drop for the glass menu"
+      }
+    ]
+  }
+}

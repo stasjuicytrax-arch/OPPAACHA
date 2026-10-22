@@ -96,23 +96,26 @@ export function LiveTrack({ clips, children }: { clips: PlayableClip[]; children
               onFocus={() => setHover(c.id)}
               onBlur={() => setHover(null)}
               onClick={() => setOpen(c)}
-              aria-label={`${c.venue}: play ${c.title}`}
+              aria-label={`Play ${[c.place ?? c.venue, c.track].filter(Boolean).join(", ")}`}
             >
               <span className="live-card-frame">
                 <LoopVideo preview={c.preview} poster={c.poster} active={hover === c.id} className="live-card-media" />
-                <LiquidGlass
-                  priority={2}
-                  appearance="dark"
-                  material="regular"
-                  refraction={8}
-                  fallbackBlur={14}
-                  className="glass-chip live-chip label"
-                >
-                  {c.venue}
-                </LiquidGlass>
+                {/* the track, when known, on its own line (client brief: venue / event · city, then the track) */}
+                {c.track ? (
+                  <LiquidGlass
+                    priority={2}
+                    appearance="dark"
+                    material="regular"
+                    refraction={8}
+                    fallbackBlur={14}
+                    className="glass-chip live-chip label"
+                  >
+                    “{c.track}”
+                  </LiquidGlass>
+                ) : null}
               </span>
               <span className="live-card-caption">
-                <span className="live-card-title">{c.title}</span>
+                <span className="live-card-title">{c.place ?? c.venue}</span>
                 <span className="label text-muted">{fmt(c.duration)}</span>
               </span>
             </button>
@@ -121,7 +124,7 @@ export function LiveTrack({ clips, children }: { clips: PlayableClip[]; children
       </div>
 
       <SwipeHints scroller=".live-pin" id="live" label="Live clips, swipe horizontally" count={clips.length} />
-      <ClipLightbox clip={open} onClose={closeLightbox} />
+      <ClipLightbox clip={open} caption={open ? [open.place ?? open.venue, open.track].filter(Boolean).join(" · ") : undefined} onClose={closeLightbox} />
     </>
   );
 }

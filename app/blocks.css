@@ -1,0 +1,547 @@
+/* --------------------------------------------------------------------------
+   Blocks from the client brief of 22.10.2026: Selected Releases, the
+   CamelPhat collaboration, Bio & Highlights, Become Human Records, Radio
+   mixes, the Played by waiting card, the closing photos and the image
+   lightbox. Compact, content first: less air between blocks than before.
+   -------------------------------------------------------------------------- */
+
+/* Shared heading scale for the compact blocks */
+.rel-title,
+.ra-title,
+.co-title {
+  margin-top: 0;
+  font-size: var(--text-h2);
+  line-height: 1;
+}
+
+/* ---------------- Selected Releases ---------------- */
+.rel {
+  padding-top: clamp(80px, 10vw, 144px);
+  padding-bottom: clamp(56px, 7vw, 96px);
+}
+.rel-row {
+  margin: clamp(40px, 5vw, 64px) 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: clamp(14px, 1.6vw, 24px);
+}
+.rel-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.rel-cover {
+  display: block;
+  aspect-ratio: 1;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  background: var(--surface-2);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.rel-cover img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 900ms var(--ease-in);
+}
+.rel-cover:hover img,
+.rel-cover:focus-visible img {
+  transform: scale(1.04);
+}
+.rel-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 16px;
+}
+.rel-name {
+  margin-top: 4px;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.rel-artists {
+  font-size: 14px;
+  color: var(--muted);
+}
+.rel-player {
+  margin-top: 14px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface);
+}
+.rel-player iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+.rel-actions {
+  margin-top: auto;
+  padding-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.rel-listen,
+.ra-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding-block: 8px;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.rel-listen:hover,
+.ra-link:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 4px;
+}
+.rel-brand {
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+.rel-arrow {
+  width: 14px;
+  height: 14px;
+  color: var(--accent);
+}
+.rel-play {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--ink);
+  cursor: pointer;
+  box-shadow: var(--glass-highlight), inset 0 0 0 1px var(--glass-rim);
+  transition: transform 200ms var(--ease-in);
+}
+.rel-play:active,
+.ra-play:active {
+  transform: scale(0.95);
+}
+.rel-play svg {
+  width: 16px;
+  height: 16px;
+}
+.rel-play[aria-pressed="false"] svg {
+  margin-left: 2px;
+  fill: currentColor;
+}
+
+/* ---------------- Upcoming collaboration ---------------- */
+.co {
+  padding-block: clamp(56px, 7vw, 112px);
+  background:
+    radial-gradient(50% 60% at 78% 50%, rgb(216 4 44 / 0.3), transparent 72%),
+    var(--bg);
+}
+.co-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  align-items: center;
+}
+.co-copy {
+  grid-column: 1 / span 6;
+}
+.co-title .m-accent {
+  font-size: 1.1em;
+}
+.co-track {
+  margin-top: clamp(24px, 3vw, 36px);
+  font-size: var(--text-h3);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+.co-caption {
+  margin-top: 14px;
+  max-width: 40ch;
+  line-height: 1.6;
+}
+.co-media {
+  grid-column: 8 / -1;
+  margin: 0;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--surface-2);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.co-still {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.co-stage {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------------- Bio & Highlights ---------------- */
+.bio {
+  padding-bottom: clamp(56px, 7vw, 112px);
+}
+.bio .manifesto {
+  padding-bottom: clamp(48px, 6vw, 88px);
+}
+.bio-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 56px;
+  align-items: start;
+}
+.bio-text {
+  grid-column: 1 / span 6;
+}
+.bio-p {
+  max-width: 60ch;
+  font-size: clamp(17px, 1.3vw, 19px);
+  line-height: 1.6;
+  color: rgb(244 242 238 / 0.86);
+}
+.bio-p + .bio-p {
+  margin-top: 1.1em;
+}
+.bio-charts {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+}
+.bio-charts-note {
+  flex-basis: 100%;
+}
+.bio-chart,
+.bio-poster,
+.ra-poster {
+  position: relative;
+  display: block;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: zoom-in;
+}
+.bio-chart {
+  width: clamp(120px, 12vw, 168px);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.bio-chart img,
+.bio-poster img {
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: transform 700ms var(--ease-in);
+}
+.bio-chart:hover img,
+.bio-poster:hover img {
+  transform: scale(1.04);
+}
+.bio-zoom,
+.ra-zoom {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 999px;
+  background: rgb(10 10 10 / 0.6);
+  color: var(--ink);
+  box-shadow: var(--glass-highlight), inset 0 0 0 1px var(--glass-rim);
+}
+.bio-zoom svg,
+.ra-zoom svg {
+  width: 14px;
+  height: 14px;
+}
+
+.bio-highlights {
+  grid-column: 8 / -1;
+}
+.bio-highlights h3 + .bio-list {
+  margin-top: 14px;
+}
+.bio-list + h3 {
+  margin-top: 40px;
+}
+.bio-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+.bio-list li {
+  padding: 13px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 15.5px;
+  line-height: 1.45;
+}
+.bio-li-poster {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.bio-poster {
+  flex: none;
+  width: 72px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+/* ---------------- Become Human Records ---------------- */
+.lb {
+  padding-block: clamp(48px, 6vw, 88px);
+}
+.lb-inner {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 14px;
+  align-items: baseline;
+  padding-top: clamp(32px, 4vw, 48px);
+  border-top: 1px solid var(--line);
+}
+.lb-inner > .label {
+  grid-column: 1 / span 2;
+}
+.lb-title {
+  grid-column: 3 / span 6;
+  margin: 0;
+  font-size: var(--text-h3);
+  line-height: 1.1;
+}
+.lb-text {
+  grid-column: 3 / span 6;
+  max-width: 56ch;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgb(244 242 238 / 0.86);
+}
+
+/* ---------------- Radio mixes ---------------- */
+.ra {
+  padding-block: clamp(56px, 7vw, 112px);
+}
+.ra-row {
+  margin: clamp(40px, 5vw, 64px) 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(16px, 2vw, 32px);
+  max-width: 1040px;
+}
+.ra-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.ra-poster {
+  width: 100%;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+/* 3:4, the whole poster on its own colour: small type and logos never cut */
+.ra-frame {
+  display: block;
+  aspect-ratio: 3 / 4;
+}
+.ra-frame picture,
+.ra-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.ra-meta {
+  padding-top: 18px;
+}
+.ra-name {
+  margin: 0;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.ra-meta p {
+  margin-top: 4px;
+  font-size: 15px;
+}
+.ra-player {
+  margin-top: 14px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.ra-player iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+.ra-actions {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+.ra-play {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 44px;
+  padding-inline: 18px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--ink);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--glass-highlight), inset 0 0 0 1px var(--glass-rim);
+  transition: transform 200ms var(--ease-in);
+}
+.ra-play svg {
+  width: 16px;
+  height: 16px;
+}
+.ra-play[aria-pressed="false"] svg {
+  fill: currentColor;
+}
+
+/* ---------------- Played by: link and waiting cards ---------------- */
+a.sup-card {
+  text-decoration: none;
+}
+.sup-up {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 4px;
+  vertical-align: -1px;
+  color: var(--accent);
+}
+.sup-card-wait {
+  cursor: default;
+}
+.sup-frame-wait {
+  display: grid;
+  place-items: end start;
+  padding: 18px;
+  background:
+    radial-gradient(80% 60% at 70% 20%, rgb(216 4 44 / 0.22), transparent 70%),
+    var(--surface);
+}
+.sup-initial {
+  font-size: clamp(22px, 2vw, 30px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: rgb(244 242 238 / 0.24);
+}
+
+/* ---------------- Closing photos ---------------- */
+.bk-photos {
+  width: min(100%, 880px);
+  margin: 0 0 clamp(56px, 7vw, 96px);
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(12px, 1.6vw, 24px);
+}
+.bk-photo {
+  aspect-ratio: 2 / 3;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--surface-2);
+}
+.bk-photo:nth-child(2) {
+  margin-top: clamp(32px, 5vw, 72px);
+}
+.bk-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---------------- Image lightbox (components/zoom-image.tsx) ---------------- */
+.zoom-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(92vw, 1100px);
+  max-height: 82dvh;
+  border-radius: var(--radius-sm);
+  object-fit: contain;
+}
+
+@media (max-width: 1023px) {
+  .rel-row {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .co-copy,
+  .co-media,
+  .bio-text,
+  .bio-highlights {
+    grid-column: 1 / -1;
+  }
+  .co-media {
+    margin-top: 40px;
+    max-width: 520px;
+  }
+  .lb-inner > .label,
+  .lb-title,
+  .lb-text {
+    grid-column: 1 / -1;
+  }
+}
+@media (max-width: 767px) {
+  .rel-row {
+    display: flex;
+    gap: 14px;
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
+  }
+  .rel-row::-webkit-scrollbar {
+    display: none;
+  }
+  .rel-row > li {
+    flex: none;
+    width: 68vw;
+    scroll-snap-align: start;
+  }
+  .ra-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .bio-chart {
+    width: calc(50% - 6px);
+  }
+}

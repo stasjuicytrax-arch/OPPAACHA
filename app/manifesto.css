@@ -1,7 +1,6 @@
 /* --------------------------------------------------------------------------
-   Block 2: manifesto and numbers (components/manifesto.tsx). A quiet block:
-   night ground, one big two-tone statement on stepped lines, a red pill
-   carrying the V03 loop, then mono numbers on hairlines, stepped 0/48/0/96.
+   The large intro of Bio (components/bio.tsx): one big two-tone statement
+   on stepped lines with a red pill carrying the V03 loop.
    -------------------------------------------------------------------------- */
 
 .loop-video {
@@ -91,44 +90,6 @@
   mix-blend-mode: hard-light;
 }
 
-/* Numbers */
-.m-stats {
-  margin-top: clamp(80px, 10vw, 144px);
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  column-gap: 24px;
-  row-gap: 48px;
-}
-/* three figures from the PromoKit: three columns */
-.m-stats:has(> :nth-child(3):last-child) {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-.m-stat {
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
-  transition: opacity 800ms var(--ease-in), transform 800ms var(--ease-in);
-  transition-delay: calc(var(--i, 0) * 80ms);
-}
-.m-stat:nth-child(2) {
-  margin-top: 48px;
-}
-.m-stat:nth-child(4) {
-  margin-top: 96px;
-}
-[data-js] [data-reveal]:not([data-inview]) .m-stat {
-  opacity: 0;
-  transform: translateY(32px);
-}
-.m-num {
-  margin-top: 28px;
-  font-family: var(--font-mono);
-  font-size: clamp(44px, 5.4vw, 80px);
-  line-height: 1;
-  letter-spacing: -0.03em;
-  font-variant-numeric: tabular-nums;
-  color: var(--ink);
-}
-
 @media (max-width: 767px) {
   .m-line[data-align="start"] {
     padding-left: 0;
@@ -137,21 +98,5 @@
   .m-line[data-align="center"] {
     text-align: left;
     padding-left: 12%;
-  }
-  .m-stats,
-  .m-stats:has(> :nth-child(3):last-child) {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-  .m-num {
-    font-size: clamp(38px, 11vw, 52px);
-  }
-  .m-stat:nth-child(2) {
-    margin-top: 32px;
-  }
-  .m-stat:nth-child(3) {
-    margin-top: 0;
-  }
-  .m-stat:nth-child(4) {
-    margin-top: 32px;
   }
 }

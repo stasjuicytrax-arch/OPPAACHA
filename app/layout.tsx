@@ -7,11 +7,9 @@ import { asset } from "@/lib/content";
 import "./globals.css";
 import "./hero.css";
 import "./manifesto.css";
-import "./showreel.css";
 import "./live.css";
 import "./support.css";
-import "./photos.css";
-import "./rider.css";
+import "./blocks.css";
 import "./booking.css";
 
 // Runs before paint. data-lite marks phones, coarse pointers, weak hardware
@@ -50,7 +48,7 @@ const nkduy = localFont({
 
 export const metadata: Metadata = {
   title: "OPPAACHA · Press kit",
-  description: "OPPAACHA electronic press kit: showreel, live sets, support, photos, rider and booking.",
+  description: "OPPAACHA electronic press kit: selected releases, the upcoming collaboration with CamelPhat, bio, radio mixes, live sets, support and booking.",
 };
 
 export const viewport: Viewport = {

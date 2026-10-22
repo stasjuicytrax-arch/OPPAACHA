@@ -2,13 +2,13 @@
   "$comment": "Page order from CLIENT-EDITS-2026-10-22.md section 1. nav: in the glass capsule (Booking sits apart as the primary action). verify-coverage reports the checks of a block with built:false as pending; RELEASE=1 fails on them.",
   "sections": [
     { "id": "intro", "label": "Intro", "block": 1, "nav": true, "built": true },
-    { "id": "releases", "label": "Releases", "block": 2, "nav": true, "built": false },
-    { "id": "collab", "label": "CamelPhat", "block": 3, "nav": false, "built": false },
-    { "id": "bio", "label": "Bio", "block": 4, "nav": true, "built": false },
-    { "id": "label", "label": "Become Human", "block": 5, "nav": false, "built": false },
-    { "id": "radio", "label": "Radio", "block": 6, "nav": false, "built": false },
+    { "id": "releases", "label": "Releases", "block": 2, "nav": true, "built": true },
+    { "id": "collab", "label": "CamelPhat", "block": 3, "nav": false, "built": true },
+    { "id": "bio", "label": "Bio", "block": 4, "nav": true, "built": true },
+    { "id": "label", "label": "Become Human", "block": 5, "nav": false, "built": true },
+    { "id": "radio", "label": "Radio", "block": 6, "nav": false, "built": true },
     { "id": "live", "label": "Live", "block": 7, "nav": true, "built": true },
-    { "id": "played-by", "label": "Played by", "block": 9, "nav": true, "built": false },
+    { "id": "played-by", "label": "Played by", "block": 9, "nav": true, "built": true },
     { "id": "booking", "label": "Booking", "block": 10, "nav": false, "built": true }
   ]
 }

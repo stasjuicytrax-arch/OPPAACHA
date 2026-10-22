@@ -24,7 +24,6 @@
   align-items: center;
   gap: clamp(20px, 2vw, 32px);
   padding-inline: var(--gutter) clamp(40px, 8vw, 160px);
-  will-change: transform;
 }
 
 .live-intro {
@@ -77,12 +76,23 @@
   object-fit: cover;
 }
 .live-card-media img {
-  filter: saturate(0.85) brightness(0.9);
-  transition: filter 500ms var(--ease-in), transform 900ms var(--ease-in);
+  transition: transform 900ms var(--ease-in);
+}
+/* dim the poster with an overlay: opacity animates, filter does not */
+.live-card-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgb(10 10 10 / 0.16);
+  pointer-events: none;
+  transition: opacity 500ms var(--ease-in);
+}
+.live-card:hover .live-card-frame::after,
+.live-card:focus-visible .live-card-frame::after {
+  opacity: 0;
 }
 .live-card:hover .live-card-media img,
 .live-card:focus-visible .live-card-media img {
-  filter: none;
   transform: scale(1.03);
 }
 .live-card-media video {

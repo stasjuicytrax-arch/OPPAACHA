@@ -5,6 +5,9 @@
    -------------------------------------------------------------------------- */
 
 .rd {
+  /* skipped until near the viewport (blocks below the pinned Live) */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1200px;
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -14,8 +17,8 @@
   position: absolute;
   inset: 0;
   z-index: -1;
+  /* black and white and dark baked into P03-rider-*.webp */
   background: var(--rd-photo) 70% 40% / cover no-repeat;
-  filter: grayscale(1) brightness(0.42) contrast(1.1);
   /* fades into the night ground at every edge: no seam with the blocks around */
   mask-image:
     linear-gradient(180deg, transparent 0%, #000 22%, #000 78%, transparent 100%),
@@ -179,6 +182,9 @@
   }
 }
 @media (max-width: 767px) {
+  .rd-backdrop {
+    background-image: var(--rd-photo-sm);
+  }
   .rd-grid {
     grid-template-columns: minmax(0, 1fr);
   }

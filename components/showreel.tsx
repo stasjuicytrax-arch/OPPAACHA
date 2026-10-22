@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import { InView } from "@/components/in-view";
 import { ShowreelPlayer } from "@/components/showreel-player";
-import { video } from "@/lib/content";
+import { asset, video } from "@/lib/content";
 
 // Main clip first (V03, OPPAACHA at the decks), then the cards.
 const ORDER = ["V03", "V02"];
@@ -20,7 +20,7 @@ export function Showreel() {
 
   return (
     <section id="video" aria-labelledby="video-title" className="reel">
-      <div className="reel-ambient" aria-hidden style={{ "--ambient": `url(${clips[0].poster}.webp)` } as CSSProperties} />
+      <div className="reel-ambient" aria-hidden style={{ "--ambient": `url(${asset("/media/video/V03-ambient.webp")})` } as CSSProperties} />
 
       <div className="shell reel-head">
         <InView as="h2" className="reel-title display">

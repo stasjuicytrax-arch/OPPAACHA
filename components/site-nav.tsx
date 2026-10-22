@@ -63,6 +63,7 @@ export function SiteNav({ items }: { items: Item[] }) {
       <header className="nav-intro pointer-events-none fixed inset-x-0 top-0 z-(--z-nav) flex justify-center px-4 pt-4 md:pt-5">
         {/* Desktop: the floating capsule */}
         <LiquidGlass
+          priority={10}
           appearance="dark"
           material="clear"
           refraction={26}
@@ -74,7 +75,7 @@ export function SiteNav({ items }: { items: Item[] }) {
           data-compact={compact || undefined}
         >
           <a href="#intro" className="nav-mark" aria-label="OPPAACHA, back to top">
-            <img src={asset("/media/brand/oppaacha-mark-red.webp")} alt="" width={160} height={240} />
+            <img src={asset("/media/brand/oppaacha-mark-red.webp")} alt="" width={160} height={240} decoding="async" />
           </a>
           <nav aria-label="Sections">
             <ul className="flex items-center">
@@ -90,6 +91,7 @@ export function SiteNav({ items }: { items: Item[] }) {
                         transition={reduce ? { duration: 0 } : SPRING}
                       >
                         <LiquidGlass
+                          priority={3}
                           appearance="dark"
                           material="clear"
                           refraction={8}
@@ -110,7 +112,7 @@ export function SiteNav({ items }: { items: Item[] }) {
               })}
             </ul>
           </nav>
-          <GlassLink href="#booking" tone="primary" className="nav-booking ml-1.5">
+          <GlassLink href="#booking" tone="primary" priority={4} className="nav-booking ml-1.5">
             Booking
           </GlassLink>
         </LiquidGlass>
@@ -118,9 +120,11 @@ export function SiteNav({ items }: { items: Item[] }) {
         {/* Mobile: mark left, round glass button right */}
         <div className="pointer-events-auto flex w-full items-center justify-between md:hidden">
           <a href="#intro" className="nav-mark nav-mark--solo" aria-label="OPPAACHA, back to top">
-            <img src={asset("/media/brand/oppaacha-mark-red.webp")} alt="" width={160} height={240} />
+            <img src={asset("/media/brand/oppaacha-mark-red.webp")} alt="" width={160} height={240} decoding="async" />
           </a>
           <LiquidGlassButton
+            keep
+            priority={10}
             size={null}
             interactive
             appearance="dark"

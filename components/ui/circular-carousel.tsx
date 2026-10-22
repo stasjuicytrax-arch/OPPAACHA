@@ -22,11 +22,13 @@ import {
   type MotionValue,
 } from "motion/react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { LiquidGlassButton } from "@/components/ui/apple-tahoe-liquid-glass-button";
+import { LiquidGlassButton } from "@/components/glass";
 
-export type CarouselPhoto = { id: string; src: string; avif?: string; alt: string };
+export type CarouselPhoto = { id: string; src: string; avif?: string; srcSet?: string; avifSet?: string; alt: string };
 
 const DEG_PER_PX = 0.18;
+// card width: 58% of the stage on phones, 22% on desktop, capped at 360px
+const CARD_SIZES = "(max-width: 767px) 58vw, min(22vw, 360px)";
 const SPRING = { type: "spring", stiffness: 140, damping: 22, mass: 0.9 } as const;
 
 export function CircularCarousel({ items, label }: { items: CarouselPhoto[]; label: string }) {
@@ -116,6 +118,7 @@ export function CircularCarousel({ items, label }: { items: CarouselPhoto[]; lab
       <div className="cc-controls">
         <LiquidGlassButton
           size={null}
+          priority={2}
           interactive
           appearance="dark"
           material="regular"
@@ -130,6 +133,7 @@ export function CircularCarousel({ items, label }: { items: CarouselPhoto[]; lab
         </p>
         <LiquidGlassButton
           size={null}
+          priority={2}
           interactive
           appearance="dark"
           material="regular"
@@ -177,8 +181,16 @@ function Card({
       style={{ transform, opacity }}
     >
       <picture>
-        {item.avif ? <source srcSet={item.avif} type="image/avif" /> : null}
-        <img src={item.src} alt={item.alt} draggable={false} loading="lazy" decoding="async" />
+        {item.avifSet || item.avif ? <source srcSet={item.avifSet ?? item.avif} sizes={CARD_SIZES} type="image/avif" /> : null}
+        <img
+          src={item.src}
+          srcSet={item.srcSet}
+          sizes={item.srcSet ? CARD_SIZES : undefined}
+          alt={item.alt}
+          draggable={false}
+          loading="lazy"
+          decoding="async"
+        />
       </picture>
     </motion.figure>
   );

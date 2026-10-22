@@ -18,7 +18,9 @@ function cn(...inputs: Array<string | false | null | undefined>): string {
 // Public types
 // --------------------------------------------------------------------------
 
-export type LiquidGlassMode = "auto" | "refract" | "frost";
+// "off" is a local addition for the press kit (performance, 22.10.2026): no
+// lens, no maps, no backdrop-filter; the element is styled as static glass in CSS.
+export type LiquidGlassMode = "auto" | "refract" | "frost" | "off";
 export type GlassMaterial = "clear" | "regular";
 export type GlassAppearance = "light" | "dark";
 export type GlassMotion = "full" | "reduced" | "none";
@@ -45,7 +47,7 @@ export interface LiquidGlassOptions {
   dispersion?: number;
   /** Blur (px) where the browser can't refract. Default 10. */
   fallbackBlur?: number;
-  /** "auto" refracts on Chromium, frosts elsewhere. Default "auto". */
+  /** "auto" refracts on Chromium, frosts elsewhere; "off" renders no glass layers. Default "auto". */
   mode?: LiquidGlassMode;
   /**
    * Opt in to press/drag spring physics and the pointer-tracked glow
@@ -1192,7 +1194,10 @@ function useLiquidGlass(options: LiquidGlassOptions, rootRef: React.RefObject<HT
   const dark = appearance === "dark";
   const engine = React.useMemo(() => (typeof window === "undefined" ? "chromium" : detectEngine()), []);
 
+  const off = requestedMode === "off";
+
   useIsoLayoutEffect(() => {
+    if (requestedMode === "off") return;
     setMode(requestedMode === "auto" ? detectMode() : requestedMode);
   }, [requestedMode]);
 
@@ -1207,6 +1212,11 @@ function useLiquidGlass(options: LiquidGlassOptions, rootRef: React.RefObject<HT
   // Measure + maps + shared filter acquisition. offsetWidth ignores
   // transforms, so press/hover scaling never regenerates.
   useIsoLayoutEffect(() => {
+    // off: skip the per-pixel map work entirely
+    if (off) {
+      setMap(null);
+      return;
+    }
     const lens = lensRef.current;
     const element = rootRef.current;
     if (!lens || !element) return;
@@ -1310,7 +1320,7 @@ function useLiquidGlass(options: LiquidGlassOptions, rootRef: React.RefObject<HT
       cancelAnimationFrame(fluidRaf);
       if (heldFilter) releaseFilter(heldFilter);
     };
-  }, [mode, bezel, appearance, material, tint, dark, tintRGB, refraction, dispersion, fluid, motion, rootRef]);
+  }, [off, mode, bezel, appearance, material, tint, dark, tintRGB, refraction, dispersion, fluid, motion, rootRef]);
 
   // Keep the latest map for fluid's previous-size detection.
   React.useEffect(() => {
@@ -1432,6 +1442,7 @@ function useLiquidGlass(options: LiquidGlassOptions, rootRef: React.RefObject<HT
     </>
   );
 
+  if (off) return { mode: "off" as const, layers: null, lensRef } as const;
   return { mode: refracting ? ("refract" as const) : ("frost" as const), layers, lensRef } as const;
 }
 
@@ -1497,6 +1508,26 @@ function renderSurface(
 // --------------------------------------------------------------------------
 
 /** Any surface: cards, navbars, sheets, toolbars, popovers. */
+/**
+ * Local addition (press kit, performance 22.10.2026): build and cache the
+ * displacement and rim maps for an element ahead of time, so switching it to
+ * refraction later is a cache hit instead of a per-pixel pass mid-scroll.
+ * Mirrors the measurement in useLiquidGlass (the element is its own lens box).
+ */
+export function prewarmLiquidGlass(
+  element: HTMLElement,
+  { appearance = "light", tint, bezel }: Pick<LiquidGlassOptions, "appearance" | "tint" | "bezel"> = {}
+): void {
+  const w = Math.round(element.offsetWidth);
+  const h = Math.round(element.offsetHeight);
+  if (w < 2 || h < 2) return;
+  const radius = Math.round(resolveRadius(getComputedStyle(element).borderTopLeftRadius, w, h));
+  const bz = Math.round(bezel ?? Math.min(32, Math.min(w, h) / 2));
+  const planes = { bezel: bz, dark: appearance === "dark", tint: tintChannels(tint) };
+  overlayURL(w, h, radius, planes);
+  fieldURL(w, h, radius, planes);
+}
+
 export const LiquidGlass = React.forwardRef<HTMLDivElement, LiquidGlassProps>(
   (
     {

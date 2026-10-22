@@ -4,7 +4,7 @@ import riderJson from "@/content/rider.json";
 import { GlassLink } from "@/components/glass";
 import { InView } from "@/components/in-view";
 import { RiderTabs, type RiderTab } from "@/components/rider-tabs";
-import { asset, photoSrc } from "@/lib/content";
+import { asset } from "@/lib/content";
 
 /**
  * Block 8 (TECH-SPEC 5.8), a quiet block: the rider as readable text in a
@@ -13,11 +13,13 @@ import { asset, photoSrc } from "@/lib/content";
  */
 export function Rider() {
   const tabs = riderJson.tabs as RiderTab[];
-  const backdrop = photoSrc("P03", 1280);
+  // baked black-and-white, darkened backdrop (scripts/media.mjs perf)
+  const backdrop = asset("/media/photo/P03-rider-1280.webp");
+  const backdropSm = asset("/media/photo/P03-rider-640.webp");
 
   return (
     <section id="rider" aria-labelledby="rider-title" className="rd">
-      <div className="rd-backdrop" aria-hidden style={{ "--rd-photo": `url(${backdrop.webp})` } as CSSProperties} />
+      <div className="rd-backdrop" aria-hidden style={{ "--rd-photo": `url(${backdrop})`, "--rd-photo-sm": `url(${backdropSm})` } as CSSProperties} />
 
       <div className="shell rd-grid">
         <div className="rd-intro">

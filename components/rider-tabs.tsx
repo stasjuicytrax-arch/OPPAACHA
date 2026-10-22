@@ -33,7 +33,7 @@ export function RiderTabs({ tabs }: { tabs: RiderTab[] }) {
 
   return (
     <div className="rd-tabs">
-      <LiquidGlass appearance="dark" material="regular" refraction={18} fallbackBlur={18} className="rd-switch">
+      <LiquidGlass priority={5} appearance="dark" material="regular" refraction={18} fallbackBlur={18} className="rd-switch">
         <div role="tablist" aria-label="Rider sections" className="rd-tablist" onKeyDown={onKey}>
           {tabs.map((t) => {
             const selected = t.id === current;
@@ -54,7 +54,7 @@ export function RiderTabs({ tabs }: { tabs: RiderTab[] }) {
               >
                 {selected ? (
                   <motion.span layoutId="rd-drop" className="rd-drop" transition={reduce ? { duration: 0 } : SPRING}>
-                    <LiquidGlass appearance="dark" material="clear" refraction={8} fallbackBlur={8} className="rd-drop-glass" />
+                    <LiquidGlass priority={3} appearance="dark" material="clear" refraction={8} fallbackBlur={8} className="rd-drop-glass" />
                   </motion.span>
                 ) : null}
                 {t.short ? (
@@ -73,7 +73,7 @@ export function RiderTabs({ tabs }: { tabs: RiderTab[] }) {
         </div>
       </LiquidGlass>
 
-      <LiquidGlass appearance="dark" material="regular" refraction={28} fallbackBlur={22} className="rd-panel">
+      <LiquidGlass priority={6} appearance="dark" material="regular" refraction={28} fallbackBlur={22} className="rd-panel">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={tab.id}

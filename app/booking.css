@@ -5,6 +5,9 @@
    -------------------------------------------------------------------------- */
 
 .bk {
+  /* skipped until near the viewport (blocks below the pinned Live) */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 1300px;
   position: relative;
   isolation: isolate;
   overflow: hidden;

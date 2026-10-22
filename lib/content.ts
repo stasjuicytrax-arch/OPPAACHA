@@ -65,6 +65,19 @@ export const photoSrc = (id: string, width = 640) => ({
   webp: `${BASE}/media/photo/${id}-${width}.webp`,
 });
 
+/**
+ * srcset for a photo. grey: the baked black-and-white variant (320 and 640
+ * only). src is the fallback for the <img> itself.
+ */
+export const photoSet = (id: string, widths: number[] = [320, 640, 1280], grey = false) => {
+  const name = (w: number, ext: string) => `${BASE}/media/photo/${id}${grey ? "-g" : ""}-${w}.${ext}`;
+  return {
+    avif: widths.map((w) => `${name(w, "avif")} ${w}w`).join(", "),
+    webp: widths.map((w) => `${name(w, "webp")} ${w}w`).join(", "),
+    src: name(widths[Math.min(1, widths.length - 1)], "webp"),
+  };
+};
+
 export const isTodo = (value: string | null | undefined) => !value || value === TODO;
 
 /** Nav order from TECH-SPEC 5.0; Booking sits apart as the primary action. */

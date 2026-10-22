@@ -3,7 +3,7 @@
 import * as React from "react";
 import { ClipLightbox } from "@/components/clip-lightbox";
 import { fmt, type PlayableClip } from "@/components/glass-stage";
-import { LiquidGlass } from "@/components/glass";
+import { LiquidGlass, isLite } from "@/components/glass";
 import { LoopVideo } from "@/components/loop-video";
 
 type LenisLike = {
@@ -32,6 +32,8 @@ export function LiveTrack({ clips, children }: { clips: PlayableClip[]; children
     let revert = () => {};
     let cancelled = false;
 
+    // lite devices get the swipe strip: GSAP is never downloaded there
+    if (isLite() || !matchMedia("(min-width: 768px) and (prefers-reduced-motion: no-preference)").matches) return;
     // GSAP loads only when this block mounts (DESIGN-SYSTEM.md 11: heavy parts lazy)
     (async () => {
       const [{ gsap }, { ScrollTrigger }] = await Promise.all([import("gsap"), import("gsap/ScrollTrigger")]);
@@ -98,6 +100,7 @@ export function LiveTrack({ clips, children }: { clips: PlayableClip[]; children
               <span className="live-card-frame">
                 <LoopVideo preview={c.preview} poster={c.poster} active={hover === c.id} className="live-card-media" />
                 <LiquidGlass
+                  priority={2}
                   appearance="dark"
                   material="regular"
                   refraction={8}

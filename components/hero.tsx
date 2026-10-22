@@ -3,33 +3,52 @@ import { ArrowUpRight, Play } from "lucide-react";
 import { TiltedGridHero } from "@/components/ui/tilted-grid-hero";
 import { GlassLink } from "@/components/glass";
 import { HeroClip } from "@/components/hero-clip";
-import { asset, bio, isTodo, photoSrc, photos, video } from "@/lib/content";
+import { PauseOffscreen } from "@/components/pause-offscreen";
+import { asset, bio, isTodo, photoSet, photos, video } from "@/lib/content";
 
 // Every photo except the cut-out, which waits for its own moment in #photo.
+// Baked black-and-white variants: the old CSS filter sat on the whole
+// animated layer and was recomputed every frame (performance, 22.10.2026).
 const ribbon = photos
   .filter((p) => p.kind !== "cutout")
   .map((p) => {
-    const s = photoSrc(p.id);
-    return { id: p.id, src: s.webp, avif: s.avif, alt: p.alt, ratio: p.ratio };
+    const s = photoSet(p.id, [320, 640], true);
+    return { id: p.id, src: s.src, srcSet: s.webp, avifSet: s.avif, alt: p.alt, ratio: p.ratio };
   });
 
 export function Hero() {
   return (
     <section id="intro" aria-label="OPPAACHA" className="hero">
-      <TiltedGridHero images={ribbon} columns={5} duration={64} className="hero-ribbon intro-ribbon" />
+      <TiltedGridHero
+        images={ribbon}
+        columns={5}
+        duration={64}
+        sizes="(max-width: 767px) 32vw, 19vw"
+        className="hero-ribbon intro-ribbon"
+      />
+      <PauseOffscreen selector=".hero-ribbon" />
       <div className="hero-light" aria-hidden />
 
       <div className="shell hero-body">
         <div className="hero-copy">
           <h1 className="intro-logo">
-            <img
-              src={asset("/media/brand/oppaacha-grunge-red.webp")}
-              alt="OPPAACHA"
-              width={1400}
-              height={1021}
-              fetchPriority="high"
-              className="hero-logo"
-            />
+            <picture>
+              <source
+                type="image/avif"
+                srcSet={`${asset("/media/brand/oppaacha-grunge-red-560.avif")} 560w, ${asset("/media/brand/oppaacha-grunge-red-800.avif")} 800w, ${asset("/media/brand/oppaacha-grunge-red-1400.avif")} 1400w`}
+                sizes="(max-width: 767px) 78vw, 40vw"
+              />
+              <img
+                src={asset("/media/brand/oppaacha-grunge-red.webp")}
+                srcSet={`${asset("/media/brand/oppaacha-grunge-red-560.webp")} 560w, ${asset("/media/brand/oppaacha-grunge-red-800.webp")} 800w, ${asset("/media/brand/oppaacha-grunge-red.webp")} 1400w`}
+                sizes="(max-width: 767px) 78vw, 40vw"
+                alt="OPPAACHA"
+                width={1400}
+                height={1021}
+                fetchPriority="high"
+                className="hero-logo"
+              />
+            </picture>
           </h1>
 
           {/* no tagline yet: the line is left out (client: no visible placeholders) */}
@@ -44,7 +63,7 @@ export function Hero() {
               <Play aria-hidden />
               Watch showreel
             </GlassLink>
-            <GlassLink href="#booking" tone="primary">
+            <GlassLink href="#booking" tone="primary" keep>
               Booking
               <ArrowUpRight aria-hidden />
             </GlassLink>
@@ -56,7 +75,17 @@ export function Hero() {
         </div>
       </div>
 
-      <img src={asset("/media/brand/oppaacha-wordmark-flat.webp")} alt="" aria-hidden width={2400} height={363} className="hero-underlay" />
+      <img
+        src={asset("/media/brand/oppaacha-wordmark-flat.webp")}
+        srcSet={`${asset("/media/brand/oppaacha-wordmark-flat-1200.webp")} 1200w, ${asset("/media/brand/oppaacha-wordmark-flat.webp")} 2400w`}
+        sizes="104vw"
+        alt=""
+        aria-hidden
+        width={2400}
+        height={363}
+        decoding="async"
+        className="hero-underlay"
+      />
     </section>
   );
 }

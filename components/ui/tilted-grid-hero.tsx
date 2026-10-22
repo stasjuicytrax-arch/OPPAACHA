@@ -21,6 +21,9 @@ export type TiltedGridImage = {
   src: string;
   alt: string;
   avif?: string;
+  /** srcset strings (with w descriptors) for the webp and avif sources */
+  srcSet?: string;
+  avifSet?: string;
   id?: string;
   /** width / height, keeps tiles from shifting while images load */
   ratio?: number;
@@ -34,6 +37,8 @@ export interface TiltedGridHeroProps {
   columns?: number;
   /** Seconds for one full loop of the slowest column. Default 60. */
   duration?: number;
+  /** sizes attribute for the tiles when srcSet is given */
+  sizes?: string;
 }
 
 function cx(...v: Array<string | false | undefined>) {
@@ -46,6 +51,7 @@ export function TiltedGridHero({
   children,
   columns = 4,
   duration = 60,
+  sizes,
 }: TiltedGridHeroProps) {
   // Deal images round-robin into columns, then rotate each column so
   // neighbours never start on the same photo.
@@ -82,11 +88,15 @@ export function TiltedGridHero({
                       style={{ aspectRatio: img.ratio ? String(img.ratio) : "2 / 3" }}
                     >
                       <picture>
-                        {img.avif ? <source srcSet={img.avif} type="image/avif" /> : null}
+                        {img.avifSet || img.avif ? (
+                          <source srcSet={img.avifSet ?? img.avif} sizes={img.avifSet ? sizes : undefined} type="image/avif" />
+                        ) : null}
                         <img
                           src={img.src}
+                          srcSet={img.srcSet}
+                          sizes={img.srcSet ? sizes : undefined}
                           alt={copy === 0 ? img.alt : ""}
-                          loading={copy === 0 ? "eager" : "lazy"}
+                          loading="lazy"
                           fetchPriority="low"
                           decoding="async"
                         />

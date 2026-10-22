@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 import { InView } from "@/components/in-view";
 import { CircularCarousel } from "@/components/ui/circular-carousel";
-import { asset, photoSrc, photos } from "@/lib/content";
+import { asset, photoSet, photos } from "@/lib/content";
 
 /**
  * Block 6 (TECH-SPEC 5.6), a loud block. Studio portraits turn on a ring;
@@ -12,10 +12,13 @@ import { asset, photoSrc, photos } from "@/lib/content";
 export function Photos() {
   const studio = photos
     .filter((p) => p.kind === "studio")
-    .map((p) => ({ id: p.id, alt: p.alt, src: photoSrc(p.id, 1280).webp, avif: photoSrc(p.id, 1280).avif }));
+    .map((p) => {
+      const s = photoSet(p.id);
+      return { id: p.id, alt: p.alt, src: s.src, srcSet: s.webp, avifSet: s.avif };
+    });
   const live = photos.filter((p) => p.kind === "live");
   const cutout = photos.find((p) => p.kind === "cutout")!;
-  const cut = photoSrc(cutout.id, 1280);
+  const cut = photoSet(cutout.id, [640, 1280]);
 
   return (
     <section id="photo" aria-labelledby="photo-title" className="ph">
@@ -35,12 +38,14 @@ export function Photos() {
       <div className="shell ph-bottom">
         <ul className="ph-grid">
           {live.map((p, i) => {
-            const s = photoSrc(p.id, 1280);
+            const s = photoSet(p.id);
+            // the first tile spans two rows (app/photos.css)
+            const sizes = i === 0 ? "(max-width: 767px) 46vw, 24vw" : "(max-width: 767px) 46vw, 17vw";
             return (
               <li key={p.id} className="ph-tile" data-asset-id={p.id} style={{ "--i": i } as CSSProperties}>
                 <picture>
-                  <source srcSet={s.avif} type="image/avif" />
-                  <img src={s.webp} alt={p.alt} loading="lazy" decoding="async" />
+                  <source srcSet={s.avif} sizes={sizes} type="image/avif" />
+                  <img src={s.src} srcSet={s.webp} sizes={sizes} alt={p.alt} loading="lazy" decoding="async" />
                 </picture>
               </li>
             );
@@ -49,13 +54,13 @@ export function Photos() {
 
         <figure className="ph-figure">
           <picture>
-            <source srcSet={cut.avif} type="image/avif" />
-            <img src={cut.webp} alt={cutout.alt} data-asset-id={cutout.id} className="ph-cutout" loading="lazy" decoding="async" />
+            <source srcSet={cut.avif} sizes="(max-width: 767px) 92vw, 40vw" type="image/avif" />
+            <img src={cut.src} srcSet={cut.webp} sizes="(max-width: 767px) 92vw, 40vw" alt={cutout.alt} data-asset-id={cutout.id} className="ph-cutout" loading="lazy" decoding="async" />
           </picture>
         </figure>
       </div>
 
-      <img src={asset("/media/brand/oppaacha-wordmark-flat.webp")} alt="" aria-hidden width={2400} height={363} className="ph-underlay" />
+      <img src={asset("/media/brand/oppaacha-wordmark-flat.webp")} srcSet={`${asset("/media/brand/oppaacha-wordmark-flat-1200.webp")} 1200w, ${asset("/media/brand/oppaacha-wordmark-flat.webp")} 2400w`} sizes="104vw" loading="lazy" decoding="async" alt="" aria-hidden width={2400} height={363} className="ph-underlay" />
     </section>
   );
 }

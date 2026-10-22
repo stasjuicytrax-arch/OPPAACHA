@@ -3,7 +3,7 @@
 import * as React from "react";
 import { AnimatePresence, motion, useMotionValue, useSpring } from "motion/react";
 import { Maximize2, Pause, Play, Volume2, VolumeX } from "lucide-react";
-import { LiquidGlass, LiquidGlassButton } from "@/components/glass";
+import { LiquidGlass, LiquidGlassButton, isLite } from "@/components/glass";
 import type { Video } from "@/lib/content";
 
 export type PlayableClip = Video & { src: string; poster: string };
@@ -26,6 +26,11 @@ export function GlassStage({
   mode?: "inview" | "open";
   className?: string;
 }) {
+  // lite devices: nothing preloads until a tap (performance, 22.10.2026)
+  const [lite, setLite] = React.useState(false);
+  React.useEffect(() => setLite(isLite()), []);
+  // the open lightbox outranks everything for a refraction slot
+  const stagePriority = mode === "open" ? 9 : 5;
   const stageRef = React.useRef<HTMLDivElement>(null);
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = React.useState(false);
@@ -53,7 +58,8 @@ export function GlassStage({
     const io = new IntersectionObserver(
       ([e]) => {
         if (e.isIntersecting) {
-          if (!userPaused.current && !matchMedia("(prefers-reduced-motion: reduce)").matches) v.play().catch(() => {});
+          // phones and weak devices: poster until a tap (performance, 22.10.2026)
+          if (!userPaused.current && !isLite() && !matchMedia("(prefers-reduced-motion: reduce)").matches) v.play().catch(() => {});
         } else if (!v.paused) v.pause();
       },
       { threshold: 0.35 }
@@ -144,7 +150,7 @@ export function GlassStage({
         muted={mode !== "open"}
         loop
         playsInline
-        preload="metadata"
+        preload={lite ? "none" : "metadata"}
         aria-label={`${clip.title}, video`}
         onClick={step}
         onPlay={() => setPlaying(true)}
@@ -171,15 +177,16 @@ export function GlassStage({
             transition={{ duration: 0.18 }}
             aria-hidden
           >
-            <LiquidGlass appearance="dark" material="regular" refraction={10} fallbackBlur={14} className="stage-chip-glass label">
+            <LiquidGlass priority={2} appearance="dark" material="regular" refraction={10} fallbackBlur={14} className="stage-chip-glass label">
               {chipLabel}
             </LiquidGlass>
           </motion.div>
         ) : null}
       </AnimatePresence>
 
-      <LiquidGlass appearance="dark" material="regular" refraction={20} fallbackBlur={18} className="stage-panel">
+      <LiquidGlass priority={stagePriority} appearance="dark" material="regular" refraction={20} fallbackBlur={18} className="stage-panel">
         <LiquidGlassButton
+          priority={2}
           size={null}
           interactive
           appearance="dark"
@@ -212,6 +219,7 @@ export function GlassStage({
         </span>
 
         <LiquidGlassButton
+          priority={2}
           size={null}
           interactive
           appearance="dark"
@@ -226,6 +234,7 @@ export function GlassStage({
           {muted || !clip.hasAudio ? <VolumeX aria-hidden /> : <Volume2 aria-hidden />}
         </LiquidGlassButton>
         <LiquidGlassButton
+          priority={2}
           size={null}
           interactive
           appearance="dark"

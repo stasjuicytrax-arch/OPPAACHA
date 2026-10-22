@@ -66,6 +66,7 @@ export function ClipLightbox({
             <GlassStage clip={clip} mode="open" className="lightbox-stage" />
             <div className="lightbox-bar">
               <LiquidGlass
+                priority={8}
                 appearance="dark"
                 material="regular"
                 refraction={8}
@@ -75,6 +76,7 @@ export function ClipLightbox({
                 {caption ?? clip.venue}
               </LiquidGlass>
               <LiquidGlassButton
+                priority={8}
                 size={null}
                 interactive
                 appearance="dark"

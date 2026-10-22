@@ -217,7 +217,74 @@ async function clip(id, { full = true, crop = true } = {}) {
 
 // --------------------------------------------------------------------------
 
+// --------------------------------------------------------------------------
+// Performance variants (22.10.2026): looks that used to be CSS filters on
+// big or animated layers are baked into the pixels, and smaller widths feed
+// srcset so phones never download desktop sizes.
+// --------------------------------------------------------------------------
+
+async function toBoth(pipeline, base, label) {
+  if (fresh(`${base}.webp`)) return;
+  const buf = await pipeline.toBuffer();
+  await sharp(buf).avif({ quality: 50 }).toFile(`${base}.avif`);
+  await sharp(buf).webp({ quality: 72 }).toFile(`${base}.webp`);
+  console.log(`perf ${label} ${kb(`${base}.webp`)}`);
+}
+
+async function perf() {
+  // Hero ribbon: was filter grayscale(1) contrast(1.08) brightness(0.86) on
+  // the whole animated layer. ((x * 0.86) - 0.5) * 1.08 + 0.5 = 0.929x - 0.04
+  for (const [id, file] of PHOTOS) {
+    if (id === "P13") continue;
+    for (const w of [320, 640]) {
+      const pipe = sharp(src("Photo", file)).rotate().resize({ width: w }).greyscale().linear(0.929, -10.2);
+      await toBoth(pipe, out("photo", `${id}-g-${w}`), `${id} grey ${w}`);
+    }
+    // 320 colour for srcset on small tiles
+    const pipe = sharp(src("Photo", file)).rotate().resize({ width: 320 });
+    await toBoth(pipe, out("photo", `${id}-320`), `${id} 320`);
+  }
+  // Rider backdrop: was grayscale(1) brightness(0.42) contrast(1.1).
+  // ((x * 0.42) - 0.5) * 1.1 + 0.5 = 0.462x + 0.05
+  for (const w of [640, 1280]) {
+    const pipe = sharp(src("Photo", "Live/KAWK0048.jpg")).rotate().resize({ width: w }).greyscale().linear(0.462, 12.75);
+    await toBoth(pipe, out("photo", `P03-rider-${w}`), `rider backdrop ${w}`);
+  }
+  // Showreel ambient: was blur(90px) saturate(1.5) brightness(0.42) on a
+  // full-section layer. A 48 px frame, upscaled by the browser, is the blur.
+  const ambient = out("video", "V03-ambient.webp");
+  if (!fresh(ambient)) {
+    await sharp(out("video", "V03-poster.webp")).resize({ width: 48 }).blur(1.2).modulate({ saturation: 1.5, brightness: 0.42 }).webp({ quality: 80 }).toFile(ambient);
+    console.log(`perf ambient ${kb(ambient)}`);
+  }
+  // Posters at 480 for cards (they show at 240-360 css px)
+  for (const id of ["V01", "V02", "V04", "V05", "V06", "V07", "V08", "V09", "V10", "V11", "V12"]) {
+    const posterSrc = out("video", `${id}-poster.webp`);
+    if (!existsSync(posterSrc)) continue;
+    await toBoth(sharp(posterSrc).resize({ width: 480 }), out("video", `${id}-poster-480`), `${id} poster 480`);
+  }
+  await toBoth(sharp(out("video", "V03-poster.webp")).resize({ width: 480 }), out("video", "V03-poster-480"), "V03 poster 480");
+  await toBoth(sharp(out("video", "V03-crop-poster.webp")).resize({ width: 640 }), out("video", "V03-crop-poster-640"), "V03 crop poster 640");
+  // The hero mark is the LCP: AVIF at three widths, WebP 560 for phones
+  for (const w of [560, 800, 1400]) {
+    const target = out("brand", `oppaacha-grunge-red-${w}.avif`);
+    if (fresh(target)) continue;
+    await sharp(out("brand", "oppaacha-grunge-red.png")).resize({ width: w }).avif({ quality: 55, effort: 6 }).toFile(target);
+    console.log(`perf grunge-red ${w} avif ${kb(target)}`);
+  }
+  const red560 = out("brand", "oppaacha-grunge-red-560.webp");
+  if (!fresh(red560)) await sharp(out("brand", "oppaacha-grunge-red.png")).resize({ width: 560 }).webp({ quality: 85, alphaQuality: 90 }).toFile(red560);
+  // Brand marks at phone sizes
+  for (const [name, w] of [["oppaacha-grunge-red", 800], ["oppaacha-wordmark-flat", 1200]]) {
+    const target = out("brand", `${name}-${w}.webp`);
+    if (fresh(target)) continue;
+    await sharp(out("brand", `${name}.webp`)).resize({ width: w }).webp({ quality: 88, alphaQuality: 90 }).toFile(target);
+    console.log(`perf ${name} ${w} ${kb(target)}`);
+  }
+}
+
 const tasks = {
+  perf,
   hero: async () => {
     await logos();
     await photos([640]);

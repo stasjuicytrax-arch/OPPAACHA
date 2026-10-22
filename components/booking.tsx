@@ -120,7 +120,7 @@ export function Booking() {
         </footer>
       </div>
 
-      <img src={asset("/media/brand/oppaacha-wordmark-flat.webp")} alt="" aria-hidden width={2400} height={363} className="bk-underlay" />
+      <img src={asset("/media/brand/oppaacha-wordmark-flat.webp")} srcSet={`${asset("/media/brand/oppaacha-wordmark-flat-1200.webp")} 1200w, ${asset("/media/brand/oppaacha-wordmark-flat.webp")} 2400w`} sizes="104vw" loading="lazy" decoding="async" alt="" aria-hidden width={2400} height={363} className="bk-underlay" />
     </section>
   );
 }

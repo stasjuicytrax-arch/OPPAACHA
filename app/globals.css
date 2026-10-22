@@ -282,6 +282,70 @@
 }
 
 /* --------------------------------------------------------------------------
+   Static glass ([data-liquid-glass="off"], components/glass.tsx): what every
+   glass element shows when it holds no refraction slot, and everywhere on
+   lite devices. No backdrop-filter: a translucent fill, a top-lit gradient,
+   a 1px rim and the inner highlight and lowlight from DESIGN-SYSTEM.md 7.3.
+   -------------------------------------------------------------------------- */
+
+[data-liquid-glass="off"] {
+  background-color: rgb(22 22 22 / 0.72);
+  background-image: linear-gradient(180deg, rgb(255 255 255 / 0.11), rgb(255 255 255 / 0.03) 55%, rgb(255 255 255 / 0.05));
+  /* !important: the component sets an inline drop shadow */
+  box-shadow: var(--glass-highlight), var(--glass-lowlight), inset 0 0 0 1px var(--glass-rim) !important;
+}
+.glass-primary[data-liquid-glass="off"] {
+  background-color: rgb(216 4 44 / 0.8);
+  background-image: linear-gradient(180deg, rgb(255 255 255 / 0.16), rgb(255 255 255 / 0) 60%);
+}
+.nav-capsule[data-liquid-glass="off"] {
+  background-color: rgb(18 18 18 / 0.8);
+}
+.nav-drop[data-liquid-glass="off"],
+.rd-drop-glass[data-liquid-glass="off"] {
+  background-color: rgb(255 255 255 / 0.13);
+  background-image: none;
+}
+.rd-panel[data-liquid-glass="off"],
+.nav-sheet[data-liquid-glass="off"] {
+  background-color: rgb(16 16 16 / 0.86);
+}
+.stage-panel[data-liquid-glass="off"] {
+  background-color: rgb(14 14 14 / 0.62);
+}
+.stage-btn[data-liquid-glass="off"],
+.nav-booking[data-liquid-glass="off"] {
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.18) !important;
+}
+.stage-btn[data-liquid-glass="off"] {
+  background-color: rgb(255 255 255 / 0.08);
+  background-image: none;
+}
+
+/* Lite devices: real glass only for the menu button and the main Booking
+   (data-glass-keep): a plain 12px blur, no SVG, no canvas maps. */
+[data-lite] [data-glass-keep][data-liquid-glass="off"] {
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  background-color: rgb(22 22 22 / 0.42);
+}
+[data-lite] .glass-primary[data-glass-keep][data-liquid-glass="off"] {
+  /* stays the red primary over bright photo tiles (finish review) */
+  background-color: rgb(216 4 44 / 0.78);
+}
+
+/* Lite devices: the one remaining backdrop-filter outside glass goes too,
+   and the film grain stops moving. */
+[data-lite] .lightbox {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background: rgb(10 10 10 / 0.92);
+}
+[data-lite] .grain {
+  animation: none;
+}
+
+/* --------------------------------------------------------------------------
    Tilted grid (components/ui/tilted-grid-hero.tsx)
    -------------------------------------------------------------------------- */
 
@@ -319,7 +383,10 @@
   gap: clamp(10px, 1.2vw, 18px);
   animation: tgh-stream var(--tgh-dur) linear infinite;
   animation-direction: var(--tgh-dir);
-  will-change: transform;
+}
+/* paused while the hero is off screen (components/ui/tilted-grid-hero.tsx) */
+.tgh[data-paused] .tgh-track {
+  animation-play-state: paused;
 }
 .tgh-tile {
   margin: 0;

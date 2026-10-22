@@ -11,7 +11,8 @@
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  /* clip, not hidden: hidden makes a scroll container and breaks the scroll-driven depth */
+  overflow: clip;
   background: #101010;
   border-bottom-left-radius: var(--radius-panel);
   border-bottom-right-radius: var(--radius-panel);

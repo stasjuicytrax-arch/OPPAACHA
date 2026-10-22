@@ -10,7 +10,8 @@
   contain-intrinsic-size: auto 1300px;
   position: relative;
   isolation: isolate;
-  overflow: hidden;
+  /* clip, not hidden: hidden makes a scroll container and breaks the scroll-driven depth */
+  overflow: clip;
   padding-top: var(--section-y);
   background:
     radial-gradient(70% 55% at 50% 100%, rgb(216 4 44 / 0.62), transparent 72%),

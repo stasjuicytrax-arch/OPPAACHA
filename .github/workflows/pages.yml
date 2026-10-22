@@ -29,7 +29,7 @@ jobs:
       # postbuild runs scripts/verify-coverage.mjs, so the gate runs here too
       - run: npm run build
         env:
-          NEXT_PUBLIC_BASE_PATH: /OPPAACHA
+          NEXT_PUBLIC_BASE_PATH: ""
       - run: touch out/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:

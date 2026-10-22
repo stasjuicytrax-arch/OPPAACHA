@@ -6,26 +6,26 @@ import { asset, bio, stillSet, video } from "@/lib/content";
 
 /**
  * Hero (client brief 22.10.2026, block 1): a concert shot at the foot of
- * Mount Batur instead of the photo collage. The Batur clip plays when it is
- * encoded; until then its frame is the picture. Roles, genres, the labels
- * the music came out on, then Listen · Watch · Booking.
+ * Mount Batur instead of the photo collage: the still paints first, the
+ * Batur loop fades in over it once the page has loaded (desktop only).
+ * Roles, genres, the labels the music came out on, then Listen · Watch ·
+ * Booking.
  */
 export function Hero() {
   const h = bio.hero;
   const clip = video(h.video);
-  const still = stillSet(h.poster, [640, 1280, 1920]);
+  // the sharpest frame of the opening wide shot, from the original (scripts/media.mjs heroStill)
+  const still = stillSet(h.poster, [960, 1440, 1920]);
 
   return (
     <section id="intro" aria-label="OPPAACHA" className="hero">
       <div className="hero-media" aria-hidden>
-        {clip.preview && clip.poster ? (
-          <LoopVideo preview={clip.preview} poster={clip.poster} sizes="100vw" className="hero-video" />
-        ) : (
-          <picture>
-            <source type="image/avif" srcSet={still.avif} sizes="100vw" />
-            <img src={still.src} srcSet={still.webp} sizes="100vw" alt="" width={1920} height={1080} fetchPriority="high" decoding="async" className="hero-still" />
-          </picture>
-        )}
+        <picture>
+          <source type="image/avif" srcSet={still.avif} sizes="100vw" />
+          <img src={`${asset(h.poster)}-1920.webp`} srcSet={still.webp} sizes="100vw" alt="" width={1920} height={1080} fetchPriority="high" decoding="async" className="hero-still" />
+        </picture>
+        {/* 10 s silent 1080p loop over the still; never on lite devices (LoopVideo) */}
+        {h.loop ? <LoopVideo preview={asset(h.loop)} poster={null} className="hero-video" /> : null}
       </div>
       <div className="hero-light" aria-hidden />
 

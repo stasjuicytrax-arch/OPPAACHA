@@ -150,6 +150,17 @@ export const CLIPS = {
   V10: { file: "Support/Adriatique (Oppaacha - My Soul).MP4", start: 3 },
   V11: { file: "Support/CamelPhat (Don_t Stop) 1.MP4", start: 25 },
   V12: { file: "Support/Solomun 3.MP4", start: 4 },
+  // Client brief 22.10.2026: downloaded from the brief's drive links into
+  // Video/New/<id>/. V13 is also the hero; V14 runs 110 s, so it gets the
+  // long-clip budget. V17 is the stronger of the two Solomun Don't Stop clips.
+  V13: { file: "Video/New/V13/Vulcano Batur Set.mp4", start: 1 },
+  V14: { file: "Video/New/V14/Promise Yourself Batur (16x9).mp4", start: 5.5, budget: [21500, 13000] },
+  V15: { file: "Video/New/V15/Trip", start: 11 },
+  V16: { file: "Video/New/V16/Trip 2025", start: 10 },
+  V17: { file: "Video/New/V17/Solomun", start: 12 },
+  V18: { file: "Video/New/V18/R3HAB", start: 7 },
+  V19: { file: "Video/New/V19/Layton Giordani", start: 14 },
+  V20: { file: "Video/New/V20/CamelPhat x Oppaacha - In My Hands.MP4", start: 15 },
 };
 
 async function poster(input, at, vf, name) {
@@ -210,7 +221,8 @@ async function clip(id, { full = true, crop = true } = {}) {
   }
   if (!full) return;
   preview(input, c.start, "scale=-2:720:flags=lanczos,fps=25", `${id}-preview`);
-  await poster(input, c.start + 1, "scale=900:-2:flags=lanczos", `${id}-poster`);
+  // landscape posters at 1280 (they fill a wide card or the stage), portrait at 900
+  await poster(input, c.start + 1, "scale='if(gt(iw,ih),1280,900)':-2:flags=lanczos", `${id}-poster`);
   encode(input, 1080, `${id}-1080`, c.budget);
   encode(input, 720, `${id}-720`, c.budget);
 }
@@ -258,7 +270,7 @@ async function perf() {
     console.log(`perf ambient ${kb(ambient)}`);
   }
   // Posters at 480 for cards (they show at 240-360 css px)
-  for (const id of ["V01", "V02", "V04", "V05", "V06", "V07", "V08", "V09", "V10", "V11", "V12"]) {
+  for (const id of ["V01", "V02", "V04", "V05", "V06", "V07", "V08", "V09", "V10", "V11", "V12", ...BRIEF_CLIPS]) {
     const posterSrc = out("video", `${id}-poster.webp`);
     if (!existsSync(posterSrc)) continue;
     await toBoth(sharp(posterSrc).resize({ width: 480 }), out("video", `${id}-poster-480`), `${id} poster 480`);
@@ -283,7 +295,56 @@ async function perf() {
   }
 }
 
+// --------------------------------------------------------------------------
+// Hero (client brief 22.10.2026): the Batur clip full bleed. The still is
+// the sharpest frame of the opening wide shot, taken from the original at
+// full resolution (not the re-compressed reference JPG), lightly sharpened
+// and compressed gently; the loop is a 10 s silent 1080p cut, since the
+// 720p card previews look soft at full screen.
+// --------------------------------------------------------------------------
+
+const BRIEF_CLIPS = ["V13", "V14", "V15", "V16", "V17", "V18", "V19", "V20"];
+
+async function heroStill(id, from, to) {
+  const base = out("video", `${id}-hero-1920.webp`);
+  if (fresh(base)) return;
+  const input = src(CLIPS[id].file);
+  let best = null;
+  for (let t = from; t <= to; t += 0.2) {
+    const png = out("video", `${id}-hero-probe.png`);
+    ffmpeg(["-ss", t.toFixed(2), "-i", input, "-frames:v", "1", png]);
+    // sharpness: spread of the Laplacian
+    const { channels } = await sharp(png).greyscale().convolve({ width: 3, height: 3, kernel: [0, 1, 0, 1, -4, 1, 0, 1, 0] }).stats();
+    const score = channels[0].stdev;
+    if (!best || score > best.score) best = { t, score, buf: await sharp(png).toBuffer() };
+    rmSync(png);
+  }
+  for (const w of [960, 1440, 1920]) {
+    const pipe = () => sharp(best.buf).resize({ width: w, kernel: "lanczos3" }).sharpen({ sigma: 0.6, m1: 0.6, m2: 1.2 });
+    await pipe().avif({ quality: 72, effort: 6, chromaSubsampling: "4:4:4" }).toFile(out("video", `${id}-hero-${w}.avif`));
+    await pipe().webp({ quality: 88, smartSubsample: true }).toFile(out("video", `${id}-hero-${w}.webp`));
+  }
+  console.log(`hero still ${id} at ${best.t.toFixed(2)} s, ${kb(base)}`);
+}
+
+function heroLoop(id, at, seconds) {
+  const target = out("video", `${id}-hero-loop.mp4`);
+  if (fresh(target)) return;
+  ffmpeg([
+    "-ss", String(at), "-t", String(seconds), "-i", src(CLIPS[id].file), "-an",
+    "-vf", "scale=1920:-2:flags=lanczos,fps=25",
+    "-c:v", "libx264", "-preset", "slow", "-crf", "22", "-maxrate", "5000k", "-bufsize", "10000k",
+    "-pix_fmt", "yuv420p", "-movflags", "+faststart", target,
+  ]);
+  console.log(`hero loop ${id} ${kb(target)}`);
+}
+
 const tasks = {
+  brief: async () => {
+    for (const id of BRIEF_CLIPS) await clip(id);
+    await heroStill("V13", 1.2, 3.2);
+    heroLoop("V13", 0.5, 10);
+  },
   perf,
   hero: async () => {
     await logos();

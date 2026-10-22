@@ -4,13 +4,24 @@
   "realName": "Vladislav Liuborets",
   "tagline": "Music producer & DJ. Owner of Become Human Records",
   "hero": {
-    "roles": ["Music producer & DJ", "Owner of Become Human Records"],
+    "roles": [
+      "Music producer & DJ",
+      "Owner of Become Human Records"
+    ],
     "genres": "Indie Dance · Melodic House / Techno",
-    "releasesOn": ["Diynamic", "Insomniac / IN / ROTATION", "Smash The House", "Armada", "Kontor", "Bar 25 Music"],
+    "releasesOn": [
+      "Diynamic",
+      "Insomniac / IN / ROTATION",
+      "Smash The House",
+      "Armada",
+      "Kontor",
+      "Bar 25 Music"
+    ],
     "logos": "TODO_LABEL_LOGOS",
     "video": "V13",
-    "poster": "/media/brief/batur-hero",
-    "posterAlt": "OPPAACHA playing outdoors with the Batur volcano in the background, Bali"
+    "poster": "/media/video/V13-hero",
+    "posterAlt": "OPPAACHA playing outdoors with the Batur volcano in the background, Bali",
+    "loop": "/media/video/V13-hero-loop.mp4"
   },
   "bio": [
     "Behind Oppaacha is Vladislav Liuborets, whose relationship with electronic music dates back to 2007. At just 12 years old, he discovered trance and EDM and began making his first tracks.",
@@ -83,9 +94,15 @@
         "alt": "Poster for the Oppaacha debut Australian tour, Melbourne and Sydney"
       }
     },
-    { "text": "TRIP Festival headliner - 2025" },
-    { "text": "Closing set on the final day of Day Zero at Savaya Bali - 2026" },
-    { "text": "Selected appearances across Bali, Ibiza, Singapore, Bangkok, Ulaanbaatar & Istanbul" }
+    {
+      "text": "TRIP Festival headliner - 2025"
+    },
+    {
+      "text": "Closing set on the final day of Day Zero at Savaya Bali - 2026"
+    },
+    {
+      "text": "Selected appearances across Bali, Ibiza, Singapore, Bangkok, Ulaanbaatar & Istanbul"
+    }
   ],
   "label": {
     "name": "Become Human Records",
@@ -102,11 +119,20 @@
   "marquee": [
     {
       "label": "Performed at",
-      "items": ["Savaya, Bali", "TRIP Festival", "Flava, Moscow", "Batur, Bali"]
+      "items": [
+        "Savaya, Bali",
+        "TRIP Festival",
+        "Flava, Moscow",
+        "Batur, Bali"
+      ]
     },
     {
       "label": "Music played at",
-      "items": ["Tomorrowland", "EDC", "Ultra"]
+      "items": [
+        "Tomorrowland",
+        "EDC",
+        "Ultra"
+      ]
     }
   ]
 }

@@ -3,11 +3,15 @@ import { InView } from "@/components/in-view";
 import { LiveTrack } from "@/components/live-track";
 import { videos } from "@/lib/content";
 
-/** Block 4 (TECH-SPEC 5.4): V04 to V08, OPPAACHA's own sets on stage. */
+// Batur and TRIP first (client brief 22.10.2026), venues alternating.
+const ORDER = ["V13", "V16", "V05", "V15", "V14", "V04", "V07", "V08"];
+
+/** Live on stage: OPPAACHA's own sets, the brief's compact selection. */
 export function Live() {
   const clips = videos
-    // clips still on drive (src null) wait for the media pipeline
-    .flatMap((v) => (v.section === "live" && v.src && v.poster ? [{ ...v, src: v.src, poster: v.poster }] : []));
+    // a clip still on drive (src null) waits for the media pipeline
+    .flatMap((v) => (v.section === "live" && v.src && v.poster ? [{ ...v, src: v.src, poster: v.poster }] : []))
+    .sort((a, b) => ORDER.indexOf(a.id) - ORDER.indexOf(b.id));
 
   return (
     <section id="live" aria-labelledby="live-title" className="live">

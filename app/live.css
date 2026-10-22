@@ -66,6 +66,10 @@
   background: var(--surface);
   box-shadow: inset 0 0 0 1px var(--line);
 }
+/* landscape clips (Batur, TRIP 2025) keep their 16:9 at the same height */
+.live-card-frame[data-wide] {
+  aspect-ratio: 16 / 9;
+}
 .live-card-media,
 .live-card-media img,
 .live-card-media video {
@@ -197,6 +201,10 @@
   }
   .live-card-frame {
     height: min(62dvh, 520px);
+  }
+  .live-card-frame[data-wide] {
+    width: 86vw;
+    height: auto;
   }
   .live .ss {
     padding: 0 20px var(--section-y);

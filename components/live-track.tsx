@@ -98,7 +98,7 @@ export function LiveTrack({ clips, children }: { clips: PlayableClip[]; children
               onClick={() => setOpen(c)}
               aria-label={`Play ${[c.place ?? c.venue, c.track].filter(Boolean).join(", ")}`}
             >
-              <span className="live-card-frame">
+              <span className="live-card-frame" data-wide={c.orientation === "landscape" || undefined}>
                 <LoopVideo preview={c.preview} poster={c.poster} active={hover === c.id} className="live-card-media" />
                 {/* the track, when known, on its own line (client brief: venue / event · city, then the track) */}
                 {c.track ? (

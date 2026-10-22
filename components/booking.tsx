@@ -1,12 +1,11 @@
 import type { CSSProperties } from "react";
-import { ArrowUpRight, FileText, Mail } from "lucide-react";
+import { ArrowUpRight, FileText, Images, Mail } from "lucide-react";
 import { siBeatport, siInstagram, siSoundcloud, siSpotify, siTelegram, siWhatsapp, type SimpleIcon } from "simple-icons";
 import contacts from "@/content/contacts.json";
-import riderJson from "@/content/rider.json";
 import { CopyEmail } from "@/components/copy-email";
 import { GlassLink } from "@/components/glass";
 import { InView } from "@/components/in-view";
-import { asset, bio } from "@/lib/content";
+import { asset, bio, finalPhotos, photoSet } from "@/lib/content";
 
 const ICONS: Record<string, SimpleIcon> = {
   Spotify: siSpotify,
@@ -24,20 +23,34 @@ function Brand({ icon }: { icon: SimpleIcon }) {
 }
 
 /**
- * Block 9 (TECH-SPEC 5.9), the loud close: red light, the giant OPPAACHA
- * underneath, the inverse contact card in the middle, then the one action,
- * Write to booking, and the socials. All contacts from the PromoKit.
+ * The closing block (client brief 22.10.2026, block 10): two photos, the
+ * inverse contact card, then Press photos & logos · Download rider ·
+ * Booking, and the socials. Red light, the giant OPPAACHA underneath.
+ * Contacts as before (PromoKit); the rider is the PDF only.
  */
 export function Booking() {
   const { booking, socials } = contacts;
   const subject = encodeURIComponent("Booking request: OPPAACHA");
   const wa = `https://wa.me/${booking.whatsapp.replace(/\D/g, "")}`;
   const tg = `https://t.me/${booking.telegram.replace(/^@/, "")}`;
-  const instagram = socials.find((s) => s.network === "Instagram");
 
   return (
     <section id="booking" aria-labelledby="booking-title" className="bk">
       <div className="shell bk-inner">
+        <InView as="ul" stagger className="bk-photos">
+          {finalPhotos.map((p, i) => {
+            const set = photoSet(p.id, [640, 1280]);
+            return (
+              <li key={p.id} className="bk-photo" data-asset-id={p.id} style={{ "--i": i } as CSSProperties}>
+                <picture>
+                  <source type="image/avif" srcSet={set.avif} sizes="(max-width: 767px) 46vw, 30vw" />
+                  <img src={set.src} srcSet={set.webp} sizes="(max-width: 767px) 46vw, 30vw" alt={p.alt} width={640} height={Math.round(640 / p.ratio)} loading="lazy" decoding="async" />
+                </picture>
+              </li>
+            );
+          })}
+        </InView>
+
         <InView as="h2" className="bk-title display">
           <span id="booking-title" className="m-line" style={{ "--i": 0 } as CSSProperties}>
             <span className="m-line-inner text-muted">See u on the</span>
@@ -78,19 +91,17 @@ export function Booking() {
         </article>
 
         <InView as="div" stagger className="bk-actions">
+          <GlassLink href={contacts.media.pressFolder} tone="clear" target="_blank" rel="noopener noreferrer" aria-label="Press photos and logos on Google Drive (opens in a new tab)">
+            <Images aria-hidden />
+            Press photos &amp; logos
+          </GlassLink>
+          <GlassLink href={asset(contacts.media.rider)} tone="clear" download>
+            <FileText aria-hidden />
+            Download rider
+          </GlassLink>
           <GlassLink href={`mailto:${booking.email}?subject=${subject}`} tone="primary">
             <Mail aria-hidden />
-            Write to booking
-          </GlassLink>
-          {instagram ? (
-            <GlassLink href={instagram.url} tone="clear" target="_blank" rel="noopener noreferrer" aria-label={`Instagram ${instagram.handle} (opens in a new tab)`}>
-              <Brand icon={siInstagram} />
-              {instagram.handle}
-            </GlassLink>
-          ) : null}
-          <GlassLink href={asset(riderJson.pdf)} tone="clear" download>
-            <FileText aria-hidden />
-            Rider (PDF)
+            Booking
           </GlassLink>
         </InView>
 
@@ -106,12 +117,6 @@ export function Booking() {
               </li>
             );
           })}
-          <li>
-            <a href={contacts.media.pressFolder} target="_blank" rel="noopener noreferrer" className="bk-social" aria-label="Press photos and media on Google Drive (opens in a new tab)">
-              <ArrowUpRight aria-hidden className="bk-brand" />
-              <span>Press folder</span>
-            </a>
-          </li>
         </ul>
 
         <footer className="bk-footer">

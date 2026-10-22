@@ -1,32 +1,32 @@
 import type { CSSProperties } from "react";
-import { ArrowUpRight, Play } from "lucide-react";
-import { TiltedGridHero } from "@/components/ui/tilted-grid-hero";
+import { ArrowUpRight, Headphones, Play } from "lucide-react";
 import { GlassLink } from "@/components/glass";
-import { HeroClip } from "@/components/hero-clip";
-import { PauseOffscreen } from "@/components/pause-offscreen";
-import { asset, bio, isTodo, photoSet, photos, video } from "@/lib/content";
+import { LoopVideo } from "@/components/loop-video";
+import { asset, bio, stillSet, video } from "@/lib/content";
 
-// Every photo except the cut-out, which waits for its own moment in #photo.
-// Baked black-and-white variants: the old CSS filter sat on the whole
-// animated layer and was recomputed every frame (performance, 22.10.2026).
-const ribbon = photos
-  .filter((p) => p.kind !== "cutout")
-  .map((p) => {
-    const s = photoSet(p.id, [320, 640], true);
-    return { id: p.id, src: s.src, srcSet: s.webp, avifSet: s.avif, alt: p.alt, ratio: p.ratio };
-  });
-
+/**
+ * Hero (client brief 22.10.2026, block 1): a concert shot at the foot of
+ * Mount Batur instead of the photo collage. The Batur clip plays when it is
+ * encoded; until then its frame is the picture. Roles, genres, the labels
+ * the music came out on, then Listen · Watch · Booking.
+ */
 export function Hero() {
+  const h = bio.hero;
+  const clip = video(h.video);
+  const still = stillSet(h.poster, [640, 1280, 1920]);
+
   return (
     <section id="intro" aria-label="OPPAACHA" className="hero">
-      <TiltedGridHero
-        images={ribbon}
-        columns={5}
-        duration={64}
-        sizes="(max-width: 767px) 32vw, 19vw"
-        className="hero-ribbon intro-ribbon"
-      />
-      <PauseOffscreen selector=".hero-ribbon" />
+      <div className="hero-media" aria-hidden>
+        {clip.preview && clip.poster ? (
+          <LoopVideo preview={clip.preview} poster={clip.poster} sizes="100vw" className="hero-video" />
+        ) : (
+          <picture>
+            <source type="image/avif" srcSet={still.avif} sizes="100vw" />
+            <img src={still.src} srcSet={still.webp} sizes="100vw" alt="" width={1920} height={1080} fetchPriority="high" decoding="async" className="hero-still" />
+          </picture>
+        )}
+      </div>
       <div className="hero-light" aria-hidden />
 
       <div className="shell hero-body">
@@ -36,32 +36,37 @@ export function Hero() {
               <source
                 type="image/avif"
                 srcSet={`${asset("/media/brand/oppaacha-grunge-red-560.avif")} 560w, ${asset("/media/brand/oppaacha-grunge-red-800.avif")} 800w, ${asset("/media/brand/oppaacha-grunge-red-1400.avif")} 1400w`}
-                sizes="(max-width: 767px) 78vw, 40vw"
+                sizes="(max-width: 767px) 70vw, 34vw"
               />
               <img
                 src={asset("/media/brand/oppaacha-grunge-red.webp")}
                 srcSet={`${asset("/media/brand/oppaacha-grunge-red-560.webp")} 560w, ${asset("/media/brand/oppaacha-grunge-red-800.webp")} 800w, ${asset("/media/brand/oppaacha-grunge-red.webp")} 1400w`}
-                sizes="(max-width: 767px) 78vw, 40vw"
+                sizes="(max-width: 767px) 70vw, 34vw"
                 alt="OPPAACHA"
                 width={1400}
                 height={1021}
-                fetchPriority="high"
                 className="hero-logo"
               />
             </picture>
           </h1>
 
-          {/* no tagline yet: the line is left out (client: no visible placeholders) */}
-          {isTodo(bio.tagline) ? null : (
-            <p className="hero-tagline intro-line" style={{ "--i": 1 } as CSSProperties}>
-              {bio.tagline}
-            </p>
-          )}
+          <p className="hero-roles intro-line" style={{ "--i": 1 } as CSSProperties}>
+            {h.roles.map((r) => (
+              <span key={r}>{r}</span>
+            ))}
+          </p>
+          <p className="hero-genres label intro-line" style={{ "--i": 2 } as CSSProperties}>
+            {h.genres}
+          </p>
 
-          <div className="hero-actions intro-line" style={{ "--i": 2 } as CSSProperties}>
-            <GlassLink href="#video" tone="clear">
+          <div className="hero-actions intro-line" style={{ "--i": 3 } as CSSProperties}>
+            <GlassLink href="#releases" tone="clear">
+              <Headphones aria-hidden />
+              Listen
+            </GlassLink>
+            <GlassLink href="#live" tone="clear">
               <Play aria-hidden />
-              Watch showreel
+              Watch
             </GlassLink>
             <GlassLink href="#booking" tone="primary" keep>
               Booking
@@ -70,11 +75,17 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="hero-aside intro-line" style={{ "--i": 3 } as CSSProperties}>
-          <HeroClip video={video("V03")} />
+        <div className="hero-labels intro-line" style={{ "--i": 4 } as CSSProperties}>
+          <p className="label text-muted">Releases on</p>
+          {/* names stand in until the official logos arrive */}
+          <ul className="hero-label-row">
+            {h.releasesOn.map((l) => (
+              <li key={l}>{l}</li>
+            ))}
+          </ul>
+          {clip.place ? <p className="hero-place label">{clip.place}</p> : null}
         </div>
       </div>
-
     </section>
   );
 }

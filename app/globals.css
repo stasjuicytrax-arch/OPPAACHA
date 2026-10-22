@@ -301,12 +301,10 @@
 .nav-capsule[data-liquid-glass="off"] {
   background-color: rgb(18 18 18 / 0.8);
 }
-.nav-drop[data-liquid-glass="off"],
-.rd-drop-glass[data-liquid-glass="off"] {
+.nav-drop[data-liquid-glass="off"] {
   background-color: rgb(255 255 255 / 0.13);
   background-image: none;
 }
-.rd-panel[data-liquid-glass="off"],
 .nav-sheet[data-liquid-glass="off"] {
   background-color: rgb(16 16 16 / 0.86);
 }
@@ -436,77 +434,6 @@ section[id] {
   transform: scaleX(0.04);
 }
 
-/* --------------------------------------------------------------------------
-   Tilted grid (components/ui/tilted-grid-hero.tsx)
-   -------------------------------------------------------------------------- */
-
-.tgh {
-  position: relative;
-}
-.tgh-stage {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  perspective: 1400px;
-  perspective-origin: 70% 40%;
-  pointer-events: none;
-}
-.tgh-plane {
-  position: absolute;
-  top: -30%;
-  left: 34%;
-  width: 100%;
-  height: 170%;
-  display: grid;
-  grid-template-columns: repeat(var(--tgh-cols), minmax(0, 1fr));
-  gap: clamp(10px, 1.2vw, 18px);
-  transform: rotateX(38deg) rotateY(-14deg) rotateZ(-24deg);
-  transform-origin: 50% 40%;
-  transform-style: preserve-3d;
-}
-.tgh-col {
-  overflow: visible;
-  transform: translateY(var(--tgh-offset));
-}
-.tgh-track {
-  display: flex;
-  flex-direction: column;
-  gap: clamp(10px, 1.2vw, 18px);
-  animation: tgh-stream var(--tgh-dur) linear infinite;
-  animation-direction: var(--tgh-dir);
-}
-/* paused while the hero is off screen (components/ui/tilted-grid-hero.tsx) */
-.tgh[data-paused] .tgh-track {
-  animation-play-state: paused;
-}
-.tgh-tile {
-  margin: 0;
-  overflow: hidden;
-  border-radius: var(--radius-sm);
-  background: var(--surface-2);
-}
-.tgh-tile img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-@keyframes tgh-stream {
-  from { transform: translate3d(0, 0, 0); }
-  /* one copy plus one gap */
-  to { transform: translate3d(0, calc(-50% - clamp(10px, 1.2vw, 18px) / 2), 0); }
-}
-
-@media (max-width: 767px) {
-  .tgh-plane {
-    top: -10%;
-    left: -20%;
-    width: 150%;
-    height: 120%;
-    transform: rotateX(40deg) rotateZ(-22deg);
-  }
-}
-
 /* Film grain, fixed and inert so it never repaints with the scroll. */
 .grain {
   position: fixed;
@@ -595,7 +522,7 @@ html.lenis body {
 }
 
 /* Scroll-driven depth (DESIGN-SYSTEM 8.4), desktop only, compositor only:
-   the hero copy drifts up and dims as it leaves, the photo ribbon lags,
+   the hero copy drifts up and dims as it leaves, the Batur shot lags,
    the giant underlays move slower than the content around them. */
 @supports (animation-timeline: view()) {
   /* phones too: compositor-only, no JS (client asked for visible motion) */
@@ -605,12 +532,11 @@ html.lenis body {
       animation-timeline: view();
       animation-range: exit 0% exit 100%;
     }
-    html .hero-ribbon {
+    html .hero-media {
       animation: px-lag linear both;
       animation-timeline: view();
       animation-range: exit 0% exit 100%;
     }
-    html .ph-underlay,
     html .bk-underlay {
       animation: px-underlay linear both;
       animation-timeline: view();

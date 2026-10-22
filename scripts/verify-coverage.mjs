@@ -67,7 +67,7 @@ function check(n, label, sectionId, ok, detail = "", pend = "") {
 {
   const s = section("collab");
   const v = videos.find((x) => x.id === bio.collab.video);
-  const ok = has(s, v.id) && /Upcoming/.test(s) && s.includes("CamelPhat");
+  const ok = has(s, v.id) && /Upcoming/.test(s) && s.includes("CamelPhat") && !!v.src;
   check(2, "Collaboration: CamelPhat video, caption says Upcoming", "collab", ok, "", v.src ? "" : `${v.id} still on drive (poster only)`);
 }
 

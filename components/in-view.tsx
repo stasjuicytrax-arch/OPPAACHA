@@ -13,7 +13,7 @@ export function InView({
   as: Tag = "div",
   className,
   children,
-  amount = 0.2,
+  amount = 0.3,
   stagger = false,
 }: {
   as?: "div" | "section" | "h2" | "dl" | "ul";

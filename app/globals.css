@@ -570,8 +570,8 @@ html.lenis body {
 
 /* Staggered entrance for content under the headings (InView stagger) */
 [data-reveal-stagger] > * {
-  transition: opacity 700ms var(--ease-in), transform 700ms var(--ease-in);
-  transition-delay: calc(var(--rv, 0) * 80ms);
+  transition: opacity 900ms var(--ease-in), transform 1000ms var(--ease-in);
+  transition-delay: calc(var(--rv, 0) * 110ms);
 }
 [data-reveal-stagger] > :nth-child(2) { --rv: 1; }
 [data-reveal-stagger] > :nth-child(3) { --rv: 2; }
@@ -580,10 +580,7 @@ html.lenis body {
 [data-reveal-stagger] > :nth-child(n + 6) { --rv: 5; }
 [data-js] [data-reveal-stagger]:not([data-inview]) > * {
   opacity: 0;
-  transform: translateY(32px);
-}
-[data-lite] [data-reveal-stagger]:not([data-inview]) > * {
-  transform: translateY(16px);
+  transform: translateY(72px) scale(0.94);
 }
 
 /* CTA arrows lean toward where they go */
@@ -601,19 +598,20 @@ html.lenis body {
    the hero copy drifts up and dims as it leaves, the photo ribbon lags,
    the giant underlays move slower than the content around them. */
 @supports (animation-timeline: view()) {
-  @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
-    html:not([data-lite]) .hero-body {
+  /* phones too: compositor-only, no JS (client asked for visible motion) */
+  @media (prefers-reduced-motion: no-preference) {
+    html .hero-body {
       animation: px-hero-copy linear both;
       animation-timeline: view();
       animation-range: exit 0% exit 100%;
     }
-    html:not([data-lite]) .hero-ribbon {
+    html .hero-ribbon {
       animation: px-lag linear both;
       animation-timeline: view();
       animation-range: exit 0% exit 100%;
     }
-    html:not([data-lite]) .ph-underlay,
-    html:not([data-lite]) .bk-underlay {
+    html .ph-underlay,
+    html .bk-underlay {
       animation: px-underlay linear both;
       animation-timeline: view();
       animation-range: cover 0% cover 100%;

@@ -50,11 +50,11 @@ export function Showreel() {
         </div>
 
         <div className="reel-media">
-          <div className="reel-players">
+          <InView as="div" stagger className="reel-players">
             {clips.map((c) => (
               <GlassStage key={c.id} clip={c} mode="manual" className="reel-player" />
             ))}
-          </div>
+          </InView>
           <SwipeHints scroller=".reel-players" id="reel" label="Showreel clips, swipe horizontally" count={clips.length} />
         </div>
       </div>

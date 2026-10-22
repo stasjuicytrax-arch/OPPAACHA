@@ -13,18 +13,21 @@ export function InView({
   as: Tag = "div",
   className,
   children,
-  amount = 0.35,
+  amount = 0.2,
+  stagger = false,
 }: {
-  as?: "div" | "section" | "h2" | "dl";
+  as?: "div" | "section" | "h2" | "dl" | "ul";
   className?: string;
   children: React.ReactNode;
   amount?: number;
+  /** children rise one after another (motion pass, 22.10.2026) */
+  stagger?: boolean;
 }) {
   const ref = React.useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, amount });
   return React.createElement(
     Tag,
-    { ref, className, "data-reveal": "", "data-inview": inView ? "" : undefined },
+    { ref, className, "data-reveal": "", "data-reveal-stagger": stagger ? "" : undefined, "data-inview": inView ? "" : undefined },
     children
   );
 }

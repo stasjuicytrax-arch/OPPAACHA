@@ -36,3 +36,6 @@ yarn-error.log*
 .pnpm-debug.log*
 .env*
 .vercel
+
+# skill reports (local)
+/.jez/

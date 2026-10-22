@@ -562,3 +562,139 @@ html.lenis body {
     background-color: var(--surface-2);
   }
 }
+
+/* --------------------------------------------------------------------------
+   Motion pass (22.10.2026, rollback tag: pre-animations). transform and
+   opacity only; lite devices get the short version, reduced motion none.
+   -------------------------------------------------------------------------- */
+
+/* Staggered entrance for content under the headings (InView stagger) */
+[data-reveal-stagger] > * {
+  transition: opacity 700ms var(--ease-in), transform 700ms var(--ease-in);
+  transition-delay: calc(var(--rv, 0) * 80ms);
+}
+[data-reveal-stagger] > :nth-child(2) { --rv: 1; }
+[data-reveal-stagger] > :nth-child(3) { --rv: 2; }
+[data-reveal-stagger] > :nth-child(4) { --rv: 3; }
+[data-reveal-stagger] > :nth-child(5) { --rv: 4; }
+[data-reveal-stagger] > :nth-child(n + 6) { --rv: 5; }
+[data-js] [data-reveal-stagger]:not([data-inview]) > * {
+  opacity: 0;
+  transform: translateY(32px);
+}
+[data-lite] [data-reveal-stagger]:not([data-inview]) > * {
+  transform: translateY(16px);
+}
+
+/* CTA arrows lean toward where they go */
+.glass-control svg {
+  transition: transform 220ms var(--ease-in);
+}
+.glass-control:hover .lucide-arrow-up-right {
+  transform: translate(2px, -2px);
+}
+.glass-control:hover .lucide-play {
+  transform: scale(1.12);
+}
+
+/* Scroll-driven depth (DESIGN-SYSTEM 8.4), desktop only, compositor only:
+   the hero copy drifts up and dims as it leaves, the photo ribbon lags,
+   the giant underlays move slower than the content around them. */
+@supports (animation-timeline: view()) {
+  @media (min-width: 768px) and (prefers-reduced-motion: no-preference) {
+    html:not([data-lite]) .hero-body {
+      animation: px-hero-copy linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+    html:not([data-lite]) .hero-ribbon {
+      animation: px-lag linear both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 100%;
+    }
+    html:not([data-lite]) .ph-underlay,
+    html:not([data-lite]) .bk-underlay {
+      animation: px-underlay linear both;
+      animation-timeline: view();
+      animation-range: cover 0% cover 100%;
+    }
+  }
+}
+@keyframes px-hero-copy {
+  to {
+    opacity: 0.15;
+    translate: 0 -12%;
+  }
+}
+@keyframes px-lag {
+  to {
+    translate: 0 14%;
+  }
+}
+@keyframes px-underlay {
+  from {
+    translate: 0 -10%;
+  }
+  to {
+    translate: 0 8%;
+  }
+}
+
+/* Marquee band (components/marquee.tsx) */
+.mq {
+  position: relative;
+  padding-block: clamp(28px, 4vw, 48px);
+  border-block: 1px solid var(--line);
+}
+.mq-window {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.mq-track {
+  display: flex;
+  width: max-content;
+  animation: mq-run 48s linear infinite;
+}
+[data-lite] .mq-track {
+  animation-duration: 64s;
+}
+.mq-group {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+}
+.mq-label {
+  margin-inline: clamp(24px, 3vw, 48px) 20px;
+  color: var(--accent-hot);
+}
+.mq-item {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: var(--text-h2);
+  letter-spacing: -0.045em;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--ink);
+}
+.mq-group:nth-child(2n) .mq-item {
+  color: var(--muted);
+}
+.mq-sep {
+  width: 0.22em;
+  height: 0.22em;
+  margin-inline: 0.5em;
+  border-radius: 999px;
+  background: var(--accent);
+}
+@keyframes mq-run {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mq-track {
+    animation: none;
+  }
+}

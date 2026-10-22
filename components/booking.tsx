@@ -77,7 +77,7 @@ export function Booking() {
           </ul>
         </article>
 
-        <div className="bk-actions">
+        <InView as="div" stagger className="bk-actions">
           <GlassLink href={`mailto:${booking.email}?subject=${subject}`} tone="primary">
             <Mail aria-hidden />
             Write to booking
@@ -92,7 +92,7 @@ export function Booking() {
             <FileText aria-hidden />
             Rider (PDF)
           </GlassLink>
-        </div>
+        </InView>
 
         <ul className="bk-socials" aria-label="OPPAACHA online">
           {socials.map((s) => {

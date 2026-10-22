@@ -6,6 +6,7 @@ import { fmt, type PlayableClip } from "@/components/glass-stage";
 import { LoopVideo } from "@/components/loop-video";
 import { SwipeHints } from "@/components/swipe-hints";
 import { TODO } from "@/lib/content";
+import { InView } from "@/components/in-view";
 
 /**
  * Support cards (TECH-SPEC 5.5): one row, every frame the same size
@@ -18,7 +19,7 @@ export function SupportGrid({ clips }: { clips: PlayableClip[] }) {
 
   return (
     <>
-      <ul className="sup-row">
+      <InView as="ul" stagger className="sup-row">
         {clips.map((c, i) => {
           const track = c.title === TODO ? null : c.title;
           return (
@@ -49,7 +50,7 @@ export function SupportGrid({ clips }: { clips: PlayableClip[] }) {
             </li>
           );
         })}
-      </ul>
+      </InView>
       <SwipeHints scroller=".sup-row" id="support" label="Support clips, swipe horizontally" count={clips.length} />
       <ClipLightbox
         clip={open}

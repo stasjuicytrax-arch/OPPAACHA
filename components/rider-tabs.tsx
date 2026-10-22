@@ -3,6 +3,7 @@
 import * as React from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { LiquidGlass } from "@/components/glass";
+import { InView } from "@/components/in-view";
 
 type Item = { term?: string; text: string };
 type Group = { heading: string; items: Item[] };
@@ -32,7 +33,7 @@ export function RiderTabs({ tabs }: { tabs: RiderTab[] }) {
   };
 
   return (
-    <div className="rd-tabs">
+    <InView as="div" stagger className="rd-tabs">
       <LiquidGlass priority={5} appearance="dark" material="regular" refraction={18} fallbackBlur={18} className="rd-switch">
         <div role="tablist" aria-label="Rider sections" className="rd-tablist" onKeyDown={onKey}>
           {tabs.map((t) => {
@@ -107,6 +108,6 @@ export function RiderTabs({ tabs }: { tabs: RiderTab[] }) {
           </motion.div>
         </AnimatePresence>
       </LiquidGlass>
-    </div>
+    </InView>
   );
 }

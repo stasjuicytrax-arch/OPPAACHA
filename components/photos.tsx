@@ -36,7 +36,7 @@ export function Photos() {
       <CircularCarousel items={studio} label="Studio portraits" />
 
       <div className="shell ph-bottom">
-        <ul className="ph-grid">
+        <InView as="ul" stagger className="ph-grid">
           {live.map((p, i) => {
             const s = photoSet(p.id);
             // the first tile spans two rows (app/photos.css)
@@ -50,7 +50,7 @@ export function Photos() {
               </li>
             );
           })}
-        </ul>
+        </InView>
 
         <figure className="ph-figure">
           <picture>

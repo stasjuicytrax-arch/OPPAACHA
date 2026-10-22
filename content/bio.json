@@ -1,13 +1,26 @@
 {
-  "$comment": "Source: OPPAACHA Press Kit 2026.pdf (Google Drive link from the client, 21.10.2026; copy in 'Все что нужно тут/'). Text transcribed from the page images word for word; nothing added. manifesto.lines is a verbatim excerpt of the overview sentence, split into stepped lines. stats: the three headline figures from page 1.",
+  "$comment": "Source: OPPAACHA Press Kit 2026.pdf (Google Drive link from the client, 21.10.2026; copy in 'Все что нужно тут/'). Text transcribed from the page images word for word; nothing added. manifesto.lines is a verbatim excerpt of the overview sentence, split into stepped lines. stats: the three headline figures from page 1. marquee: names from the PromoKit highlights (Music played at; touring highlights), grouped so festivals where the music was played are not presented as gigs.",
   "name": "OPPAACHA",
   "realName": "Vladislav Liuborets",
   "tagline": "Music producer & DJ. Owner of Become Human Records",
-  "genres": ["Indie Dance", "Tech House", "Melodic Techno"],
+  "genres": [
+    "Indie Dance",
+    "Tech House",
+    "Melodic Techno"
+  ],
   "labels": [
-    { "name": "Diynamic", "country": "DE" },
-    { "name": "Insomniac", "country": "US" },
-    { "name": "Smash The House", "country": "BE" }
+    {
+      "name": "Diynamic",
+      "country": "DE"
+    },
+    {
+      "name": "Insomniac",
+      "country": "US"
+    },
+    {
+      "name": "Smash The House",
+      "country": "BE"
+    }
   ],
   "bio": [
     "Behind Oppaacha is Vladislav Liuborets, whose relationship with electronic music dates back to 2007. At just 12 years old, he discovered trance and EDM and began making his first tracks.",
@@ -16,16 +29,46 @@
   ],
   "manifesto": {
     "lines": [
-      { "text": "A more underground", "tone": "ink", "align": "start", "pill": true, "accent": "underground" },
-      { "text": "club sound, while keeping", "tone": "ink", "align": "end" },
-      { "text": "the influence of", "tone": "muted", "align": "start" },
-      { "text": "the ’90s and 2000s", "tone": "muted", "align": "center" }
+      {
+        "text": "A more underground",
+        "tone": "ink",
+        "align": "start",
+        "pill": true,
+        "accent": "underground"
+      },
+      {
+        "text": "club sound, while keeping",
+        "tone": "ink",
+        "align": "end"
+      },
+      {
+        "text": "the influence of",
+        "tone": "muted",
+        "align": "start"
+      },
+      {
+        "text": "the ’90s and 2000s",
+        "tone": "muted",
+        "align": "center"
+      }
     ]
   },
   "stats": [
-    { "value": 4, "suffix": "M+", "label": "Streams" },
-    { "value": 100, "suffix": "K+", "label": "Shazams" },
-    { "value": 300, "suffix": "+", "label": "DJ supports" }
+    {
+      "value": 4,
+      "suffix": "M+",
+      "label": "Streams"
+    },
+    {
+      "value": 100,
+      "suffix": "K+",
+      "label": "Shazams"
+    },
+    {
+      "value": 300,
+      "suffix": "+",
+      "label": "DJ supports"
+    }
   ],
   "musicHighlights": [
     "“Don’t Stop”: #2 on Solomun’s Momentum Chart",
@@ -37,5 +80,28 @@
     "First Australian Tour: Melbourne & Sydney, 2025",
     "Day Zero: Savaya Bali, 2026",
     "Singapore, Bangkok, Ulaanbaatar, Istanbul, Ibiza"
+  ],
+  "marquee": [
+    {
+      "label": "Music played at",
+      "items": [
+        "Tomorrowland",
+        "EDC",
+        "Ultra"
+      ]
+    },
+    {
+      "label": "On tour",
+      "items": [
+        "Melbourne",
+        "Sydney",
+        "Savaya Bali",
+        "Singapore",
+        "Bangkok",
+        "Ulaanbaatar",
+        "Istanbul",
+        "Ibiza"
+      ]
+    }
   ]
 }

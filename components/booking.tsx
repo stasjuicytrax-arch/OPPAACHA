@@ -115,7 +115,6 @@ export function Booking() {
         </ul>
 
         <footer className="bk-footer">
-          <span className="label">OPPAACHA</span>
           <span className="label text-muted">{bio.tagline}</span>
         </footer>
       </div>

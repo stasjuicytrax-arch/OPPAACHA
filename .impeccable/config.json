@@ -26,6 +26,12 @@
         "value": "rgb(0 0 0 / 0.5)",
         "createdAt": "2026-10-21T20:23:21.209Z",
         "reason": "mask-image alpha stop in the mobile hero ribbon fade, not a paint colour"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgb(0 0 0 / 0.55)",
+        "createdAt": "2026-10-22T08:19:13.365Z",
+        "reason": "mask-image alpha stop in the hero ribbon fade, not a paint colour"
       }
     ]
   }

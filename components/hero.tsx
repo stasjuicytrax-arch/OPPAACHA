@@ -75,17 +75,6 @@ export function Hero() {
         </div>
       </div>
 
-      <img
-        src={asset("/media/brand/oppaacha-wordmark-flat.webp")}
-        srcSet={`${asset("/media/brand/oppaacha-wordmark-flat-1200.webp")} 1200w, ${asset("/media/brand/oppaacha-wordmark-flat.webp")} 2400w`}
-        sizes="104vw"
-        alt=""
-        aria-hidden
-        width={2400}
-        height={363}
-        decoding="async"
-        className="hero-underlay"
-      />
     </section>
   );
 }

@@ -173,7 +173,9 @@
 @media (max-width: 767px) {
   .live-pin {
     height: auto;
-    padding-block: var(--section-y);
+    /* the swipe progress row below carries the bottom spacing */
+    padding-top: var(--section-y);
+    padding-bottom: 8px;
     overflow-x: auto;
     overscroll-behavior-x: contain;
     scroll-snap-type: x mandatory;
@@ -196,7 +198,9 @@
   .live-card-frame {
     height: min(62dvh, 520px);
   }
-
+  .live .ss {
+    padding: 0 20px var(--section-y);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

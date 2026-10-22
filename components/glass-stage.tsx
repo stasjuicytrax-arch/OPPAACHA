@@ -13,7 +13,12 @@ export type PlayableClip = Video & { src: string; poster: string };
  * progress line, sound on request, full screen, and a glass chip that
  * follows the pointer naming the next step (Play, Sound, Pause).
  *
- * mode "inview": autoplays muted only while on screen (showreel).
+ * mode "inview": autoplays muted only while on screen.
+ * mode "manual": poster and preload="none" until a tap; metadata loads on
+ *                entering the viewport (showreel diptych).
+ * Only one stage plays at a time: starting one pauses the others.
+ * The picture is contained (never cropped); a blurred poster fills any
+ * letterbox around a clip that is not 9:16.
  * mode "open":   starts at once with sound, as the click that opened it
  *                is the user's request (Live lightbox).
  */
@@ -23,7 +28,7 @@ export function GlassStage({
   className,
 }: {
   clip: PlayableClip;
-  mode?: "inview" | "open";
+  mode?: "inview" | "open" | "manual";
   className?: string;
 }) {
   // lite devices: nothing preloads until a tap (performance, 22.10.2026)
@@ -38,6 +43,17 @@ export function GlassStage({
   const [progress, setProgress] = React.useState(0);
   const [time, setTime] = React.useState(0);
   const userPaused = React.useRef(false);
+  const uid = React.useId();
+
+  // one stage plays at a time across the page
+  React.useEffect(() => {
+    const onOther = (e: Event) => {
+      const v = videoRef.current;
+      if ((e as CustomEvent<string>).detail !== uid && v && !v.paused) v.pause();
+    };
+    window.addEventListener("stage-play", onOther);
+    return () => window.removeEventListener("stage-play", onOther);
+  }, [uid]);
 
   React.useEffect(() => {
     const v = videoRef.current;
@@ -57,6 +73,12 @@ export function GlassStage({
     }
     const io = new IntersectionObserver(
       ([e]) => {
+        if (mode === "manual") {
+          if (e.isIntersecting) {
+            if (!isLite() && v.preload === "none") v.preload = "metadata";
+          } else if (!v.paused) v.pause();
+          return;
+        }
         if (e.isIntersecting) {
           // phones and weak devices: poster until a tap (performance, 22.10.2026)
           if (!userPaused.current && !isLite() && !matchMedia("(prefers-reduced-motion: reduce)").matches) v.play().catch(() => {});
@@ -142,6 +164,8 @@ export function GlassStage({
       onPointerEnter={(e) => e.pointerType === "mouse" && setChip(true)}
       onPointerLeave={() => setChip(false)}
     >
+      {/* blurred poster behind a contained picture: fills letterboxes, never a second video */}
+      <img className="stage-backdrop" src={`${clip.poster}-480.webp`} alt="" aria-hidden decoding="async" loading="lazy" />
       <video
         key={clip.id}
         ref={videoRef}
@@ -150,10 +174,13 @@ export function GlassStage({
         muted={mode !== "open"}
         loop
         playsInline
-        preload={lite ? "none" : "metadata"}
+        preload={lite || mode === "manual" ? "none" : "metadata"}
         aria-label={`${clip.title}, video`}
         onClick={step}
-        onPlay={() => setPlaying(true)}
+        onPlay={() => {
+          setPlaying(true);
+          window.dispatchEvent(new CustomEvent("stage-play", { detail: uid }));
+        }}
         onPause={() => setPlaying(false)}
         onVolumeChange={(e) => setMuted(e.currentTarget.muted)}
         onTimeUpdate={(e) => {

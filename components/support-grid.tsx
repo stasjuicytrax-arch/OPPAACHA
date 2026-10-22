@@ -4,6 +4,7 @@ import * as React from "react";
 import { ClipLightbox } from "@/components/clip-lightbox";
 import { fmt, type PlayableClip } from "@/components/glass-stage";
 import { LoopVideo } from "@/components/loop-video";
+import { SwipeHints } from "@/components/swipe-hints";
 import { TODO } from "@/lib/content";
 
 /**
@@ -49,6 +50,7 @@ export function SupportGrid({ clips }: { clips: PlayableClip[] }) {
           );
         })}
       </ul>
+      <SwipeHints scroller=".sup-row" id="support" label="Support clips, swipe horizontally" count={clips.length} />
       <ClipLightbox
         clip={open}
         caption={open ? [`Played by ${open.playedBy}`, open.place].filter(Boolean).join(", ") : undefined}

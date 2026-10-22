@@ -16,7 +16,7 @@ export function SmoothScroll() {
     let cancelled = false;
     import("lenis").then(({ default: L }) => {
       if (cancelled) return;
-      lenis = new L({ autoRaf: true, anchors: { offset: -24 } });
+      lenis = new L({ autoRaf: true, anchors: { offset: -96 } });
       (window as Window & { __lenis?: Lenis }).__lenis = lenis;
     });
     return () => {

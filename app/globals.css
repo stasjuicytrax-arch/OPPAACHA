@@ -345,6 +345,97 @@
   animation: none;
 }
 
+/* Anchored sections land below the floating menu */
+section[id] {
+  scroll-margin-top: 96px;
+}
+
+/* --------------------------------------------------------------------------
+   Swipe hints (components/swipe-hints.tsx): chip, edge fade, progress.
+   Only transform and opacity animate.
+   -------------------------------------------------------------------------- */
+
+[data-swipe-more] {
+  /* the next card slips under the right edge */
+  mask-image: linear-gradient(90deg, #000 calc(100% - 48px), transparent);
+}
+.ss {
+  position: relative;
+}
+.ss-hint {
+  position: absolute;
+  left: 50%;
+  /* sits on the media, above each strip's captions (--ss-lift per block) */
+  bottom: calc(100% + var(--ss-lift, 24px));
+  z-index: 3;
+  translate: -50% 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 200ms var(--ease-in);
+}
+.ss-hint[data-on] {
+  opacity: 1;
+}
+.live .ss {
+  --ss-lift: 84px;
+}
+.sup .ss {
+  --ss-lift: 150px;
+}
+.ss-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  color: var(--ink);
+  white-space: nowrap;
+  box-shadow: var(--glass-highlight), inset 0 0 0 1px var(--glass-rim) !important;
+}
+.ss-arrows {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.75;
+  animation: ss-drift 1.2s ease-in-out infinite alternate;
+}
+@keyframes ss-drift {
+  from { transform: translateX(0); }
+  to { transform: translateX(8px); }
+}
+.ss-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 4;
+  pointer-events: none;
+}
+.ss-progress {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+}
+.ss-count {
+  flex: none;
+  color: var(--ink);
+}
+.ss-track {
+  position: relative;
+  flex: 1;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--line);
+}
+.ss-fill {
+  position: absolute;
+  inset: 0;
+  background: var(--accent-hot);
+  transform-origin: left center;
+  transform: scaleX(0.04);
+}
+
 /* --------------------------------------------------------------------------
    Tilted grid (components/ui/tilted-grid-hero.tsx)
    -------------------------------------------------------------------------- */

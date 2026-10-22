@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { ClipLightbox } from "@/components/clip-lightbox";
+import { SwipeHints } from "@/components/swipe-hints";
 import { fmt, type PlayableClip } from "@/components/glass-stage";
 import { LiquidGlass, isLite } from "@/components/glass";
 import { LoopVideo } from "@/components/loop-video";
@@ -119,6 +120,7 @@ export function LiveTrack({ clips, children }: { clips: PlayableClip[]; children
         </div>
       </div>
 
+      <SwipeHints scroller=".live-pin" id="live" label="Live clips, swipe horizontally" count={clips.length} />
       <ClipLightbox clip={open} onClose={closeLightbox} />
     </>
   );

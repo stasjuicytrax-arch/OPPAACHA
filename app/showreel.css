@@ -1,7 +1,8 @@
 /* --------------------------------------------------------------------------
-   Block 3: showreel (components/showreel.tsx, showreel-player.tsx). Loud
-   block: the main clip's own frame, blurred, lights the section; a tall
-   glass-framed stage; the other clip one step lower beside it.
+   Block 3: showreel (components/showreel.tsx). A diptych: text on columns
+   1-4, two equal 9:16 players on 5-12, the second one step (48px) lower.
+   Background: blurred poster image and red light, no video layer.
+   Phones: heading on top, the two players as a swipe strip.
    -------------------------------------------------------------------------- */
 
 .reel {
@@ -35,24 +36,66 @@
     linear-gradient(180deg, var(--bg) 0%, rgb(10 10 10 / 0.35) 22%, rgb(10 10 10 / 0.35) 78%, var(--bg) 100%);
 }
 
+.reel-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  align-items: center;
+}
+.reel-text {
+  grid-column: 1 / span 4;
+  align-self: center;
+}
+.reel-label {
+  color: var(--accent-hot);
+}
 .reel-title {
-  margin-top: 0;
+  margin-top: 16px;
   font-size: var(--text-display-l);
   line-height: 0.95;
-}
-.reel-title .m-line[data-align="start"] {
-  padding-left: 25%;
 }
 .reel-title .m-accent {
   font-size: 1.04em;
 }
+.reel-lead {
+  margin-top: 24px;
+  max-width: 30ch;
+  color: var(--muted);
+}
+.reel-list {
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+  max-width: 320px;
+}
+.reel-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 15px;
+}
 
-.reel-layout {
-  margin-top: clamp(48px, 6vw, 96px);
+.reel-media {
+  grid-column: 5 / -1;
+  min-width: 0;
+}
+.reel-players {
   display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  column-gap: 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
   align-items: start;
+}
+/* equal players in the clips' own 9:16, capped so the block stays under
+   1.5 screens; the second one step lower */
+.reel-player {
+  /* width follows the capped height, so the box stays exactly 9:16 */
+  width: min(100%, calc(min(78dvh, 760px) * 9 / 16));
+  margin-inline: auto;
+}
+.reel-player:nth-child(2) {
+  margin-top: 48px;
 }
 
 /* Glass stage (components/glass-stage.tsx), shared with the Live lightbox */
@@ -64,17 +107,23 @@
   background: var(--surface);
   box-shadow: inset 0 0 0 1px var(--line);
 }
-.reel-stage {
-  grid-column: 4 / span 5;
-  justify-self: center;
-  height: min(84dvh, 900px);
-}
 .stage-video {
+  position: relative;
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* never cropped; a non-9:16 clip letterboxes over the blurred poster */
+  object-fit: contain;
   cursor: pointer;
+}
+.stage-backdrop {
+  position: absolute;
+  inset: -8%;
+  width: 116%;
+  height: 116%;
+  object-fit: cover;
+  filter: blur(28px) brightness(0.6);
+  pointer-events: none;
 }
 
 .stage-chip {
@@ -167,103 +216,41 @@
   white-space: nowrap;
 }
 
-/* Side: now playing, then the other clip one step lower (DESIGN-SYSTEM.md 4) */
-.reel-side {
-  grid-column: 9 / span 3;
-  /* level with the stage: video rows sit at one height (client, 21.10.2026) */
-  margin-top: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-.reel-now {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.reel-now-title {
-  font-size: var(--text-h3);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-}
-.reel-card {
-  display: block;
-  width: min(100%, 240px);
-  padding: 0;
-  text-align: left;
-  color: inherit;
-  background: none;
-  border: 0;
-  cursor: pointer;
-}
-.reel-card-media {
-  position: relative;
-  aspect-ratio: 9 / 16;
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  background: var(--surface);
-  box-shadow: inset 0 0 0 1px var(--line);
-  transition: transform 500ms var(--ease-in);
-}
-.reel-card:hover .reel-card-media {
-  transform: translateY(-6px) rotate(-1.5deg);
-}
-.reel-card-media img,
-.reel-card-media video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.reel-card-media video {
-  opacity: 0;
-  transition: opacity 600ms var(--ease-in);
-}
-.reel-card-media video[data-live] {
-  opacity: 1;
-}
-.reel-card-caption {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 14px 6px 0;
-}
-
 @media (max-width: 1023px) {
-  .reel-stage {
-    grid-column: 1 / span 8;
+  .reel-text {
+    grid-column: 1 / -1;
+    margin-bottom: 40px;
   }
-  .reel-side {
-    grid-column: 9 / -1;
+  .reel-media {
+    grid-column: 1 / -1;
   }
 }
 @media (max-width: 767px) {
-  .reel-title .m-line[data-align="start"] {
-    padding-left: 0;
+  .reel-text {
+    margin-bottom: 32px;
   }
-  .reel-layout {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: 40px;
+  /* swipe strip, edge to edge: the next player shows by more than 12% */
+  .reel-players {
+    display: flex;
+    gap: 14px;
+    margin-inline: calc(var(--gutter) * -1);
+    padding-inline: var(--gutter);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    scrollbar-width: none;
   }
-  .reel-stage {
-    grid-column: 1;
-    width: 100%;
-    height: auto;
-    max-height: 82dvh;
-    justify-self: stretch;
+  .reel-players::-webkit-scrollbar {
+    display: none;
+  }
+  .reel-player {
+    flex: none;
+    width: 72vw;
+    scroll-snap-align: start;
     border-radius: var(--radius-card);
   }
-  .reel-side {
-    grid-column: 1;
+  .reel-player:nth-child(2) {
     margin-top: 0;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
-  }
-  .reel-card {
-    width: 46%;
   }
   .stage-panel {
     left: 8px;

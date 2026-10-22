@@ -1,0 +1,136 @@
+/* --------------------------------------------------------------------------
+   Glass stage (components/glass-stage.tsx): the CamelPhat block and the
+   Live / Played by lightboxes. Moved here from the removed showreel.css.
+   -------------------------------------------------------------------------- */
+
+.stage {
+  position: relative;
+  aspect-ratio: 9 / 16;
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: inset 0 0 0 1px var(--line);
+}
+.stage-video {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* never cropped; a non-9:16 clip letterboxes over the blurred poster */
+  object-fit: contain;
+  cursor: pointer;
+}
+.stage-backdrop {
+  position: absolute;
+  inset: -8%;
+  width: 116%;
+  height: 116%;
+  object-fit: cover;
+  filter: blur(28px) brightness(0.6);
+  pointer-events: none;
+}
+
+.stage-chip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+.stage-chip-glass {
+  translate: 14px 14px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  color: var(--ink);
+  box-shadow: var(--glass-highlight), inset 0 0 0 1px var(--glass-rim) !important;
+}
+.stage-chip-glass[data-liquid-glass="frost"] {
+  background-color: rgb(20 20 20 / 0.5);
+}
+
+.stage-panel {
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  height: 60px;
+  padding-inline: 8px;
+  border-radius: 999px;
+  box-shadow: var(--glass-highlight), var(--glass-lowlight), inset 0 0 0 1px var(--glass-rim) !important;
+}
+.stage-panel[data-liquid-glass="frost"] {
+  background-color: rgb(16 16 16 / 0.46);
+}
+.stage-btn {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  color: var(--ink);
+}
+.stage-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke-width: 1.75;
+}
+.stage-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Red progress line on a faint rail; the hit area is the full 28px row. */
+.stage-track {
+  position: relative;
+  flex: 1;
+  height: 28px;
+  cursor: pointer;
+  touch-action: none;
+}
+.stage-track::before,
+.stage-track-fill {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 3px;
+  margin-top: -1.5px;
+  border-radius: 999px;
+}
+.stage-track::before {
+  background: rgb(244 242 238 / 0.2);
+}
+.stage-track-fill {
+  background: var(--accent-hot);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+.stage-track:focus-visible {
+  outline-offset: 0;
+  border-radius: 999px;
+}
+.stage-time {
+  flex: none;
+  padding-inline: 6px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+@media (max-width: 767px) {
+  .stage-panel {
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    height: 54px;
+    padding-inline: 5px;
+    gap: 2px;
+  }
+  .stage-btn {
+    width: 40px;
+    height: 40px;
+  }
+}

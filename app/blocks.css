@@ -187,9 +187,15 @@
   height: 100%;
   object-fit: cover;
 }
+/* the stage sets its own 3:4 from the clip; the frame just holds it */
 .co-stage {
   width: 100%;
-  height: 100%;
+}
+.co-media:has(.co-stage) {
+  aspect-ratio: auto;
+  overflow: visible;
+  background: none;
+  box-shadow: none;
 }
 
 /* ---------------- Bio & Highlights ---------------- */

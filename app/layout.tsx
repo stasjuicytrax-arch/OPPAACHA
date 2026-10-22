@@ -7,6 +7,7 @@ import { asset } from "@/lib/content";
 import "./globals.css";
 import "./hero.css";
 import "./manifesto.css";
+import "./stage.css";
 import "./live.css";
 import "./support.css";
 import "./blocks.css";

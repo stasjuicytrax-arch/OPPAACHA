@@ -1,0 +1,45 @@
+{
+  "$comment": "Selected Releases, CLIENT-EDITS-2026-10-22.md 3.2 (client brief page 2). Titles, labels and links verbatim from the brief; Axe links straight to the track. Covers: Spotify oEmbed thumbnail_url, large size, built by scripts/brief-media.mjs into public/media/release/<id>-<320|640>.<avif|webp>.",
+  "releases": [
+    {
+      "id": "R01",
+      "artists": "Oppaacha",
+      "title": "Umbrella EP",
+      "label": "Diynamic",
+      "url": "https://open.spotify.com/album/3F5YBwYr8f1jUHrSwAF8Fq",
+      "embed": "https://open.spotify.com/embed/album/3F5YBwYr8f1jUHrSwAF8Fq"
+    },
+    {
+      "id": "R02",
+      "artists": "Oppaacha",
+      "title": "Oxygen EP",
+      "label": "Diynamic",
+      "url": "https://open.spotify.com/album/4Ud0PMfDjfTsTheM4iNSnC",
+      "embed": "https://open.spotify.com/embed/album/4Ud0PMfDjfTsTheM4iNSnC"
+    },
+    {
+      "id": "R03",
+      "artists": "Oppaacha",
+      "title": "Arietta EP",
+      "label": "Diynamic",
+      "url": "https://open.spotify.com/album/1X2HpwjSDyYqBmOwho9rpC",
+      "embed": "https://open.spotify.com/embed/album/1X2HpwjSDyYqBmOwho9rpC"
+    },
+    {
+      "id": "R04",
+      "artists": "Vion Konger & Oppaacha",
+      "title": "Colosseum",
+      "label": "Smash The House",
+      "url": "https://open.spotify.com/album/7xlkPqNl1TN5C7TN3tanpt",
+      "embed": "https://open.spotify.com/embed/album/7xlkPqNl1TN5C7TN3tanpt"
+    },
+    {
+      "id": "R05",
+      "artists": "REBRN & Oppaacha",
+      "title": "Axe",
+      "label": "Insomniac / IN / ROTATION",
+      "url": "https://open.spotify.com/track/1O1yrsknsnNsLPTAllrSQy",
+      "embed": "https://open.spotify.com/embed/track/1O1yrsknsnNsLPTAllrSQy"
+    }
+  ]
+}

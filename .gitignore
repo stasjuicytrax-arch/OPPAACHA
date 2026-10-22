@@ -39,3 +39,7 @@ yarn-error.log*
 
 # skill reports (local)
 /.jez/
+
+# client brief originals (derivatives in public/media/brief and release)
+/client-brief/
+/Правки/

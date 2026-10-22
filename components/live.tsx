@@ -6,11 +6,8 @@ import { videos } from "@/lib/content";
 /** Block 4 (TECH-SPEC 5.4): V04 to V08, OPPAACHA's own sets on stage. */
 export function Live() {
   const clips = videos
-    .filter((v) => v.section === "live")
-    .map((v) => {
-      if (!v.src || !v.poster) throw new Error(`${v.id} has no encode yet: run npm run media -- --only=live`);
-      return { ...v, src: v.src, poster: v.poster };
-    });
+    // clips still on drive (src null) wait for the media pipeline
+    .flatMap((v) => (v.section === "live" && v.src && v.poster ? [{ ...v, src: v.src, poster: v.poster }] : []));
 
   return (
     <section id="live" aria-labelledby="live-title" className="live">

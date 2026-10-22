@@ -2,6 +2,9 @@ import videosJson from "@/content/videos.json";
 import photosJson from "@/content/photos.json";
 import bioJson from "@/content/bio.json";
 import sectionsJson from "@/content/sections.json";
+import releasesJson from "@/content/releases.json";
+import radioJson from "@/content/radio.json";
+import contactsJson from "@/content/contacts.json";
 
 export const TODO = "TODO_FROM_PROMOKIT";
 
@@ -21,6 +24,7 @@ export type Video = {
   preview: string | null;
   /** Path without extension; .avif and .webp exist side by side. */
   poster: string | null;
+  /** seconds; 0 while the original is still on drive */
   duration: number;
   hasAudio: boolean;
   /** landscape slice of a vertical clip, same shape as preview/poster */
@@ -29,7 +33,12 @@ export type Video = {
   aspect?: number;
   /** Support: who plays the track, and where */
   playedBy?: string;
+  /** caption: venue / event · city */
   place?: string;
+  /** second caption line: the track */
+  track?: string;
+  /** original on Google Drive, not downloaded yet */
+  drive?: string | null;
 };
 
 export type Photo = {
@@ -41,10 +50,26 @@ export type Photo = {
   alt: string;
 };
 
-export type Section = { id: string; label: string; block: number; built: boolean };
+export type Section = { id: string; label: string; block: number; nav: boolean; built: boolean };
 
-export const videos = (videosJson.videos as Video[]).map((v) => ({
+export type Release = { id: string; artists: string; title: string; label: string; url: string; embed: string };
+export type Mix = {
+  id: string;
+  title: string;
+  caption: string;
+  listen: string;
+  url: string;
+  poster: string;
+  posterAlt: string;
+  ratio: number;
+  bg: string;
+};
+
+// source (the original's file name) and drive stay in the manifest: file
+// names never reach the page (client brief 22.10.2026).
+export const videos = (videosJson.videos as Video[]).map(({ source: _source, drive: _drive, ...v }) => ({
   ...v,
+  source: "",
   src: assetOrNull(v.src),
   preview: assetOrNull(v.preview),
   poster: assetOrNull(v.poster),
@@ -53,6 +78,17 @@ export const videos = (videosJson.videos as Video[]).map((v) => ({
 export const photos = photosJson.photos as Photo[];
 export const bio = bioJson;
 export const sections = sectionsJson.sections as Section[];
+export const releases = releasesJson.releases as Release[];
+export const mixes = (radioJson.mixes as Mix[]).map((m) => ({ ...m, poster: asset(m.poster) }));
+export const contacts = contactsJson;
+export const finalPhotos = photosJson.final.map((id) => photos.find((p) => p.id === id)!);
+
+/** AVIF + WebP srcset for a still built by scripts/brief-media.mjs (<base>-<w>.<ext>). */
+export const stillSet = (base: string, widths: number[]) => ({
+  avif: widths.map((w) => `${asset(base)}-${w}.avif ${w}w`).join(", "),
+  webp: widths.map((w) => `${asset(base)}-${w}.webp ${w}w`).join(", "),
+  src: `${asset(base)}-${widths[0]}.webp`,
+});
 
 export const video = (id: string) => {
   const v = videos.find((x) => x.id === id);
@@ -78,7 +114,7 @@ export const photoSet = (id: string, widths: number[] = [320, 640, 1280], grey =
   };
 };
 
-export const isTodo = (value: string | null | undefined) => !value || value === TODO;
+export const isTodo = (value: string | null | undefined) => !value || value === TODO || value.startsWith("TODO_");
 
-/** Nav order from TECH-SPEC 5.0; Booking sits apart as the primary action. */
-export const NAV = ["intro", "video", "live", "support", "rider"] as const;
+/** Nav from CLIENT-EDITS 1: Intro / Releases / Live / Played by / Bio; Booking sits apart as the primary action. */
+export const NAV = ["intro", "releases", "live", "played-by", "bio"] as const;

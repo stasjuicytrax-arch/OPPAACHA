@@ -1,5 +1,5 @@
 {
-  "$comment": "13 photos, all must render (scripts/verify-coverage.mjs). Files: public/media/photo/<id>-<width>.<avif|webp>, built by scripts/media.mjs. Widths 1280/2400 arrive with the photo block.",
+  "$comment": "13 photos in public/media/photo/<id>-<width>.<avif|webp>, built by scripts/media.mjs. After the client brief of 22.10.2026 (CLIENT-EDITS 3.10) the gallery is gone: final lists the two photos of the closing block (P02 live, arms up in front of the crowd; P12 studio portrait), different in composition and not in the hero.",
   "photos": [
     {
       "id": "P01",
@@ -105,5 +105,9 @@
       "ratio": 0.709,
       "alt": "Cut-out figure of OPPAACHA in a sage t-shirt, arms crossed"
     }
+  ],
+  "final": [
+    "P02",
+    "P12"
   ]
 }

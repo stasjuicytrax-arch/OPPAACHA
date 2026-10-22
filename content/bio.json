@@ -1,32 +1,41 @@
 {
-  "$comment": "Source: OPPAACHA Press Kit 2026.pdf (Google Drive link from the client, 21.10.2026; copy in 'Все что нужно тут/'). Text transcribed from the page images word for word; nothing added. manifesto.lines is a verbatim excerpt of the overview sentence, split into stepped lines. stats: the three headline figures from page 1. marquee: names from the PromoKit highlights (Music played at; touring highlights), grouped so festivals where the music was played are not presented as gigs.",
+  "$comment": "Source: client brief 22.10.2026 (client-brief/Oppaacha_Website_Brief.pdf, pages 1 and 3; CLIENT-EDITS-2026-10-22.md 3.1, 3.4, 3.5, 3.8). Texts are the client's final English edit, verbatim; do not edit. manifesto.lines is the underground / ’90s and 2000s phrase from bio paragraph 2, kept as the large intro (brief page 2). Diynamic Top 10 lives in bio paragraph 3 only (the charts attach there), never in the highlights. The 8th music highlight is the compact numbers line; there are no big counters. marquee: Performed at (his own sets) and Music played at (festivals where his music was played), Venue, City; cities only where the brief names them.",
   "name": "OPPAACHA",
   "realName": "Vladislav Liuborets",
   "tagline": "Music producer & DJ. Owner of Become Human Records",
-  "genres": [
-    "Indie Dance",
-    "Tech House",
-    "Melodic Techno"
-  ],
-  "labels": [
-    {
-      "name": "Diynamic",
-      "country": "DE"
-    },
-    {
-      "name": "Insomniac",
-      "country": "US"
-    },
-    {
-      "name": "Smash The House",
-      "country": "BE"
-    }
-  ],
+  "hero": {
+    "roles": ["Music producer & DJ", "Owner of Become Human Records"],
+    "genres": "Indie Dance · Melodic House / Techno",
+    "releasesOn": ["Diynamic", "Insomniac / IN / ROTATION", "Smash The House", "Armada", "Kontor", "Bar 25 Music"],
+    "logos": "TODO_LABEL_LOGOS",
+    "video": "V13",
+    "poster": "/media/brief/batur-hero",
+    "posterAlt": "OPPAACHA playing outdoors with the Batur volcano in the background, Bali"
+  },
   "bio": [
     "Behind Oppaacha is Vladislav Liuborets, whose relationship with electronic music dates back to 2007. At just 12 years old, he discovered trance and EDM and began making his first tracks.",
-    "By 2021, he had completely rethought his approach to production and created Oppaacha, a project focused on a more underground club sound, while keeping the influence of the ’90s and 2000s that had shaped his musical taste from the beginning.",
+    "By 2021, he had completely rethought his approach to production and created Oppaacha - a project focused on a more underground club sound, while keeping the influence of the ’90s and 2000s that had shaped his musical taste from the beginning. The first release under the Oppaacha name followed that same year.",
     "Perhaps it was this balance between past and present that caught Solomun’s attention. Over the following three years, Oppaacha had five releases on Diynamic and spent two consecutive years among the label’s Top 10 artists."
   ],
+  "charts": {
+    "paragraph": 2,
+    "items": [
+      {
+        "id": "C01",
+        "src": "/media/brief/chart-diynamic-1",
+        "width": 1006,
+        "ratio": 0.7065,
+        "alt": "Diynamic Top Label Artists ranking with Oppaacha at position 8"
+      },
+      {
+        "id": "C02",
+        "src": "/media/brief/chart-diynamic-2",
+        "width": 976,
+        "ratio": 0.5698,
+        "alt": "Diynamic Top Label Artists ranking with Oppaacha at position 10"
+      }
+    ]
+  },
   "manifesto": {
     "lines": [
       {
@@ -53,55 +62,51 @@
       }
     ]
   },
-  "stats": [
-    {
-      "value": 4,
-      "suffix": "M+",
-      "label": "Streams"
-    },
-    {
-      "value": 100,
-      "suffix": "K+",
-      "label": "Shazams"
-    },
-    {
-      "value": 300,
-      "suffix": "+",
-      "label": "DJ supports"
-    }
-  ],
   "musicHighlights": [
-    "“Don’t Stop”: #2 on Solomun’s Momentum Chart",
-    "#3 Trending Indie Dance Artist, BeatStats",
-    "Support from Tiësto, Solomun, CamelPhat, Steve Angello, Pete Tong",
-    "Music played at Tomorrowland, EDC, Ultra"
+    "#3 Trending Indie Dance Artist - BeatStats",
+    "“Don’t Stop” - #2 on Solomun’s Momentum Chart",
+    "BBC Radio 1 support from Pete Tong",
+    "Guest mixes on Insomniac Radio & SiriusXM",
+    "Support from Tiësto, CamelPhat, R3HAB & Steve Angello",
+    "Music played at Tomorrowland, EDC & Ultra",
+    "Featured in the Tomorrowland Official Playlist",
+    "4M+ streams · 100K+ Shazams"
   ],
   "touringHighlights": [
-    "First Australian Tour: Melbourne & Sydney, 2025",
-    "Day Zero: Savaya Bali, 2026",
-    "Singapore, Bangkok, Ulaanbaatar, Istanbul, Ibiza"
+    {
+      "text": "Debut Australian tour - Melbourne & Sydney, 2025",
+      "poster": {
+        "id": "T01",
+        "src": "/media/brief/poster-australian-tour",
+        "width": 1080,
+        "ratio": 1,
+        "alt": "Poster for the Oppaacha debut Australian tour, Melbourne and Sydney"
+      }
+    },
+    { "text": "TRIP Festival headliner - 2025" },
+    { "text": "Closing set on the final day of Day Zero at Savaya Bali - 2026" },
+    { "text": "Selected appearances across Bali, Ibiza, Singapore, Bangkok, Ulaanbaatar & Istanbul" }
   ],
+  "label": {
+    "name": "Become Human Records",
+    "text": "Founded by Oppaacha in 2026, Become Human Records saw one of its releases reach #1 on Beatport’s Mainstage chart within its first three months.",
+    "logo": "TODO_BHR_LOGO"
+  },
+  "collab": {
+    "title": "CamelPhat & Oppaacha - In My Hands",
+    "caption": "Upcoming collaboration · CamelPhat play “In My Hands” live",
+    "video": "V20",
+    "poster": "/media/brief/camelphat-in-my-hands",
+    "posterAlt": "CamelPhat in red light playing In My Hands, their upcoming collaboration with Oppaacha"
+  },
   "marquee": [
     {
-      "label": "Music played at",
-      "items": [
-        "Tomorrowland",
-        "EDC",
-        "Ultra"
-      ]
+      "label": "Performed at",
+      "items": ["Savaya, Bali", "TRIP Festival", "Flava, Moscow", "Batur, Bali"]
     },
     {
-      "label": "On tour",
-      "items": [
-        "Melbourne",
-        "Sydney",
-        "Savaya Bali",
-        "Singapore",
-        "Bangkok",
-        "Ulaanbaatar",
-        "Istanbul",
-        "Ibiza"
-      ]
+      "label": "Music played at",
+      "items": ["Tomorrowland", "EDC", "Ultra"]
     }
   ]
 }

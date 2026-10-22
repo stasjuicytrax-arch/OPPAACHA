@@ -1,0 +1,27 @@
+{
+  "$comment": "Radio mixes, CLIENT-EDITS-2026-10-22.md 3.6 (client brief page 4). Titles, roles and links verbatim. Posters from client-brief/, built by scripts/brief-media.mjs; bg is the poster's edge colour, so object-fit: contain never shows a seam.",
+  "mixes": [
+    {
+      "id": "M01",
+      "title": "SiriusXM - Guest mix",
+      "caption": "OCHO Mix 59 / Diplo’s Revolution",
+      "listen": "Oppaacha Exclusive Set - OCHO September",
+      "url": "https://soundcloud.com/entergrayarea/oppaacha-exclusive-set-ocho-september",
+      "poster": "/media/brief/poster-siriusxm",
+      "posterAlt": "SiriusXM OCHO Mix 59 poster for the Oppaacha guest mix on Diplo’s Revolution",
+      "ratio": 0.8017,
+      "bg": "#ffffed"
+    },
+    {
+      "id": "M02",
+      "title": "Insomniac Radio - Guest mix",
+      "caption": "Silver Panda / PF 95 - Oppaacha",
+      "listen": "Silver Panda / PF 95 - Oppaacha",
+      "url": "https://soundcloud.com/silverpandamusic/pf-95-oppaacha",
+      "poster": "/media/brief/poster-insomniac",
+      "posterAlt": "Insomniac Radio poster for the Oppaacha guest mix on Silver Panda PF 95",
+      "ratio": 0.7998,
+      "bg": "#4a72d4"
+    }
+  ]
+}

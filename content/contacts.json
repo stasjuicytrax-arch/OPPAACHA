@@ -7,13 +7,30 @@
     "telegram": "@oppaacha"
   },
   "socials": [
-    { "network": "Spotify", "url": "https://open.spotify.com/artist/4xgSjDLUAc95DUbzeKg8MY" },
-    { "network": "Instagram", "handle": "@oppaacha", "url": "https://www.instagram.com/oppaacha" },
-    { "network": "Beatport", "url": "https://www.beatport.com/artist/oppaacha/966990" },
-    { "network": "SoundCloud", "url": "https://soundcloud.com/oppaacha" }
+    {
+      "network": "Spotify",
+      "url": "https://open.spotify.com/artist/4xgSjDLUAc95DUbzeKg8MY"
+    },
+    {
+      "network": "Instagram",
+      "handle": "@oppaacha",
+      "url": "https://www.instagram.com/oppaacha"
+    },
+    {
+      "network": "Beatport",
+      "url": "https://www.beatport.com/artist/oppaacha/966990"
+    },
+    {
+      "network": "SoundCloud",
+      "url": "https://soundcloud.com/oppaacha"
+    }
   ],
   "media": {
     "pressFolder": "https://drive.google.com/drive/folders/1DmfgLn1NZR-LMpemyXVqTe1R1CuT7W5G",
-    "liveVideo": { "title": "Live from Trip Festival Main Stage", "url": "https://www.youtube.com/watch?v=1Bi6K94BdIM" }
+    "liveVideo": {
+      "title": "Live from Trip Festival Main Stage",
+      "url": "https://www.youtube.com/watch?v=1Bi6K94BdIM"
+    },
+    "rider": "/media/rider/OPPAACHA-Rider.pdf"
   }
 }

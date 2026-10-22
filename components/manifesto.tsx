@@ -13,7 +13,8 @@ type Line = {
 type Stat = { value: number; suffix?: string; label: string; decimals?: number };
 
 const lines = (bio.manifesto.lines ?? []) as Line[];
-const stats = (bio.stats ?? []) as Stat[];
+// the numbers moved into Music Highlights as one compact line (client brief 22.10.2026)
+const stats: Stat[] = [];
 
 /**
  * Block 2 (TECH-SPEC 5.2): two-tone manifesto with a red pill in the line,

@@ -47,9 +47,13 @@
   object-fit: cover;
   transition: transform 900ms var(--ease-in);
 }
-.rel-cover:hover img,
 .rel-cover:focus-visible img {
   transform: scale(1.04);
+}
+@media (hover: hover) and (pointer: fine) {
+  .rel-cover:hover img {
+    transform: scale(1.04);
+  }
 }
 .rel-meta {
   display: flex;
@@ -258,9 +262,11 @@
   height: auto;
   transition: transform 700ms var(--ease-in);
 }
-.bio-chart:hover img,
-.bio-poster:hover img {
-  transform: scale(1.04);
+@media (hover: hover) and (pointer: fine) {
+  .bio-chart:hover img,
+  .bio-poster:hover img {
+    transform: scale(1.04);
+  }
 }
 .bio-zoom,
 .ra-zoom {

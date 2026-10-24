@@ -68,13 +68,45 @@
   object-fit: cover;
 }
 .sup-media img {
-  filter: grayscale(1) contrast(1.05) brightness(0.85);
   transition: transform 900ms var(--ease-in);
 }
-.sup-card:hover .sup-media img,
+/* The still sits in black and white and colours in on hover. filter does not
+   animate cheaply, so two overlays fade instead: ::after drains the colour
+   (saturation blend), ::before dims it; the duration chip stays above both. */
+.sup-frame:not(.sup-frame-wait) {
+  isolation: isolate;
+}
+.sup-frame:not(.sup-frame-wait)::before,
+.sup-frame:not(.sup-frame-wait)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: opacity 600ms var(--ease-in);
+}
+.sup-frame:not(.sup-frame-wait)::before {
+  z-index: 1;
+  background: rgb(0 0 0 / 0.15);
+}
+.sup-frame:not(.sup-frame-wait)::after {
+  background: rgb(128 128 128);
+  mix-blend-mode: saturation;
+}
+.sup-card:focus-visible .sup-frame::before,
+.sup-card:focus-visible .sup-frame::after {
+  opacity: 0;
+}
 .sup-card:focus-visible .sup-media img {
-  filter: none;
   transform: scale(1.03);
+}
+@media (hover: hover) and (pointer: fine) {
+  .sup-card:hover .sup-frame::before,
+  .sup-card:hover .sup-frame::after {
+    opacity: 0;
+  }
+  .sup-card:hover .sup-media img {
+    transform: scale(1.03);
+  }
 }
 .sup-media video {
   opacity: 0;

@@ -7,8 +7,12 @@ import { Check, Copy } from "lucide-react";
 export function CopyEmail({ email }: { email: string }) {
   const [state, setState] = React.useState<"idle" | "copied" | "failed">("idle");
   const linkRef = React.useRef<HTMLAnchorElement>(null);
+  // one reset timer: a second click restarts the 2.2s instead of racing the first
+  const resetRef = React.useRef<number | undefined>(undefined);
+  React.useEffect(() => () => window.clearTimeout(resetRef.current), []);
 
   const copy = async () => {
+    window.clearTimeout(resetRef.current);
     try {
       await navigator.clipboard.writeText(email);
       setState("copied");
@@ -24,7 +28,7 @@ export function CopyEmail({ email }: { email: string }) {
       }
       setState("failed");
     }
-    window.setTimeout(() => setState("idle"), 2200);
+    resetRef.current = window.setTimeout(() => setState("idle"), 2200);
   };
 
   return (

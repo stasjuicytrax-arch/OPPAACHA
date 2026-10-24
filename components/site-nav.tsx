@@ -150,10 +150,16 @@ export function SiteNav({ items }: { items: Item[] }) {
             aria-modal="true"
             aria-label="Menu"
             className="fixed inset-0 z-(--z-sheet) p-3 md:hidden"
+            // grows out of the menu button (top right); closes faster than it opens
+            style={{ transformOrigin: "top right" }}
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: -24, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={reduce ? { opacity: 0 } : { opacity: 0, y: -16, scale: 0.98 }}
-            transition={{ duration: 0.42, ease: [0.2, 0.9, 0.3, 1] }}
+            exit={
+              reduce
+                ? { opacity: 0, transition: { duration: 0.18 } }
+                : { opacity: 0, y: -16, scale: 0.98, transition: { duration: 0.18, ease: [0.2, 0.9, 0.3, 1] } }
+            }
+            transition={{ duration: 0.3, ease: [0.2, 0.9, 0.3, 1] }}
           >
             <LiquidGlass
               appearance="dark"

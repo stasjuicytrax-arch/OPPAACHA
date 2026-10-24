@@ -470,12 +470,16 @@ html.lenis body {
   .grain {
     animation: none;
   }
+  /* fewer and gentler, not none: movement goes, short fades and colour
+     changes stay so things still don't pop in */
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+    transition-property: opacity, color, background-color !important;
+    transition-duration: 200ms !important;
+    transition-delay: 0s !important;
     scroll-behavior: auto !important;
   }
 }
@@ -492,13 +496,13 @@ html.lenis body {
 
 /* --------------------------------------------------------------------------
    Motion pass (22.10.2026, rollback tag: pre-animations). transform and
-   opacity only; lite devices get the short version, reduced motion none.
+   opacity only; lite devices get the short version, reduced motion a fade.
    -------------------------------------------------------------------------- */
 
 /* Staggered entrance for content under the headings (InView stagger) */
 [data-reveal-stagger] > * {
-  transition: opacity 900ms var(--ease-in), transform 1000ms var(--ease-in);
-  transition-delay: calc(var(--rv, 0) * 110ms);
+  transition: opacity 600ms var(--ease-in), transform 600ms var(--ease-in);
+  transition-delay: calc(var(--rv, 0) * 60ms);
 }
 [data-reveal-stagger] > :nth-child(2) { --rv: 1; }
 [data-reveal-stagger] > :nth-child(3) { --rv: 2; }
@@ -507,18 +511,25 @@ html.lenis body {
 [data-reveal-stagger] > :nth-child(n + 6) { --rv: 5; }
 [data-js] [data-reveal-stagger]:not([data-inview]) > * {
   opacity: 0;
-  transform: translateY(72px) scale(0.94);
+  transform: translateY(24px) scale(0.98);
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-js] [data-reveal-stagger]:not([data-inview]) > * {
+    transform: none;
+  }
 }
 
-/* CTA arrows lean toward where they go */
+/* CTA arrows lean toward where they go (mouse only: a tap would leave them leaning) */
 .glass-control svg {
   transition: transform 220ms var(--ease-in);
 }
-.glass-control:hover .lucide-arrow-up-right {
-  transform: translate(2px, -2px);
-}
-.glass-control:hover .lucide-play {
-  transform: scale(1.12);
+@media (hover: hover) and (pointer: fine) {
+  .glass-control:hover .lucide-arrow-up-right {
+    transform: translate(2px, -2px);
+  }
+  .glass-control:hover .lucide-play {
+    transform: scale(1.12);
+  }
 }
 
 /* Scroll-driven depth (DESIGN-SYSTEM 8.4), desktop only, compositor only:

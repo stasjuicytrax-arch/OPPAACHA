@@ -40,6 +40,13 @@
 [data-js] [data-reveal]:not([data-inview]) .m-line-inner {
   transform: translateY(105%);
 }
+/* reduced motion: the lines fade in place instead of rising */
+@media (prefers-reduced-motion: reduce) {
+  [data-js] [data-reveal]:not([data-inview]) .m-line-inner {
+    transform: none;
+    opacity: 0;
+  }
+}
 
 .m-accent {
   font-family: var(--font-brand);

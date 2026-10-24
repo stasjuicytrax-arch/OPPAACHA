@@ -77,8 +77,9 @@ function ImageLightbox({ still, onClose }: { still: Still | null; onClose: () =>
           aria-label={still.alt}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: reduce ? 0 : 0.35, ease: [0.2, 0.9, 0.3, 1] }}
+          // leaving is quicker than arriving; reduced motion keeps a short fade
+          exit={{ opacity: 0, transition: { duration: 0.2, ease: [0.2, 0.9, 0.3, 1] } }}
+          transition={{ duration: reduce ? 0.2 : 0.35, ease: [0.2, 0.9, 0.3, 1] }}
           onClick={(e) => e.target === e.currentTarget && onClose()}
         >
           <motion.div
@@ -86,7 +87,7 @@ function ImageLightbox({ still, onClose }: { still: Still | null; onClose: () =>
             style={{ "--ar": still.ratio } as React.CSSProperties}
             initial={reduce ? false : { scale: 0.94, y: 24 }}
             animate={{ scale: 1, y: 0 }}
-            exit={reduce ? undefined : { scale: 0.96, y: 12 }}
+            exit={reduce ? undefined : { scale: 0.96, y: 12, transition: { duration: 0.2, ease: [0.2, 0.9, 0.3, 1] } }}
             transition={{ duration: 0.5, ease: [0.2, 0.9, 0.3, 1] }}
           >
             <img src={still.full} alt={still.alt} className="zoom-img" decoding="async" />

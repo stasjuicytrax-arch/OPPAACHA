@@ -51,8 +51,9 @@ export function ClipLightbox({
           aria-label={`${clip.title}, ${caption ?? clip.venue}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: reduce ? 0 : 0.35, ease: [0.2, 0.9, 0.3, 1] }}
+          // leaving is quicker than arriving; reduced motion keeps a short fade
+          exit={{ opacity: 0, transition: { duration: 0.2, ease: [0.2, 0.9, 0.3, 1] } }}
+          transition={{ duration: reduce ? 0.2 : 0.35, ease: [0.2, 0.9, 0.3, 1] }}
           onClick={(e) => e.target === e.currentTarget && onClose()}
         >
           <motion.div
@@ -60,7 +61,7 @@ export function ClipLightbox({
             style={{ "--ar": clip.aspect ?? 9 / 16 } as React.CSSProperties}
             initial={reduce ? false : { scale: 0.94, y: 24 }}
             animate={{ scale: 1, y: 0 }}
-            exit={reduce ? undefined : { scale: 0.96, y: 12 }}
+            exit={reduce ? undefined : { scale: 0.96, y: 12, transition: { duration: 0.2, ease: [0.2, 0.9, 0.3, 1] } }}
             transition={{ duration: 0.5, ease: [0.2, 0.9, 0.3, 1] }}
           >
             <GlassStage clip={clip} mode="open" className="lightbox-stage" />

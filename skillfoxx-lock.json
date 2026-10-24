@@ -1,0 +1,180 @@
+{
+  "entries": {
+    "skills/skills-for-designers-and-engineers": {
+      "agents": [
+        "claude-code"
+      ],
+      "cliVersion": "0.4.0",
+      "commitSha": "d16ebe60d09a5ba2afcb7054ede9d0a10c9f6128",
+      "contentDigest": "sha256:0c2303858d0ab08b7d9e1523147ce10b2780d7113e47d4af9bbf22e2f19d8e51",
+      "installedAt": "2026-10-24T13:44:20.473Z",
+      "items": [
+        {
+          "agent": "*",
+          "kind": "skill",
+          "link": "canonical",
+          "path": ".agents/skills/emil-design-eng"
+        },
+        {
+          "agent": "claude-code",
+          "kind": "skill",
+          "link": "copy",
+          "path": ".claude/skills/emil-design-eng"
+        },
+        {
+          "agent": "*",
+          "kind": "skill",
+          "link": "canonical",
+          "path": ".agents/skills/animate-expo"
+        },
+        {
+          "agent": "claude-code",
+          "kind": "skill",
+          "link": "copy",
+          "path": ".claude/skills/animate-expo"
+        },
+        {
+          "agent": "*",
+          "kind": "skill",
+          "link": "canonical",
+          "path": ".agents/skills/animate"
+        },
+        {
+          "agent": "claude-code",
+          "kind": "skill",
+          "link": "copy",
+          "path": ".claude/skills/animate"
+        },
+        {
+          "agent": "*",
+          "kind": "skill",
+          "link": "canonical",
+          "path": ".agents/skills/animation-vocabulary"
+        },
+        {
+          "agent": "claude-code",
+          "kind": "skill",
+          "link": "copy",
+          "path": ".claude/skills/animation-vocabulary"
+        },
+        {
+          "agent": "*",
+          "kind": "skill",
+          "link": "canonical",
+          "path": ".agents/skills/apple-design"
+        },
+        {
+          "agent": "claude-code",
+          "kind": "skill",
+          "link": "copy",
+          "path": ".claude/skills/apple-design"
+        },
+        {
+          "agent": "*",
+          "kind": "skill",
+          "link": "canonical",
+          "path": ".agents/skills/ask-sonner"
+        },
+        {
+          "agent": "claude-code",
+          "kind": "skill",
+          "link": "copy",
+          "path": ".claude/skills/ask-sonner"
+        },
+        {
+          "agent": "*",
+          "kind": "skill",
+          "link": "canonical",
+          "path": ".agents/skills/find-animation-opportunities"
+        },
+        {
+          "agent": "claude-code",
+          "kind": "skill",
+          "link": "copy",
+          "path": ".claude/skills/find-animation-opportunities"
+        },
+        {
+          "agent": "*",
+          "kind": "skill",
+          "link": "canonical",
+          "path": ".agents/skills/improve-animations"
+        },
+        {
+          "agent": "claude-code",
+          "kind": "skill",
+          "link": "copy",
+          "path": ".claude/skills/improve-animations"
+        },
+        {
+          "agent": "*",
+          "kind": "skill",
+          "link": "canonical",
+          "path": ".agents/skills/mobile-native"
+        },
+        {
+          "agent": "claude-code",
+          "kind": "skill",
+          "link": "copy",
+          "path": ".claude/skills/mobile-native"
+        },
+        {
+          "agent": "*",
+          "kind": "skill",
+          "link": "canonical",
+          "path": ".agents/skills/pick-ui-library"
+        },
+        {
+          "agent": "claude-code",
+          "kind": "skill",
+          "link": "copy",
+          "path": ".claude/skills/pick-ui-library"
+        },
+        {
+          "agent": "*",
+          "kind": "skill",
+          "link": "canonical",
+          "path": ".agents/skills/prototype"
+        },
+        {
+          "agent": "claude-code",
+          "kind": "skill",
+          "link": "copy",
+          "path": ".claude/skills/prototype"
+        },
+        {
+          "agent": "*",
+          "kind": "skill",
+          "link": "canonical",
+          "path": ".agents/skills/review-animations"
+        },
+        {
+          "agent": "claude-code",
+          "kind": "skill",
+          "link": "copy",
+          "path": ".claude/skills/review-animations"
+        },
+        {
+          "agent": "*",
+          "kind": "skill",
+          "link": "canonical",
+          "path": ".agents/skills/write-swift"
+        },
+        {
+          "agent": "claude-code",
+          "kind": "skill",
+          "link": "copy",
+          "path": ".claude/skills/write-swift"
+        }
+      ],
+      "recipeHash": "sha256:114a639d6cb8faf35be8b2373db060c9afad744080ccf2a4d2fc27b544eca3bc",
+      "risk": "low",
+      "scope": "project",
+      "section": "skills",
+      "slug": "skills-for-designers-and-engineers",
+      "status": "ai",
+      "updatedAt": "2026-10-24T13:44:20.473Z",
+      "vars": []
+    }
+  },
+  "lockfileVersion": 1
+}

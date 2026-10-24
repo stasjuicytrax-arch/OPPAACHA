@@ -1,0 +1,15 @@
+{
+  "entry": "skills/skills-for-designers-and-engineers",
+  "commitSha": "d16ebe60d09a5ba2afcb7054ede9d0a10c9f6128",
+  "contentDigest": "sha256:0c2303858d0ab08b7d9e1523147ce10b2780d7113e47d4af9bbf22e2f19d8e51",
+  "files": [
+    {
+      "path": "SKILL.md",
+      "sha": "577a64397267ce20960de2202950594d5bd6f9b6"
+    },
+    {
+      "path": "STANDARDS.md",
+      "sha": "863ea12ea94c1f7a47b5f7e1019e976aa82bd4cd"
+    }
+  ]
+}

@@ -50,6 +50,8 @@ const nkduy = localFont({
 export const metadata: Metadata = {
   title: "OPPAACHA · Press kit",
   description: "OPPAACHA electronic press kit: selected releases, the upcoming collaboration with CamelPhat, bio, radio mixes, live sets, support and booking.",
+  // closed to search engines until the client says otherwise (27.10.2026)
+  robots: { index: false, follow: false },
 };
 
 export const viewport: Viewport = {
